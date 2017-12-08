@@ -78,7 +78,7 @@ public class Sword : Wepon
 
         if(other.tag == "DebugObject" && isSwordAttack)
         {
-            other.GetComponent<TakeDamage>().Damage(base.GetDamage());
+            
 
             isSwordAttack = false;
             time = attackTime;

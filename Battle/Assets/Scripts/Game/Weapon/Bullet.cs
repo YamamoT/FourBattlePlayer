@@ -72,7 +72,7 @@ public class Bullet : MonoBehaviour
 
         if(other.tag == "DebugObject")
         {
-            other.GetComponent<TakeDamage>().Damage(GetDamage());
+            
             Destroy(gameObject);
             Debug.Log("ダメージを与えた");
         }
