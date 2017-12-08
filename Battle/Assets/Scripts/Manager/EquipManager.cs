@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EquipWeapon : MonoBehaviour {
+public class EquipManager : MonoBehaviour {
 
     public string WeaponTemplateName;
 
@@ -34,7 +34,7 @@ public class EquipWeapon : MonoBehaviour {
             _weapon = null;
             Resources.UnloadUnusedAssets();
         }
-        _weapon = Instantiate(Resources.Load("Prefab/" + name), _weaponTemplateName.transform.position, _weaponTemplateName.transform.rotation) as GameObject;
+        _weapon = Instantiate(Resources.Load("Prefabs/" + name), _weaponTemplateName.transform.position, _weaponTemplateName.transform.rotation) as GameObject;
         _weapon.transform.parent = _weaponTemplateName.transform;
     }
 }
