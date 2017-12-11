@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour {
 
+    //アニメーター
+    public Animator animator;
+
     private CharacterController charaCon;
     private Vector3 moveDirection = Vector3.zero;
 
-    
     [SerializeField]
     private float _runSpeed;
     [SerializeField]
@@ -36,6 +38,9 @@ public class PlayerMove : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        //アニメーター取得
+        animator = this.GetComponent<PlayerMove>().animator;
+
         charaCon = GetComponent<CharacterController>();
         dushTime = 0f;
 	}
@@ -66,8 +71,30 @@ public class PlayerMove : MonoBehaviour {
             moveDirection.x = inputAxis * _runSpeed;
         }
 
+
+        Debug.Log(Mathf.Round(inputAxis * 10) / 10);
+
+        
+
+        if (Mathf.Round(inputAxis * 10) / 10 == 0)
+        {
+            animator.SetBool("run", false);
+            animator.SetBool("walk", false);
+        }
+        else if ((inputAxis == 1 || inputAxis == -1) && _isDush)
+        {
+            animator.SetBool("run", true);
+        }
+        else if(inputAxis > 0 && inputAxis < 1 || inputAxis < 0 && inputAxis > -1)
+        {
+            animator.SetBool("walk", true);
+        }
+
+        if(animator.GetBool("run") == true) animator.SetBool("walk", false);
+
+
         // ジャンプ処理
-        if(charaCon.isGrounded)
+        if (charaCon.isGrounded)
         {
             _isJump = false;
             if (Input.GetButtonDown("Jump") || Input.GetAxisRaw("Vertical") >0 ) moveDirection.y = _jumpPower;
