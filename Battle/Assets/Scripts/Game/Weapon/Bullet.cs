@@ -72,7 +72,6 @@ public class Bullet : MonoBehaviour
 
         if(other.tag == "DebugObject")
         {
-            
             Destroy(gameObject);
             Debug.Log("ダメージを与えた");
         }

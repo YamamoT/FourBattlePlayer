@@ -72,7 +72,9 @@ public class Bow : Wepon
     /// </summary>
     public void Attack()
     {
-        base.Attack();
+        //base.Attack();
+        // 攻撃中
+        isAttack = true;
 
         GameObject bulletInstance = GameObject.Instantiate(bullet) as GameObject;
         bulletInstance.GetComponent<Rigidbody>().mass = arrowGravity;

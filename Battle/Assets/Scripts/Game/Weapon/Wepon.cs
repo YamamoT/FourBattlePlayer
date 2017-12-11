@@ -55,7 +55,7 @@ public class Wepon : MonoBehaviour
         // 使用回数を減少
         attackValue--;
 
-        Debug.Log("攻撃");
+        //Debug.Log("攻撃");
     }
 
     protected float GetInterval()
@@ -76,5 +76,10 @@ public class Wepon : MonoBehaviour
     public int GetDamage()
     {
         return damage;
+    }
+
+    public int GetAttackValue()
+    {
+        return attackValue;
     }
 }

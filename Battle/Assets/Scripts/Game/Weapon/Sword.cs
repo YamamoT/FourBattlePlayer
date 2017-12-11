@@ -55,7 +55,7 @@ public class Sword : Wepon
     /// </summary>
     public void Attack()
     {
-        base.Attack();
+        isAttack = true;
 
         isSwordAttack = true;
 
@@ -78,7 +78,7 @@ public class Sword : Wepon
 
         if(other.tag == "DebugObject" && isSwordAttack)
         {
-            
+            // ダメージ処理
 
             isSwordAttack = false;
             time = attackTime;
