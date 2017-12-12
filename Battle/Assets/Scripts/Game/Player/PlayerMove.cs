@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour {
 
     //アニメーター
-    public Animator animator;
-
+    Animator animator;
+    
     private CharacterController charaCon;
     private Vector3 moveDirection = Vector3.zero;
 
@@ -39,7 +39,7 @@ public class PlayerMove : MonoBehaviour {
     // Use this for initialization
     void Start () {
         //アニメーター取得
-        animator = this.GetComponent<PlayerMove>().animator;
+        animator = GetComponent<Animator>();
 
         charaCon = GetComponent<CharacterController>();
         dushTime = 0f;
@@ -71,11 +71,7 @@ public class PlayerMove : MonoBehaviour {
             moveDirection.x = inputAxis * _runSpeed;
         }
 
-
-        Debug.Log(Mathf.Round(inputAxis * 10) / 10);
-
-        
-
+        // アニメーター処理
         if (Mathf.Round(inputAxis * 10) / 10 == 0)
         {
             animator.SetBool("run", false);
@@ -97,7 +93,7 @@ public class PlayerMove : MonoBehaviour {
         if (charaCon.isGrounded)
         {
             _isJump = false;
-            if (Input.GetButtonDown("Jump") || Input.GetAxisRaw("Vertical") >0 ) moveDirection.y = _jumpPower;
+            if (Input.GetButtonDown("Jump")) moveDirection.y = _jumpPower;
         }
         else
         {
@@ -115,9 +111,8 @@ public class PlayerMove : MonoBehaviour {
         // 移動するよ
         charaCon.Move(moveDirection * Time.deltaTime);
 
-
         // しゃがんだ時にすり抜け床なら降りる
-        if (Input.GetAxisRaw("Vertical") < -0.9 && charaCon.isGrounded)
+        if (Input.GetAxisRaw("Vertical") < -0.9 && !_isJump)
         {
             int slidingFloorLayer = LayerMask.NameToLayer("Sliding");
             if (Physics.Raycast(transform.position, -transform.up, slidingFloorLayer))
@@ -127,6 +122,17 @@ public class PlayerMove : MonoBehaviour {
             }
         }
 
+    }
+
+    public bool CheckGrounded()
+    {
+        if (charaCon.isGrounded) { return true; }
+
+        Ray ray = new Ray(this.transform.position + Vector3.up * 0.1f, Vector3.down);
+
+        float tolerance = 0.3f;
+
+        return Physics.Raycast(ray, tolerance);
     }
 
     void GamePadDush(float Axis,float AxisRaw)

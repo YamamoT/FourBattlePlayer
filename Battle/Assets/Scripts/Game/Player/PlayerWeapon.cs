@@ -27,4 +27,9 @@ public class PlayerWeapon : MonoBehaviour {
 
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        
+    }
+
 }

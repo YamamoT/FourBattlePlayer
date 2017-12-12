@@ -16,7 +16,7 @@ public class SlidingFloor : MonoBehaviour {
     private void OnChildTriggerEnter(Collider col)
     {
         if (col.gameObject.GetComponentInChildren<BoxCollider>().tag == "TriggerCollider")
-            Physics.IgnoreLayerCollision(_playerLayer, _slidingFloorLayer, true);   
+            Physics.IgnoreLayerCollision(_playerLayer, _slidingFloorLayer);   
     }
 
     private void OnChildTriggerExit(Collider col)

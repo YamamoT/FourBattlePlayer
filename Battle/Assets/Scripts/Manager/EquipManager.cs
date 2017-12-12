@@ -12,6 +12,7 @@ public class EquipManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         var children = GetComponentInChildren<Transform>(true);
+
         foreach(Transform transform in children)
         {
             if(transform.name == WeaponTemplateName)
@@ -21,10 +22,6 @@ public class EquipManager : MonoBehaviour {
         }
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public void EquipWeapons(string name)
     {
