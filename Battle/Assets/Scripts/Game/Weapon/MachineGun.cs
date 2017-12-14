@@ -41,7 +41,7 @@ public class MachineGun : Wepon
         bulletInstance.GetComponent<Bullet>().SetDamage(base.GetDamage());
 
         Vector3 force;
-        float randamPos = Random.Range(-0.1f, 0.1f);
+        float randamPos = Random.Range(-0.05f, 0.05f);
 
         force = gameObject.transform.forward  * attackSpeed * 1000;
 
