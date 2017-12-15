@@ -9,8 +9,11 @@ public class PlayerGauge : MonoBehaviour
     // 対象となるプレイヤー
     [SerializeField]
     private GameObject player;
-    // 格納用HP
-    private int hp = 1;
+    // プレイヤーの現在HP
+    private int currentHp;
+    // プレイヤーのHP上限
+    private int hpLimit;
+
 
     // 緑ゲージ
     [SerializeField]
@@ -43,6 +46,7 @@ public class PlayerGauge : MonoBehaviour
     // 残弾数表示用のテキスト
     [SerializeField]
     private Text bulletValueText = null;
+
     
 	/// <summary>
     /// 初期化
@@ -55,7 +59,6 @@ public class PlayerGauge : MonoBehaviour
             currentWeponImage = currentWeponImage.GetComponent<Image>();
             // テキスト初期化
             bulletValueText.text = "00";
-            // HP初期化
         }
     }
 	
@@ -64,7 +67,6 @@ public class PlayerGauge : MonoBehaviour
     /// </summary>
 	void Update ()
     {
-        // ゲージ処理
         GaugeProcess();
 
         // 武器の切り替え表示
@@ -73,30 +75,18 @@ public class PlayerGauge : MonoBehaviour
         WeponRemainBullet();
     }
 
-    /// <summary>
-    /// ゲージ処理
-    /// </summary>
+   /// <summary>
+   /// ゲージ処理
+   /// </summary>
     private void GaugeProcess()
     {
-        // 緑ゲージ (プレイヤーの現HPに応じて減少)
-        greenGauge.fillAmount = hp * 0.01f;
+        // 緑ゲージ
+        greenGauge.fillAmount = ((float)currentHp / (float)hpLimit);
 
         // 赤ゲージ減少
         if (redGauge.fillAmount > greenGauge.fillAmount)
-            redGauge.fillAmount -= 0.001f;
+            redGauge.fillAmount -= 0.003f;
     }
-
-    /// <summary>
-    /// 情報の設定
-    /// </summary>
-    /// <param name="hpValue">HP</param>
-    /// <param name="attackValue">攻撃回数</param>
-    public void SetInfo(GameObject weponObject, int hpValue)
-    {
-        hp = hpValue;
-        wepon = weponObject;
-    }
-
 
     /// <summary>
     /// 武器の切替表示
@@ -131,8 +121,7 @@ public class PlayerGauge : MonoBehaviour
     /// <summary>
     /// 所持中の武器の残弾数
     /// </summary>
-    /// <param name="value"></param>
-    public void WeponRemainBullet()
+    private void WeponRemainBullet()
     {
         // 武器
         if(wepon)
@@ -149,5 +138,26 @@ public class PlayerGauge : MonoBehaviour
         }
         else
             bulletValueText.text = "　";
+    }
+
+
+    /// <summary>
+    /// HP設定
+    /// </summary>
+    /// <param name="hpValue">現在のHP</param>
+    /// <param name="limitValue">HP上限</param>
+    public void SetHp(int hpValue, int limitValue)
+    {
+        currentHp = hpValue;
+        hpLimit = limitValue;
+    }
+
+    /// <summary>
+    /// 所持中の武器設定
+    /// </summary>
+    /// <param name="weponObject">所持中の武器</param>
+    public void SetWepon(GameObject weponObject)
+    {
+        wepon = weponObject;
     }
 }

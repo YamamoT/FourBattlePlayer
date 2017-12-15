@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23838361206787708}
   - component: {fileID: 114980927835877028}
   m_Layer: 0
-  m_Name: HundGun
+  m_Name: HandGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f40ca0c5015230448abe5cafe69a32ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDebugMode: 1
   attackValue: 7
   attackInterval: 5
   damage: 3
