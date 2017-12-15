@@ -29,6 +29,7 @@ public class PlayerMove : MonoBehaviour {
     private float dushDir = 0f;
 
     private bool _isJump = false;
+    private bool _isTurn = false;
 
     // 参考元 https://gametukurikata.com/program/run
 
@@ -48,7 +49,6 @@ public class PlayerMove : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        
         float inputAxis = Input.GetAxis("Horizontal");
         float inputAxisRaw = Input.GetAxisRaw("Horizontal");
 
@@ -59,17 +59,12 @@ public class PlayerMove : MonoBehaviour {
             // キーボード用
             KeyboardDush(inputAxisRaw);
         }
-       
 
         // ダッシュ状態か否かで速度を変える
         if (!_isDush)
-        {
             moveDirection.x = inputAxis * _walkSpeed;
-        }
         else
-        {
             moveDirection.x = inputAxis * _runSpeed;
-        }
 
         // アニメーター処理
         if (Mathf.Round(inputAxis * 10) / 10 == 0)
@@ -77,16 +72,19 @@ public class PlayerMove : MonoBehaviour {
             animator.SetBool("run", false);
             animator.SetBool("walk", false);
         }
-        else if ((inputAxis == 1 || inputAxis == -1) && _isDush)
-        {
-            animator.SetBool("run", true);
-        }
-        else if(inputAxis > 0 && inputAxis < 1 || inputAxis < 0 && inputAxis > -1)
-        {
-            animator.SetBool("walk", true);
-        }
+        else if ((inputAxis == 1 || inputAxis == -1) && _isDush) animator.SetBool("run", true);
+        else if(inputAxis > 0 && inputAxis < 1 || inputAxis < 0 && inputAxis > -1) animator.SetBool("walk", true);
 
         if(animator.GetBool("run") == true) animator.SetBool("walk", false);
+
+        // 向きの回転
+        if(Mathf.Round(inputAxis * 10) / 10 < 0) _isTurn = true;
+        else if(Mathf.Round(inputAxis * 10) / 10 > 0)  _isTurn = false;
+
+        if (_isTurn)
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 270f, 0), Time.deltaTime * 10);
+        else
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 90f, 0), Time.deltaTime * 10);
 
 
         // ジャンプ処理
