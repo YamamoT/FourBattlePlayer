@@ -6,6 +6,8 @@ public class PlayerWeapon : MonoBehaviour {
 
     [SerializeField]
     private bool _weapon = false; // 武器持ってるか持ってないか
+    [SerializeField]
+    private int _attack = 0;
 
     private EquipManager _charEquipManager;
 
