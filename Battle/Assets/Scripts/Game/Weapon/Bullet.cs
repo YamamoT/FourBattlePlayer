@@ -67,13 +67,11 @@ public class Bullet : MonoBehaviour
         if(other.tag != "Bullet")
         {
             Destroy(gameObject);
-            Debug.Log("破壊された");
         }
 
         if(other.tag == "DebugObject")
         {
             Destroy(gameObject);
-            Debug.Log("ダメージを与えた");
         }
     }
 

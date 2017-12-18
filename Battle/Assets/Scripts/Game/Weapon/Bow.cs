@@ -5,12 +5,16 @@ using UnityEngine;
 public class Bow : Wepon
 {
     // 弾
-    public GameObject bullet;
+    [SerializeField]
+    private GameObject bullet;
     // 銃口
-    public Transform muzzle;
+    [SerializeField]
+    private Transform muzzle;
     // 矢の重力
-    public float arrowGravity = 1.0f;
+    [SerializeField]
+    private float arrowGravity = 1.0f;
     // チャージ中
+    [SerializeField]
     private bool isCharge = false;
 
     /// <summary>
@@ -45,26 +49,6 @@ public class Bow : Wepon
             }
                 
         }
-
-        Debug.Log(isCharge);
-        Debug.Log(attackSpeed);
-        //// 攻撃中
-        //if (isAttack)
-        //{
-        //    // 攻撃間隔を減少
-        //    Interval -= 0.1f;
-        //    attackSpeed += 0.1f;
-
-        //    // 攻撃間隔リセット
-        //    if (Interval <= 0)
-        //    {
-        //        isAttack = false;
-        //        Interval = attackInterval;
-        //        attackSpeed = 0.0f;
-        //    }
-        //}
-
-        //base.Update();
     }
 
     /// <summary>
@@ -72,7 +56,6 @@ public class Bow : Wepon
     /// </summary>
     public void Attack()
     {
-        //base.Attack();
         // 攻撃中
         isAttack = true;
 

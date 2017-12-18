@@ -75,10 +75,10 @@ public class PlayerMove : MonoBehaviour {
         else if ((inputAxis == 1 || inputAxis == -1) && _isDush) animator.SetBool("run", true);
         else if(inputAxis > 0 && inputAxis < 1 || inputAxis < 0 && inputAxis > -1) animator.SetBool("walk", true);
 
-        if(animator.GetBool("run") == true) animator.SetBool("walk", false);
+        if (animator.GetBool("run") == true) animator.SetBool("walk", false);
 
         // 向きの回転
-        if(Mathf.Round(inputAxis * 10) / 10 < 0) _isTurn = true;
+        if (Mathf.Round(inputAxis * 10) / 10 < 0) _isTurn = true;
         else if(Mathf.Round(inputAxis * 10) / 10 > 0)  _isTurn = false;
 
         if (_isTurn)

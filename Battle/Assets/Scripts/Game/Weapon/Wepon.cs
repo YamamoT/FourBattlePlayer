@@ -43,19 +43,20 @@ public class Wepon : MonoBehaviour
         }
 
         // 使用終了
-        if (attackValue <= 0)
-            Destroy(gameObject);
+        //if (attackValue <= 0)
+            //Destroy(gameObject);
     }
 
     protected void Attack()
     {
-        // 攻撃中
-        isAttack = true;
+        if (attackValue >= 0)
+        {
+            // 攻撃中
+            isAttack = true;
 
-        // 使用回数を減少
-        attackValue--;
-
-        //Debug.Log("攻撃");
+            // 使用回数を減少
+            attackValue--;
+        }
     }
 
     protected float GetInterval()

@@ -181,9 +181,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0d250cd33b03a646881ac4c3ba143be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDebugMode: 1
   attackValue: 7
   attackInterval: 5
   damage: 5
   attackSpeed: 1
   bullet: {fileID: 1065169040548614, guid: 3679e60b8b8786d49accd4eaeb79fbd0, type: 2}
   muzzle: {fileID: 4437275387012140}
+  shellInValue: 7
+  diffusivity: 0.8

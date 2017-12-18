@@ -41,7 +41,8 @@ public class PlayerGauge : MonoBehaviour
     private int attack = 0;
     
     // 現在所持中の武器
-    public Image currentWeponImage;
+    [SerializeField]
+    private Image currentWeponImage;
 
     // 残弾数表示用のテキスト
     [SerializeField]

@@ -76,7 +76,19 @@ public class ZoomCamera : MonoBehaviour
         target2.y = target[target2CntY].position.y;
 
         Vector3 center = Vector3.Lerp(target1, target2, 0.5f);
-        transform.position = center + Vector3.forward * -10;
+
+        float correction = 0;
+
+        if (Mathf.Abs(center.x) >= Mathf.Abs(center.y))
+        {
+            correction = Mathf.Abs(center.x);
+        }
+        else if (Mathf.Abs(center.y) >= Mathf.Abs(center.x))
+        {
+            correction = Mathf.Abs(center.y) * 1.3f;
+        }
+
+        transform.position = center + Vector3.forward * (-10 - correction);
     }
 
     void UpdateOrthographicSize()

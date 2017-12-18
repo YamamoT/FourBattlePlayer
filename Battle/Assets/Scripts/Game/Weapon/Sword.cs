@@ -5,10 +5,12 @@ using UnityEngine;
 public class Sword : Wepon
 {
     // 攻撃している時間
+    [SerializeField]
     private float time = 0.0f;
     [SerializeField]
     private float attackTime = 0.0f;
 
+    [SerializeField]
     private bool isSwordAttack = false;
 
     /// <summary>

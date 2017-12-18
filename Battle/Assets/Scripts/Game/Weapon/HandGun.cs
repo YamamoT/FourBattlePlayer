@@ -5,9 +5,11 @@ using UnityEngine;
 public class HandGun : Wepon
 {
     // 弾
-    public GameObject bullet;
+    [SerializeField]
+    private GameObject bullet;
     // 銃口
-    public Transform muzzle;
+    [SerializeField]
+    private Transform muzzle;
 
 	/// <summary>
     /// 初期化
@@ -36,7 +38,9 @@ public class HandGun : Wepon
     {
         base.Attack();
 
-        GameObject bulletInstance = GameObject.Instantiate(bullet) as GameObject;
+        if(isAttack && GetAttackValue() >= 0)
+        {
+            GameObject bulletInstance = GameObject.Instantiate(bullet) as GameObject;
         bulletInstance.GetComponent<Rigidbody>().useGravity = false;
         bulletInstance.GetComponent<Bullet>().SetDamage(base.GetDamage());
 
@@ -47,5 +51,6 @@ public class HandGun : Wepon
         bulletInstance.GetComponent<Rigidbody>().AddForce(force);
 
         bulletInstance.transform.position = muzzle.position;
+        }
     }
 }

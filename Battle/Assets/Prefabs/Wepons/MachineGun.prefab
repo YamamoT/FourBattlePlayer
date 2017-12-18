@@ -152,9 +152,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcc853730d5ddc44498dec7372b14834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackValue: 70
+  isDebugMode: 1
+  attackValue: 80
   attackInterval: 1
   damage: 1
   attackSpeed: 1
   bullet: {fileID: 1065169040548614, guid: 3679e60b8b8786d49accd4eaeb79fbd0, type: 2}
   muzzle: {fileID: 4073944922191832}
+  diffusivity: 0.03

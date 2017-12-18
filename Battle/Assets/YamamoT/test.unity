@@ -665,6 +665,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weapon: 0
+  _attack: 0
 --- !u!33 &502844467
 MeshFilter:
   m_ObjectHideFlags: 0

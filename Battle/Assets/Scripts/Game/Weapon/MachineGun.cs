@@ -5,9 +5,16 @@ using UnityEngine;
 public class MachineGun : Wepon
 {
     // 弾
-    public GameObject bullet;
+    [SerializeField]
+    private GameObject bullet;
     // 銃口
-    public Transform muzzle;
+    [SerializeField]
+    private Transform muzzle;
+
+    // ブレ
+    [SerializeField]
+    private float diffusivity;
+
 
     /// <summary>
     /// 初期化
@@ -36,18 +43,21 @@ public class MachineGun : Wepon
     {
         base.Attack();
 
-        GameObject bulletInstance = GameObject.Instantiate(bullet) as GameObject;
-        bulletInstance.GetComponent<Rigidbody>().useGravity = false;
-        bulletInstance.GetComponent<Bullet>().SetDamage(base.GetDamage());
+        if (isAttack && GetAttackValue() >= 0)
+        {
+            GameObject bulletInstance = GameObject.Instantiate(bullet) as GameObject;
+            bulletInstance.GetComponent<Rigidbody>().useGravity = false;
+            bulletInstance.GetComponent<Bullet>().SetDamage(base.GetDamage());
 
-        Vector3 force;
-        float randamPos = Random.Range(-0.05f, 0.05f);
+            Vector3 force;
+            float randamPos = Random.Range(-diffusivity, diffusivity);
 
-        force = gameObject.transform.forward  * attackSpeed * 1000;
+            force = gameObject.transform.forward * attackSpeed * 1000;
 
-        bulletInstance.GetComponent<Rigidbody>().AddForce(force);
+            bulletInstance.GetComponent<Rigidbody>().AddForce(force);
 
-        bulletInstance.transform.position = muzzle.position;
-        bulletInstance.GetComponent<Bullet>().SetDeviation(randamPos);
+            bulletInstance.transform.position = muzzle.position;
+            bulletInstance.GetComponent<Bullet>().SetDeviation(randamPos);
+        }
     }
 }
