@@ -21,4 +21,5 @@ public class PlayerEquip : MonoBehaviour {
 	void Update () {
 		
 	}
+
 }
