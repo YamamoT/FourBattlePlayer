@@ -3,14 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerWeapon : MonoBehaviour {
+
     [SerializeField]
-    private GameObject _handGun;
-    [SerializeField]
-    private GameObject _shotGun;
-    [SerializeField]
-    private GameObject _machineGun;
-    [SerializeField]
-    private GameObject _sword;
+    private GameObject[] _weapons;
 
     [SerializeField]
     private bool _isWeapon = false; // 武器持ってるか持ってないか
@@ -40,10 +35,7 @@ public class PlayerWeapon : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetKeyDown("g")) _shotGun.SetActive(true);
-        if (Input.GetKeyDown("f")) _shotGun.SetActive(false);
-
-
+        // アニメーション用
         if (_isWeapon)
         {
            
@@ -56,6 +48,7 @@ public class PlayerWeapon : MonoBehaviour {
                 // アニメーション(武器[銃]持ってる時)
             }
         }
+        else
         {
            // アニメーション(武器持ってないとき)
         }
@@ -71,11 +64,13 @@ public class PlayerWeapon : MonoBehaviour {
 
                 string wepName = col.gameObject.name;
 
-                if (wepName.Contains("Hand")) _handGun.SetActive(true);
-                else if (wepName.Contains("Machine")) _machineGun.SetActive(true);
-                else if (wepName.Contains("Shot")) _shotGun.SetActive(true);
-                else if (wepName.Contains("Sword")) _sword.SetActive(true);
-
+                for (int i = 0; _weapons.Length > i; i++)
+                {
+                    if (wepName.Contains(_weapons[i].name))
+                    {
+                        _weapons[i].SetActive(true);
+                    }
+                }
                 Destroy(col.gameObject);
             }
         }
