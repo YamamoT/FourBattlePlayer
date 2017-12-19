@@ -91,7 +91,11 @@ public class PlayerMove : MonoBehaviour {
         if (charaCon.isGrounded)
         {
             _isJump = false;
-            if (Input.GetButtonDown("Jump")) moveDirection.y = _jumpPower;
+            if (Input.GetButtonDown("Jump"))
+            {
+                moveDirection.y = _jumpPower;
+                animator.SetTrigger("jump");
+            }
         }
         else
         {
