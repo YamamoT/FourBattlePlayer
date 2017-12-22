@@ -26,14 +26,43 @@ public class PlayerWeapon : MonoBehaviour {
         "t"
     };
 
+
+    GameObject hand;
 	// Use this for initialization
 	void Start() {
         playerAnime = GetComponent<Animator>();
         _charEquipManager = GetComponent<EquipManager>();
-	}
+
+        for (int i = 0; _weapons.Length > i; i++)
+        {
+            if (_weapons[i].name.Contains("Hand")) _weapons[i].GetComponent<HandGun>();
+        }
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
+
+        if(_isWeapon)
+        {
+
+            // ここに武器持った時の攻撃
+
+
+            if (Input.GetButtonDown("Throw"))
+            {
+                for (int i = 0; _weapons.Length > i; i++)
+                {
+                    _weapons[i].SetActive(false);
+                }
+                _isWeapon = false;
+            }
+        }
+        else
+        {
+            //　武器持ってないときの攻撃
+        }
+        
 
         // アニメーション用
         if (_isWeapon)
@@ -58,21 +87,21 @@ public class PlayerWeapon : MonoBehaviour {
     {
         if(col.gameObject.tag == "Weapon")
         {
-            if (!_isWeapon)
+            if(Input.GetAxisRaw("Vertical") < 0) 
             {
-                _isWeapon = true;
-
-                string wepName = col.gameObject.name;
-
-                for (int i = 0; _weapons.Length > i; i++)
+                if (!_isWeapon)
                 {
-                    if (wepName.Contains(_weapons[i].name))
+                    _isWeapon = true;
+
+                    string wepName = col.gameObject.name;
+                    for (int i = 0; _weapons.Length > i; i++)
                     {
-                        _weapons[i].SetActive(true);
+                        if (wepName.Contains(_weapons[i].name)) _weapons[i].SetActive(true);
                     }
+
+                    Destroy(col.gameObject);
                 }
-                Destroy(col.gameObject);
-            }
+            }    
         }
     }
 
