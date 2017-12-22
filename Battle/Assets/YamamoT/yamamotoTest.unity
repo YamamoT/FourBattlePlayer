@@ -727,11 +727,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bba6582c70a5c64093e08759723c5c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _runSpeed: 5
-  _walkSpeed: 2
   _dushIntervalTime: 0.05
-  _isDush: 0
-  _jumpPower: 9
   _gravity: 10
 --- !u!1 &488679690
 GameObject:
@@ -910,11 +906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bba6582c70a5c64093e08759723c5c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _runSpeed: 5
-  _walkSpeed: 2
   _dushIntervalTime: 0.05
-  _isDush: 0
-  _jumpPower: 8
   _gravity: 10
 --- !u!95 &502844470
 Animator:
@@ -2364,11 +2356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bba6582c70a5c64093e08759723c5c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _runSpeed: 5
-  _walkSpeed: 2
   _dushIntervalTime: 0.05
-  _isDush: 0
-  _jumpPower: 9
   _gravity: 10
 --- !u!114 &1284352207
 MonoBehaviour:

@@ -21,7 +21,7 @@ public class PlayerStates : MonoBehaviour {
     [SerializeField][Range(0f, 5f)]
     private float _invincibleTime; // 無敵時間
 
-    float _time;
+    float _time; // 時間
 
     // 生死判定
     bool _isDead = false;
@@ -29,6 +29,12 @@ public class PlayerStates : MonoBehaviour {
     bool _isAttack = false;
     // ダメージ判定(無敵時間の処理とか作る用)
     bool _isDamage = false;
+    // 走っているか
+    bool _isDash = false;
+    // ジャンプしているか
+    bool _isJump = false;
+    // しゃがみかどうか
+    bool _isCrouch = false;
 
     private void Start()
     {
@@ -41,7 +47,6 @@ public class PlayerStates : MonoBehaviour {
         if(_isDamage)
         {
             _time -= Time.deltaTime;
-
             if (_time <= 0f)
             {
                 _time = _invincibleTime;
@@ -55,30 +60,26 @@ public class PlayerStates : MonoBehaviour {
         get { return _hp; }
         set { _hp = value; }
     }
-    public float WarkSpd
+    
+    public float WalkSpd
     {
         get { return _walkSpead; }
-        set { _walkSpead = value; }
     }
     public float DushSpd
     {
         get { return _dushSpead; }
-        set { _dushSpead = value; }
     }
     public float JumpPow
     {
         get { return _jumpPower; }
-        set { _jumpPower = value; }
     }
     public float NomalATK
     {
         get { return _nomalAttack; }
-        set { _nomalAttack = value; }
     }
     public float WeaponATK
     {
         get { return _weaponAttack; }
-        set { _weaponAttack = value; }
     }
     public float BulletDense
     {
@@ -100,6 +101,19 @@ public class PlayerStates : MonoBehaviour {
         get { return _isDamage; }
         set { _isDamage = value; }
     }
-
-
+    public bool IsDash
+    {
+        get { return _isDash; }
+        set { _isDash = value; }
+    }
+    public bool IsJump
+    {
+        get { return _isJump; }
+        set { _isJump = value; }
+    }
+    public bool IsCrouch
+    {
+        get { return _isCrouch; }
+        set { _isCrouch = value; }
+    }
 }

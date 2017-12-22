@@ -15,15 +15,12 @@ public class PlayerMove : MonoBehaviour {
     private float _dushIntervalTime; // 走り判定をとるまでの時間
     private float dushTime;
 
-    private bool _isDush = false;
-
     [SerializeField][Range(1f, 20f)]
     private float _gravity = 15f;
     
     private int count = 0;
     private float dushDir = 0f;
 
-    private bool _isJump = false;
     private bool _isTurn = false;
 
     // 参考元 https://gametukurikata.com/program/run
@@ -47,7 +44,7 @@ public class PlayerMove : MonoBehaviour {
         float inputAxis = Input.GetAxis("Horizontal");
         float inputAxisRaw = Input.GetAxisRaw("Horizontal");
 
-        if(!_isJump)
+        if(!pStates.IsJump)
         {
             // コントローラー用
             GamePadDush(inputAxis, inputAxisRaw);
@@ -56,8 +53,8 @@ public class PlayerMove : MonoBehaviour {
         }
 
         // ダッシュ状態か否かで速度を変える
-        if (!_isDush)
-            moveDirection.x = inputAxis * pStates.WarkSpd;
+        if (!pStates.IsDash)
+            moveDirection.x = inputAxis * pStates.WalkSpd;
         else
             moveDirection.x = inputAxis * pStates.DushSpd;
 
@@ -67,7 +64,7 @@ public class PlayerMove : MonoBehaviour {
             animator.SetBool("run", false);
             animator.SetBool("walk", false);
         }
-        else if ((inputAxis == 1 || inputAxis == -1) && _isDush) animator.SetBool("run", true);
+        else if ((inputAxis == 1 || inputAxis == -1) && pStates.IsDash) animator.SetBool("run", true);
         else if(inputAxis > 0 && inputAxis < 1 || inputAxis < 0 && inputAxis > -1) animator.SetBool("walk", true);
 
         if (animator.GetBool("run") == true) animator.SetBool("walk", false);
@@ -85,7 +82,7 @@ public class PlayerMove : MonoBehaviour {
         // ジャンプ処理
         if (charaCon.isGrounded)
         {
-            _isJump = false;
+            pStates.IsJump = false;
             if (Input.GetButtonDown("Jump"))
             {
                 moveDirection.y = pStates.JumpPow;
@@ -94,7 +91,7 @@ public class PlayerMove : MonoBehaviour {
         }
         else
         {
-            _isJump = true;
+            pStates.IsJump = true;
             if (Input.GetAxisRaw("Vertical") < 0)
             {
                 moveDirection.y -= (_gravity * 4) * Time.deltaTime;
@@ -109,7 +106,7 @@ public class PlayerMove : MonoBehaviour {
         charaCon.Move(moveDirection * Time.deltaTime);
 
         // しゃがんだ時にすり抜け床なら降りる
-        if (Input.GetAxisRaw("Vertical") < -0.9 && !_isJump)
+        if (Input.GetAxisRaw("Vertical") < -0.9 && !pStates.IsJump)
         {
             int slidingFloorLayer = LayerMask.NameToLayer("Sliding");
             if (Physics.Raycast(transform.position, -transform.up, slidingFloorLayer))
@@ -134,7 +131,7 @@ public class PlayerMove : MonoBehaviour {
 
     void GamePadDush(float Axis,float AxisRaw)
     {
-        if (AxisRaw == 0) { _isDush = false; count = 0; }
+        if (AxisRaw == 0) { pStates.IsDash = false; count = 0; }
         if (dushTime <= 0) dushTime = 0;
 
         // 移動入力されたらカウントを増やして時間を設定する
@@ -143,13 +140,13 @@ public class PlayerMove : MonoBehaviour {
         if (dushTime != 0)
         {
             dushTime -= Time.deltaTime;
-            if (Axis == 1 || Axis == -1) _isDush = true;
+            if (Axis == 1 || Axis == -1) pStates.IsDash = true;
         }
     }
 
     void KeyboardDush(float AxisRaw)
     {
-        if (!_isDush)
+        if (!pStates.IsDash)
         {
 
             //　移動キーを押した
@@ -174,7 +171,7 @@ public class PlayerMove : MonoBehaviour {
                     //　押した方向がリミットの角度を越えていない　かつ　制限時間内に移動キーが押されていれば走る
                     if (nowDirection == dushDir && nowTime <= nextButtonDownTime)
                     {
-                        _isDush = true;
+                        pStates.IsDash = true;
                     }
                 }
             }
