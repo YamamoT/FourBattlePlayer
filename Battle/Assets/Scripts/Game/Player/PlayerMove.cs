@@ -9,19 +9,14 @@ public class PlayerMove : MonoBehaviour {
     
     private CharacterController charaCon;
     private Vector3 moveDirection = Vector3.zero;
+    private PlayerStates pStates;
 
-    [SerializeField]
-    private float _runSpeed;
-    [SerializeField]
-    private float _walkSpeed;
     [SerializeField][Range(0.01f, 0.1f)]
     private float _dushIntervalTime; // 走り判定をとるまでの時間
     private float dushTime;
-    [SerializeField]
+
     private bool _isDush = false;
 
-    [SerializeField][Range(1f, 10f)]
-    private float _jumpPower;
     [SerializeField][Range(1f, 20f)]
     private float _gravity = 15f;
     
@@ -41,7 +36,7 @@ public class PlayerMove : MonoBehaviour {
     void Start () {
         //アニメーター取得
         animator = GetComponent<Animator>();
-
+        pStates = GetComponent<PlayerStates>();
         charaCon = GetComponent<CharacterController>();
         dushTime = 0f;
 	}
@@ -62,9 +57,9 @@ public class PlayerMove : MonoBehaviour {
 
         // ダッシュ状態か否かで速度を変える
         if (!_isDush)
-            moveDirection.x = inputAxis * _walkSpeed;
+            moveDirection.x = inputAxis * pStates.WarkSpd;
         else
-            moveDirection.x = inputAxis * _runSpeed;
+            moveDirection.x = inputAxis * pStates.DushSpd;
 
         // アニメーター処理
         if (Mathf.Round(inputAxis * 10) / 10 == 0)
@@ -93,7 +88,7 @@ public class PlayerMove : MonoBehaviour {
             _isJump = false;
             if (Input.GetButtonDown("Jump"))
             {
-                moveDirection.y = _jumpPower;
+                moveDirection.y = pStates.JumpPow;
                 animator.SetTrigger("jump");
             }
         }

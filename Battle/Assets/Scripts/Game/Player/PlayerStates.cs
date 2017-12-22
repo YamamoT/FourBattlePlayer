@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PlayerStates : MonoBehaviour {
 
-    [SerializeField]
+    [SerializeField][Range(0,100)]
     private int _hp; // 体力
-    [SerializeField]
-    private float _spead; // 移動速度
-    [SerializeField]
+    [SerializeField][Range(1f, 10f)]
+    private float _walkSpead; // 移動速度(歩き)
+    [SerializeField][Range(1f, 10f)]
+    private float _dushSpead; // 移動速度(走り)
+    [SerializeField][Range(1f, 10f)]
     private float _jumpPower; // ジャンプ力
     [SerializeField]
     private float _nomalAttack; // 素手の攻撃力
@@ -16,7 +18,7 @@ public class PlayerStates : MonoBehaviour {
     private float _weaponAttack; // 武器の攻撃力
     [SerializeField]
     private float _bulletDense; // 弾の密集率
-    [SerializeField]
+    [SerializeField][Range(0f, 5f)]
     private float _invincibleTime; // 無敵時間
 
     float _time;
@@ -53,10 +55,15 @@ public class PlayerStates : MonoBehaviour {
         get { return _hp; }
         set { _hp = value; }
     }
-    public float Speed
+    public float WarkSpd
     {
-        get { return _spead; }
-        set { _spead = value; }
+        get { return _walkSpead; }
+        set { _walkSpead = value; }
+    }
+    public float DushSpd
+    {
+        get { return _dushSpead; }
+        set { _dushSpead = value; }
     }
     public float JumpPow
     {
