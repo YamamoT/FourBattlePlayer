@@ -66,7 +66,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4729757647580902}
-  - component: {fileID: 114724145303585724}
+  - component: {fileID: 114119527475728564}
   m_Layer: 0
   m_Name: Bow
   m_TagString: Untagged
@@ -94,7 +94,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1969777165216914}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4882639113184112}
@@ -170,7 +170,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1115614744836780}
   m_Mesh: {fileID: 4300000, guid: 022a72268e462114788abcf0c0b07418, type: 3}
---- !u!114 &114724145303585724
+--- !u!114 &114119527475728564
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -178,14 +178,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1969777165216914}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0f4a17ffdfc0ca42bd9e334adedcb4e, type: 3}
+  m_Script: {fileID: 11500000, guid: 37cdc7425e78aea45b7ff5db561dfc65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDebugMode: 1
   attackValue: 100
   attackInterval: 5
-  damage: 1
+  power: 1
   attackSpeed: 0
+  diffusion: 0
+  isAttack: 0
+  isDebugMode: 1
+  shellInValue: 1
+  swordDuration: 0
+  arrowGravity: 1.3
+  type: 2
   bullet: {fileID: 1065169040548614, guid: 3679e60b8b8786d49accd4eaeb79fbd0, type: 2}
   muzzle: {fileID: 4420653362975970}
-  arrowGravity: 1.3

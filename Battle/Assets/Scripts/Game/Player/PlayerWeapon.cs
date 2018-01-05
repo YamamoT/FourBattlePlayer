@@ -35,7 +35,7 @@ public class PlayerWeapon : MonoBehaviour {
 
         for (int i = 0; _weapons.Length > i; i++)
         {
-            if (_weapons[i].name.Contains("Hand")) _weapons[i].GetComponent<HandGun>();
+        //    if (_weapons[i].name.Contains("Hand")) _weapons[i].GetComponent<HandGun>();
         }
 
     }

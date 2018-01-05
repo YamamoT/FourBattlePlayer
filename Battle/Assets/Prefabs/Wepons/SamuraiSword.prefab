@@ -52,8 +52,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4475647776300260}
   - component: {fileID: 65877059960624292}
-  - component: {fileID: 114680836246513816}
   - component: {fileID: 54036112459451776}
+  - component: {fileID: 114975809414216428}
   m_Layer: 0
   m_Name: SamuraiSword
   m_TagString: Untagged
@@ -207,7 +207,7 @@ Transform:
   m_GameObject: {fileID: 1292601556975592}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4284474289906438}
   m_Father: {fileID: 0}
@@ -458,7 +458,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 4.5, z: 0.8}
   m_Center: {x: 0, y: 3, z: 0}
---- !u!114 &114680836246513816
+--- !u!114 &114975809414216428
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -466,12 +466,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1292601556975592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 129b6f63b6ac33147a8817e89ae63d7c, type: 3}
+  m_Script: {fileID: 11500000, guid: 37cdc7425e78aea45b7ff5db561dfc65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDebugMode: 1
   attackValue: 100
-  attackInterval: 5
-  damage: 4
+  attackInterval: 3
+  power: 2
   attackSpeed: 0
-  attackTime: 2
+  diffusion: 0
+  isAttack: 0
+  isDebugMode: 1
+  shellInValue: 1
+  swordDuration: 2
+  arrowGravity: 1
+  type: 0
+  bullet: {fileID: 0}
+  muzzle: {fileID: 0}
