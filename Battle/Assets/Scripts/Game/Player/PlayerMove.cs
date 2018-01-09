@@ -44,6 +44,8 @@ public class PlayerMove : MonoBehaviour {
         float inputAxis = Input.GetAxis("Horizontal");
         float inputAxisRaw = Input.GetAxisRaw("Horizontal");
 
+        
+
         if(!pStates.IsJump)
         {
             // コントローラー用

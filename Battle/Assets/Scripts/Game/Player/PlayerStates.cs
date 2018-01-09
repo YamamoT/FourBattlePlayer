@@ -24,21 +24,31 @@ public class PlayerStates : MonoBehaviour {
     float _time; // 時間
 
     // 生死判定
+    [SerializeField]
     bool _isDead = false;
     // 攻撃判定(攻撃中かどうか)
+    [SerializeField]
     bool _isAttack = false;
     // ダメージ判定(無敵時間の処理とか作る用)
+    [SerializeField]
     bool _isDamage = false;
     // 走っているか
+    [SerializeField]
     bool _isDash = false;
     // ジャンプしているか
+    [SerializeField]
     bool _isJump = false;
     // しゃがみかどうか
+    [SerializeField]
     bool _isCrouch = false;
+
+    List<GameObject> _list;
 
     private void Start()
     {
         _time = _invincibleTime; // 無敵時間の登録
+        
+        _list = GetAll(gameObject);
     }
 
     private void Update()
@@ -47,13 +57,67 @@ public class PlayerStates : MonoBehaviour {
         if(_isDamage)
         {
             _time -= Time.deltaTime;
+
+            // ダメージ受けた時の無敵描画処理
+            foreach (GameObject obj in _list)
+            {
+                if (obj.GetComponent<SkinnedMeshRenderer>() != null)
+                {
+                    obj.GetComponent<SkinnedMeshRenderer>().enabled = !obj.GetComponent<SkinnedMeshRenderer>().enabled;
+                }
+                if (obj.GetComponent<MeshRenderer>() != null)
+                {
+                    obj.GetComponent<MeshRenderer>().enabled = !obj.GetComponent<MeshRenderer>().enabled;
+                }
+            }
+
             if (_time <= 0f)
             {
+                foreach (GameObject obj in _list)
+                {
+
+                    if (obj.GetComponent<SkinnedMeshRenderer>() != null)
+                    {
+                        obj.GetComponent<SkinnedMeshRenderer>().enabled = true;
+                    }
+                    if (obj.GetComponent<MeshRenderer>() != null)
+                    {
+                        obj.GetComponent<MeshRenderer>().enabled = true;
+                    }
+                }
                 _time = _invincibleTime;
                 _isDamage = false;
             }
+
+        }
+        
+        Debug.Log("DamageTime :" + _time);
+    }
+
+    /// <summary>
+    /// 全ての子要素をリストに入れ、取得する方法
+    /// 参考サイト：http://kazuooooo.hatenablog.com/entry/2015/08/07/010938
+    /// </summary>
+
+    public static List<GameObject> GetAll(GameObject obj)
+    {
+        List<GameObject> allChild = new List<GameObject>();
+        GetChildren(obj, ref allChild);
+        return allChild;
+    }
+
+    public static void GetChildren(GameObject obj, ref List<GameObject> allChild)
+    {
+        Transform children = obj.GetComponentInChildren<Transform>();
+        if (children.childCount == 0) return;
+
+        foreach (Transform tObj in children)
+        {
+            allChild.Add(tObj.gameObject);
+            GetChildren(tObj.gameObject, ref allChild);
         }
     }
+
 
     public int Hp
     {
