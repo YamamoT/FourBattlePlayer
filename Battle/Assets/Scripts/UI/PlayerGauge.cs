@@ -38,7 +38,7 @@ public class PlayerGauge : MonoBehaviour
         Sword
     }
     // 格納用攻撃回数
-    private int attack = 0;
+    private int attack;
     
     // 現在所持中の武器
     [SerializeField]
@@ -128,7 +128,7 @@ public class PlayerGauge : MonoBehaviour
         if(wepon)
         {
             // 現在装備している武器の攻撃回数を取得
-            int attackValue = wepon.GetComponent<Wepon>().GetAttackValue();
+            int attackValue = wepon.GetComponent<Weapon>().GetAttackValue();
 
             // 攻撃回数の値が0なら何も表示しない
             if (attackValue == 100)

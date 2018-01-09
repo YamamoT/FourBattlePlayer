@@ -727,11 +727,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bba6582c70a5c64093e08759723c5c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _runSpeed: 5
-  _walkSpeed: 2
   _dushIntervalTime: 0.05
-  _isDush: 0
-  _jumpPower: 9
   _gravity: 10
 --- !u!1 &488679690
 GameObject:
@@ -910,11 +906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bba6582c70a5c64093e08759723c5c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _runSpeed: 5
-  _walkSpeed: 2
   _dushIntervalTime: 0.05
-  _isDush: 0
-  _jumpPower: 8
   _gravity: 10
 --- !u!95 &502844470
 Animator:
@@ -2158,6 +2150,11 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 0a05eff0059af6d4c83f95426c1166d3, type: 2}
+    - target: {fileID: 137616031879620698, guid: 375ac785b1158e84eb75ad782d75305b,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 375ac785b1158e84eb75ad782d75305b, type: 2}
   m_IsPrefabParent: 0
@@ -2331,6 +2328,12 @@ MonoBehaviour:
   _weaponAttack: 0
   _bulletDense: 0
   _invincibleTime: 2
+  _isDead: 0
+  _isAttack: 0
+  _isDamage: 0
+  _isDash: 0
+  _isJump: 0
+  _isCrouch: 0
 --- !u!4 &1284352204 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4627144474318272, guid: 375ac785b1158e84eb75ad782d75305b,
@@ -2364,11 +2367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bba6582c70a5c64093e08759723c5c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _runSpeed: 5
-  _walkSpeed: 2
   _dushIntervalTime: 0.05
-  _isDush: 0
-  _jumpPower: 9
   _gravity: 10
 --- !u!114 &1284352207
 MonoBehaviour:

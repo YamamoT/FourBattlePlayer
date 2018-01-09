@@ -45,7 +45,6 @@ public class Bullet : MonoBehaviour
     public void SetDamage(int damage)
     {
         bulletDamage = damage;
-        Debug.Log(bulletDamage);
     }
 
     /// <summary>

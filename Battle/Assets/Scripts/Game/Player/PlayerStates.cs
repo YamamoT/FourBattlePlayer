@@ -21,18 +21,34 @@ public class PlayerStates : MonoBehaviour {
     [SerializeField][Range(0f, 5f)]
     private float _invincibleTime; // 無敵時間
 
-    float _time;
+    float _time; // 時間
 
     // 生死判定
+    [SerializeField]
     bool _isDead = false;
     // 攻撃判定(攻撃中かどうか)
+    [SerializeField]
     bool _isAttack = false;
     // ダメージ判定(無敵時間の処理とか作る用)
+    [SerializeField]
     bool _isDamage = false;
+    // 走っているか
+    [SerializeField]
+    bool _isDash = false;
+    // ジャンプしているか
+    [SerializeField]
+    bool _isJump = false;
+    // しゃがみかどうか
+    [SerializeField]
+    bool _isCrouch = false;
+
+    List<GameObject> _list;
 
     private void Start()
     {
         _time = _invincibleTime; // 無敵時間の登録
+        
+        _list = GetAll(gameObject);
     }
 
     private void Update()
@@ -42,43 +58,92 @@ public class PlayerStates : MonoBehaviour {
         {
             _time -= Time.deltaTime;
 
+            // ダメージ受けた時の無敵描画処理
+            foreach (GameObject obj in _list)
+            {
+                if (obj.GetComponent<SkinnedMeshRenderer>() != null)
+                {
+                    obj.GetComponent<SkinnedMeshRenderer>().enabled = !obj.GetComponent<SkinnedMeshRenderer>().enabled;
+                }
+                if (obj.GetComponent<MeshRenderer>() != null)
+                {
+                    obj.GetComponent<MeshRenderer>().enabled = !obj.GetComponent<MeshRenderer>().enabled;
+                }
+            }
+
             if (_time <= 0f)
             {
+                foreach (GameObject obj in _list)
+                {
+
+                    if (obj.GetComponent<SkinnedMeshRenderer>() != null)
+                    {
+                        obj.GetComponent<SkinnedMeshRenderer>().enabled = true;
+                    }
+                    if (obj.GetComponent<MeshRenderer>() != null)
+                    {
+                        obj.GetComponent<MeshRenderer>().enabled = true;
+                    }
+                }
                 _time = _invincibleTime;
                 _isDamage = false;
             }
+
+        }
+        
+        Debug.Log("DamageTime :" + _time);
+    }
+
+    /// <summary>
+    /// 全ての子要素をリストに入れ、取得する方法
+    /// 参考サイト：http://kazuooooo.hatenablog.com/entry/2015/08/07/010938
+    /// </summary>
+
+    public static List<GameObject> GetAll(GameObject obj)
+    {
+        List<GameObject> allChild = new List<GameObject>();
+        GetChildren(obj, ref allChild);
+        return allChild;
+    }
+
+    public static void GetChildren(GameObject obj, ref List<GameObject> allChild)
+    {
+        Transform children = obj.GetComponentInChildren<Transform>();
+        if (children.childCount == 0) return;
+
+        foreach (Transform tObj in children)
+        {
+            allChild.Add(tObj.gameObject);
+            GetChildren(tObj.gameObject, ref allChild);
         }
     }
+
 
     public int Hp
     {
         get { return _hp; }
         set { _hp = value; }
     }
-    public float WarkSpd
+    
+    public float WalkSpd
     {
         get { return _walkSpead; }
-        set { _walkSpead = value; }
     }
     public float DushSpd
     {
         get { return _dushSpead; }
-        set { _dushSpead = value; }
     }
     public float JumpPow
     {
         get { return _jumpPower; }
-        set { _jumpPower = value; }
     }
     public float NomalATK
     {
         get { return _nomalAttack; }
-        set { _nomalAttack = value; }
     }
     public float WeaponATK
     {
         get { return _weaponAttack; }
-        set { _weaponAttack = value; }
     }
     public float BulletDense
     {
@@ -100,6 +165,19 @@ public class PlayerStates : MonoBehaviour {
         get { return _isDamage; }
         set { _isDamage = value; }
     }
-
-
+    public bool IsDash
+    {
+        get { return _isDash; }
+        set { _isDash = value; }
+    }
+    public bool IsJump
+    {
+        get { return _isJump; }
+        set { _isJump = value; }
+    }
+    public bool IsCrouch
+    {
+        get { return _isCrouch; }
+        set { _isCrouch = value; }
+    }
 }

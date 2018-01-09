@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4073331468631540}
-  - component: {fileID: 114067318488659606}
+  - component: {fileID: 114900321934294254}
   m_Layer: 0
   m_Name: MachineGun
   m_TagString: Untagged
@@ -66,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1040896341318970}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 4273307273464940}
@@ -81,7 +81,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1658892910759652}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.81, z: 8.25}
+  m_LocalPosition: {x: 0, y: 0.42, z: 2.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4073331468631540}
@@ -141,7 +141,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1260965175125040}
   m_Mesh: {fileID: 4300000, guid: 466773f1c2787824eae2b33348905617, type: 3}
---- !u!114 &114067318488659606
+--- !u!114 &114900321934294254
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -149,14 +149,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1040896341318970}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcc853730d5ddc44498dec7372b14834, type: 3}
+  m_Script: {fileID: 11500000, guid: 37cdc7425e78aea45b7ff5db561dfc65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDebugMode: 1
   attackValue: 80
   attackInterval: 1
-  damage: 1
-  attackSpeed: 1
+  power: 1
+  attackSpeed: 0.5
+  diffusion: 0.03
+  isAttack: 0
+  isDebugMode: 1
+  shellInValue: 1
+  swordDuration: 0
+  arrowGravity: 1
+  type: 1
   bullet: {fileID: 1065169040548614, guid: 3679e60b8b8786d49accd4eaeb79fbd0, type: 2}
   muzzle: {fileID: 4073944922191832}
-  diffusivity: 0.03
