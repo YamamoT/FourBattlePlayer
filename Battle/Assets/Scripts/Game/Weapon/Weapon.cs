@@ -47,8 +47,8 @@ public class Weapon : MonoBehaviour
 
     // 剣の攻撃持続時間
     [SerializeField]
-    private float swordDuration;
-    private float c_swordDuration;
+    private float meleeDuration;
+    private float c_meleeDuration;
 
     // 弓
     [SerializeField]
@@ -89,9 +89,9 @@ public class Weapon : MonoBehaviour
         }
 
         // 剣の攻撃持続時間が攻撃間隔よりも長い時、持続時間を攻撃間隔と同じにする
-        if(swordDuration >= attackInterval)
+        if(meleeDuration >= attackInterval)
         {
-            swordDuration = attackInterval;
+            meleeDuration = attackInterval;
         }
 	}
 	
@@ -118,12 +118,12 @@ public class Weapon : MonoBehaviour
         if(isMeleeAttack)
         {
             // 剣の持続時間を減らす
-            c_swordDuration -= 0.1f;
+            c_meleeDuration -= 0.1f;
 
-            if(c_swordDuration <= 0.0f)
+            if(c_meleeDuration <= 0.0f)
             {
                 isMeleeAttack = false;
-                c_swordDuration = swordDuration;
+                c_meleeDuration = meleeDuration;
             }
         }
 
@@ -235,7 +235,7 @@ public class Weapon : MonoBehaviour
         if(other.tag == "Player" && isMeleeAttack && isAttack)
         {
             isMeleeAttack = false;
-            c_swordDuration = swordDuration;
+            c_meleeDuration = meleeDuration;
         }
     }
 

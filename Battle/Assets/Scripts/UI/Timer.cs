@@ -116,6 +116,14 @@ public class Timer : MonoBehaviour
     }
 
     /// <summary>
+    /// タイマー開始＆停止
+    /// </summary>
+    public void TimerSwitch()
+    {
+        isTimerProgress = !isTimerProgress;
+    }
+
+    /// <summary>
     /// タイマー設定リセット
     /// </summary>
     public void TimerReset()

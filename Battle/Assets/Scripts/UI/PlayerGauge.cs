@@ -24,11 +24,11 @@ public class PlayerGauge : MonoBehaviour
 
     // 所持中の武器
     [SerializeField]
-    private GameObject wepon = null;
+    private GameObject weapon = null;
     // 武器画像
     [SerializeField]
-    private Image[] WeponsImage;
-    enum Wepons
+    private Image[] WeaponsImage;
+    enum Weapons
     {
         Fist,
         HandGun,
@@ -42,7 +42,7 @@ public class PlayerGauge : MonoBehaviour
     
     // 現在所持中の武器
     [SerializeField]
-    private Image currentWeponImage;
+    private Image currentWeaponImage;
 
     // 残弾数表示用のテキスト
     [SerializeField]
@@ -57,7 +57,7 @@ public class PlayerGauge : MonoBehaviour
 		if(player)
         {
             // イメージスクリプト取得
-            currentWeponImage = currentWeponImage.GetComponent<Image>();
+            currentWeaponImage = currentWeaponImage.GetComponent<Image>();
             // テキスト初期化
             bulletValueText.text = "00";
         }
@@ -94,27 +94,27 @@ public class PlayerGauge : MonoBehaviour
     /// </summary>
     public void WeponsPossessed()
     {
-        if(wepon)
+        if(weapon)
         {
              // ハンドガン
-            if (wepon.name == "HandGun")
-                currentWeponImage.sprite = WeponsImage[(int)Wepons.HandGun].sprite;
+            if (weapon.name == "HandGun")
+                currentWeaponImage.sprite = WeaponsImage[(int)Weapons.HandGun].sprite;
             // マシンガン
-            else if (wepon.name == "MachineGun")
-                currentWeponImage.sprite = WeponsImage[(int)Wepons.MachineGun].sprite;
+            else if (weapon.name == "MachineGun")
+                currentWeaponImage.sprite = WeaponsImage[(int)Weapons.MachineGun].sprite;
             // ショットガン
-            else if (wepon.name == "ShotGun")
-                currentWeponImage.sprite = WeponsImage[(int)Wepons.ShotGun].sprite;
+            else if (weapon.name == "ShotGun")
+                currentWeaponImage.sprite = WeaponsImage[(int)Weapons.ShotGun].sprite;
             // 弓
-            else if (wepon.name == "Bow")
-                currentWeponImage.sprite = WeponsImage[(int)Wepons.Bow].sprite;
+            else if (weapon.name == "Bow")
+                currentWeaponImage.sprite = WeaponsImage[(int)Weapons.Bow].sprite;
             // 刀
-            else if (wepon.name == "SamuraiSword")
-                currentWeponImage.sprite = WeponsImage[(int)Wepons.Sword].sprite;
+            else if (weapon.name == "SamuraiSword")
+                currentWeaponImage.sprite = WeaponsImage[(int)Weapons.Sword].sprite;
         }
         // 武器を持っていない
         else
-            currentWeponImage.sprite = WeponsImage[(int)Wepons.Fist].sprite;
+            currentWeaponImage.sprite = WeaponsImage[(int)Weapons.Fist].sprite;
            
            
     }
@@ -125,10 +125,10 @@ public class PlayerGauge : MonoBehaviour
     private void WeponRemainBullet()
     {
         // 武器
-        if(wepon)
+        if(weapon)
         {
             // 現在装備している武器の攻撃回数を取得
-            int attackValue = wepon.GetComponent<Weapon>().GetAttackValue();
+            int attackValue = weapon.GetComponent<Weapon>().GetAttackValue();
 
             // 攻撃回数の値が0なら何も表示しない
             if (attackValue == 100)
@@ -157,8 +157,8 @@ public class PlayerGauge : MonoBehaviour
     /// 所持中の武器設定
     /// </summary>
     /// <param name="weponObject">所持中の武器</param>
-    public void SetWepon(GameObject weponObject)
+    public void SetWeapon(GameObject weaponObject)
     {
-        wepon = weponObject;
+        weapon = weaponObject;
     }
 }

@@ -68,10 +68,10 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if(other.tag == "DebugObject")
-        {
-            Destroy(gameObject);
-        }
+        //if(other.tag == "DebugObject")
+        //{
+        //    Destroy(gameObject);
+        //}
     }
 
 }

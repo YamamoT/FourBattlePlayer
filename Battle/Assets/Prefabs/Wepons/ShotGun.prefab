@@ -187,9 +187,9 @@ MonoBehaviour:
   attackSpeed: 0.7
   diffusion: 0.1
   isAttack: 0
-  isDebugMode: 1
+  isDebugMode: 0
   shellInValue: 7
-  swordDuration: 0
+  meleeDuration: 0
   arrowGravity: 1
   type: 1
   bullet: {fileID: 1065169040548614, guid: 3679e60b8b8786d49accd4eaeb79fbd0, type: 2}
