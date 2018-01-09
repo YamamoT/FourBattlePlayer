@@ -118,8 +118,20 @@ public class PlayerMove : MonoBehaviour {
                 Physics.IgnoreLayerCollision(playerLayer, slidingFloorLayer);
             }
         }
+        //しゃがみ
+        if (Input.GetAxisRaw("Vertical") < -0.9)
+        {
+            animator.SetBool("crowch", true);
+        }
+        else
+        {
+            animator.SetBool("crowch", false);
+        }
+
 
     }
+
+
 
     public bool CheckGrounded()
     {
