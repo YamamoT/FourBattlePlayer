@@ -72,8 +72,11 @@ public class PlayerMove : MonoBehaviour {
         if (animator.GetBool("run") == true) animator.SetBool("walk", false);
 
         // 向きの回転
-        if (Mathf.Round(inputAxis * 10) / 10 < 0) _isTurn = true;
-        else if(Mathf.Round(inputAxis * 10) / 10 > 0)  _isTurn = false;
+        if (Input.GetAxisRaw("Vertical") > -0.5f)
+        {
+            if (Mathf.Round(inputAxis * 10) / 10 < 0) _isTurn = true;
+            else if (Mathf.Round(inputAxis * 10) / 10 > 0) _isTurn = false;
+        }
 
         if (_isTurn)
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 270f, 0), Time.deltaTime * 10);
@@ -82,7 +85,7 @@ public class PlayerMove : MonoBehaviour {
 
 
         // ジャンプ処理
-        if (charaCon.isGrounded)
+        if (charaCon.isGrounded && Input.GetAxisRaw("Vertical") > -0.5f)
         {
             pStates.IsJump = false;
             if (Input.GetButtonDown("Jump"))
@@ -118,7 +121,7 @@ public class PlayerMove : MonoBehaviour {
             }
         }
         //しゃがみ
-        if (Input.GetAxisRaw("Vertical") < -0.9)
+        if (Input.GetAxisRaw("Vertical") < -0.5f)
         {
             animator.SetBool("crowch", true);
         }
