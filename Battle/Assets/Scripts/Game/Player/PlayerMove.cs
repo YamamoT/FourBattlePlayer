@@ -72,7 +72,7 @@ public class PlayerMove : MonoBehaviour {
         if (animator.GetBool("run") == true) animator.SetBool("walk", false);
 
         // 向きの回転
-        if (Input.GetAxisRaw("Vertical") > -0.5f)
+        if (animator.GetBool("crowch") == false)
         {
             if (Mathf.Round(inputAxis * 10) / 10 < 0) _isTurn = true;
             else if (Mathf.Round(inputAxis * 10) / 10 > 0) _isTurn = false;
@@ -85,7 +85,7 @@ public class PlayerMove : MonoBehaviour {
 
 
         // ジャンプ処理
-        if (charaCon.isGrounded && Input.GetAxisRaw("Vertical") > -0.5f)
+        if (charaCon.isGrounded && animator.GetBool("crowch") == false)
         {
             pStates.IsJump = false;
             if (Input.GetButtonDown("Jump"))
