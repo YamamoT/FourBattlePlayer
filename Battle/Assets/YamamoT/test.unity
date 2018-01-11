@@ -1033,6 +1033,10 @@ Prefab:
       propertyPath: wepon
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1287168303251610, guid: a7a0911266e79a64fa63432c2e5fa997, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a7a0911266e79a64fa63432c2e5fa997, type: 2}
   m_IsPrefabParent: 0
@@ -1555,7 +1559,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1432699581}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dcbc2b65fa3f28843bfc1c7b6aa70667, type: 3}
   m_Name: 
@@ -1568,7 +1572,7 @@ MonoBehaviour:
   offset: {x: 3, y: 3}
   distance: 10
   time: 0.5
-  stopTime: 1
+  stopTime: 0.51
 --- !u!1 &1490759086
 GameObject:
   m_ObjectHideFlags: 0

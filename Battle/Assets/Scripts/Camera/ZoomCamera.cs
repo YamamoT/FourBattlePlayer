@@ -31,6 +31,9 @@ public class ZoomCamera : MonoBehaviour
     private Vector3 center;
     private Vector3 c_center;
 
+    // 移動中か
+    private bool isMove = false;
+
     // 演出 -----------------------------------------------------------------
 
     // 到着予定時間
@@ -48,18 +51,23 @@ public class ZoomCamera : MonoBehaviour
     // 順番
     private int order = 0;
 
-    // 終了したか
-    private bool isFinished = false;
+    // 演出終了したか
+    private bool isPerformanceFinished = false;
+    // 切り替えが終了したか
+    private bool isSwitchFinished = false;
 
     // 停止時間
     [SerializeField]
     private float stopTime = 0;
     private float c_stopTime;
 
-	/// <summary>
+    // 正投影の大きさ
+    private float targetOrthographicSize = 0;
+
+    /// <summary>
     /// 初期化
     /// </summary>
-	void Awake ()
+    void Awake ()
     {
         // アスペクト比を設定
         screenAspect = (float)Screen.height / Screen.width;
@@ -78,6 +86,8 @@ public class ZoomCamera : MonoBehaviour
             return;
         }
 
+        transform.position = new Vector3(target[order].position.x, target[order].position.y, -5);
+
         c_stopTime = stopTime;
 
         startTime = Time.timeSinceLevelLoad;
@@ -92,19 +102,20 @@ public class ZoomCamera : MonoBehaviour
 	void Update ()
     {
         // 中心位置の計算
-        CenterCalc();
+        CalcCenter();
+        // カメラの描画範囲計算
+        CalcOrthographicSize();
 
-        if(!isFinished)
+        if (!isSwitchFinished)
         {
             CameraPerformance();
         }
         else
         {
             // カメラの位置更新
-            UpdateCameraPosition();
+            transform.position = c_center;
 
-            // カメラの描画範囲更新
-            UpdateOrthographicSize();
+            camera.orthographicSize = targetOrthographicSize;
         }
     }
 
@@ -113,31 +124,53 @@ public class ZoomCamera : MonoBehaviour
     /// </summary>
     void CameraPerformance()
     {
-        // 経過時間
+        //// 経過時間
         float elapsedTime = Time.timeSinceLevelLoad - startTime;
 
-        Debug.Log("経過時間 : " + elapsedTime);
-        Debug.Log("到着予定時間 : " + time);
-
-        // 経過時間が到着予定時間を越えたら
-        if (elapsedTime > time)
-        {
-            // 停止時間が0になるまで時間を減らす
-            c_stopTime -= Time.deltaTime;
-
-            // 停止時間が0になったら
-            if (c_stopTime < 0)
+            // 停止中
+            if (c_stopTime > 0)
+                c_stopTime -= Time.deltaTime;
+            else if(c_stopTime < 0 && !isMove)
             {
-                // 各キャラを見せるカメラワークを終了させる
-                if (order == target.Length - 1)
-                    isFinished = true;
+                startTime = Time.timeSinceLevelLoad;
+                elapsedTime = Time.timeSinceLevelLoad - startTime;
 
-                // カメラワークが終了するまで処理を続ける
+                isMove = true;
+            }
+                
+            // 移動中
+            if (isMove)
+            {
+                // 移動量の計算
+                float rate = elapsedTime / time;
+
+                transform.position = Vector3.Lerp(startPosition, endPosition, rate);
+
+                if (order == target.Length - 1)
+                {
+                    if (camera.orthographicSize < targetOrthographicSize)
+                    {
+                        camera.orthographicSize += elapsedTime;
+                    }
+                        
+                    else
+                    {
+                        isSwitchFinished = true;
+                    }
+                        
+                }
+            }
+
+            if (transform.position == endPosition)
+            {
+                // 2体目のオブジェクトまでの処理
                 if (order < target.Length - 2)
                 {
+                    // 移動停止
+                    isMove = false;
+
                     // 開始時間の初期化
                     startTime = Time.timeSinceLevelLoad;
-
                     // ターゲットの順番変更
                     order++;
 
@@ -145,32 +178,32 @@ public class ZoomCamera : MonoBehaviour
                     startPosition = new Vector3(target[order].position.x, target[order].position.y, -5);
                     endPosition = new Vector3(target[order + 1].position.x, target[order + 1].position.y, -5);
 
+
+                    c_stopTime = stopTime;
                 }
-                // 各キャラを見せるカメラワークの移動処理をこれで最後にする
+                // 3体目のオブジェクトに来た時の処理
                 else if (order == target.Length - 2)
                 {
+                    // 移動停止
+                    isMove = false;
+
+                    // 開始時間の初期化
                     startTime = Time.timeSinceLevelLoad;
-                  
+                    // ターゲットの順番変更
+                    order++;
+
                     startPosition = new Vector3(target[order].position.x, target[order].position.y, -5);
                     endPosition = c_center;
 
-                    order++;
+                    c_stopTime = stopTime;
                 }
-
-                c_stopTime = stopTime;
             }
-        }
-
-        float rate = elapsedTime / time;
-
-        // 移動
-        transform.position = Vector3.Lerp(startPosition, endPosition, rate);
     }
 
     /// <summary>
     /// 中心位置を計算
     /// </summary>
-    void CenterCalc()
+    void CalcCenter()
     {
         for (int i = 0; i < target.Length; i++)
         {
@@ -223,26 +256,15 @@ public class ZoomCamera : MonoBehaviour
     }
 
     /// <summary>
-    /// カメラの位置更新
-    /// </summary>
-    void UpdateCameraPosition()
-    {
-        // カメラの位置を設定
-        transform.position = c_center;
-    }
-
-    /// <summary>
     /// // カメラの描画範囲更新
     /// </summary>
-    void UpdateOrthographicSize()
+    void CalcOrthographicSize()
     {
         // 2点間のベクトルを取得
         Vector3 targetVector = AbsPositionDiff(target1, target2) + (Vector3)offset;
 
         // アスペクト比が縦長なら y の半分、横長なら x とアスペクト比でカメラのサイズを設定
         float targetAspect = targetVector.y / targetVector.x;
-
-        float targetOrthographicSize = 0;
 
         if(screenAspect < targetAspect)
         {
@@ -252,8 +274,6 @@ public class ZoomCamera : MonoBehaviour
         {
             targetOrthographicSize = targetVector.x * (1 / camera.aspect) * 0.5f;
         }
-
-        camera.orthographicSize = targetOrthographicSize;
     }
 
     /// <summary>
