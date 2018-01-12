@@ -73,7 +73,7 @@ public class PlayerMove : MonoBehaviour {
         if (Mathf.Round(inputAxis * 10) / 10 < 0) pStates.IsTrun = true;
         else if (Mathf.Round(inputAxis * 10) / 10 > 0) pStates.IsTrun = false;
 
-        if (_isTurn)
+        if (pStates.IsTrun)
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 270f, 0), Time.deltaTime * 10);
         else
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 90f, 0), Time.deltaTime * 10);

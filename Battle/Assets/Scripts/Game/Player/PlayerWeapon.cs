@@ -17,6 +17,7 @@ public class PlayerWeapon : MonoBehaviour {
     Animator playerAnime;
 
     private EquipManager _charEquipManager;
+    private PlayerStates pStates;
 
     private string[] _weaponPath = new string[] 
     {
@@ -52,7 +53,7 @@ public class PlayerWeapon : MonoBehaviour {
         {
 
             // ここに武器持った時の攻撃
-
+            
 
             if (Input.GetButtonDown("Throw"))
             {
@@ -76,15 +77,19 @@ public class PlayerWeapon : MonoBehaviour {
            if(_isSword)
             {
                 //アニメーション(武器[剣]持っているとき)
+                playerAnime.SetBool("sword", true);
             }
             else
             {
                 // アニメーション(武器[銃]持ってる時)
+                playerAnime.SetBool("gun", true);
             }
         }
         else
         {
-           // アニメーション(武器持ってないとき)
+            // アニメーション(武器持ってないとき)
+            playerAnime.SetBool("gun", false);
+            playerAnime.SetBool("sword", false);
         }
     }
 
