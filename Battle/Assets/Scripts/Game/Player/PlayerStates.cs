@@ -42,6 +42,8 @@ public class PlayerStates : MonoBehaviour {
     [SerializeField]
     bool _isCrouch = false;
 
+    bool _isTurn = false;
+
     List<GameObject> _list;
 
     private void Start()
@@ -176,5 +178,10 @@ public class PlayerStates : MonoBehaviour {
     {
         get { return _isCrouch; }
         set { _isCrouch = value; }
+    }
+    public bool IsTrun
+    {
+        get { return _isTurn; }
+        set { _isTurn = value; }
     }
 }

@@ -43,9 +43,7 @@ public class PlayerMove : MonoBehaviour {
 
         float inputAxis = Input.GetAxis("Horizontal");
         float inputAxisRaw = Input.GetAxisRaw("Horizontal");
-
         
-
         if(!pStates.IsJump)
         {
             // コントローラー用
@@ -59,9 +57,7 @@ public class PlayerMove : MonoBehaviour {
             moveDirection.x = inputAxis * pStates.WalkSpd;
         else
             moveDirection.x = inputAxis * pStates.DushSpd;
-
-        if (animator.GetBool("crowch")) moveDirection.x = 0f;
-
+        
         // アニメーター処理
         if (Mathf.Round(inputAxis * 10) / 10 == 0)
         {
@@ -74,7 +70,6 @@ public class PlayerMove : MonoBehaviour {
         if (animator.GetBool("run") == true) animator.SetBool("walk", false);
 
         // 向きの回転
-
         if (Mathf.Round(inputAxis * 10) / 10 < 0) _isTurn = true;
         else if (Mathf.Round(inputAxis * 10) / 10 > 0) _isTurn = false;
 
@@ -82,12 +77,12 @@ public class PlayerMove : MonoBehaviour {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 270f, 0), Time.deltaTime * 10);
         else
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 90f, 0), Time.deltaTime * 10);
-
-
+        
         // ジャンプ処理
         if (charaCon.isGrounded && animator.GetBool("crowch") == false)
         {
             pStates.IsJump = false;
+            moveDirection.y = 0f;
             if (Input.GetButtonDown("Jump"))
             {
                 moveDirection.y = pStates.JumpPow;
@@ -106,6 +101,8 @@ public class PlayerMove : MonoBehaviour {
                 moveDirection.y -= _gravity * Time.deltaTime;
             }
         }
+        // しゃがんでると移動できないよ
+        if (animator.GetBool("crowch")) moveDirection.x = 0f;
 
         // 移動するよ
         charaCon.Move(moveDirection * Time.deltaTime);
@@ -129,11 +126,7 @@ public class PlayerMove : MonoBehaviour {
         {
             animator.SetBool("crowch", false);
         }
-
-
     }
-
-
 
     public bool CheckGrounded()
     {

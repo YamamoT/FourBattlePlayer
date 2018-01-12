@@ -42,8 +42,13 @@ public class PlayerWeapon : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        for (int i = 0; _weapons.Length > i; i++)
+        {
+            //if (_weapons[i].name.Contains("Hand")) _weapons[i].GetComponent<>();
+        }
 
-        if(_isWeapon)
+
+        if (_isWeapon)
         {
 
             // ここに武器持った時の攻撃
