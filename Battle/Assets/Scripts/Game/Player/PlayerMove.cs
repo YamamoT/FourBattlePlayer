@@ -72,11 +72,9 @@ public class PlayerMove : MonoBehaviour {
         if (animator.GetBool("run") == true) animator.SetBool("walk", false);
 
         // 向きの回転
-        if (animator.GetBool("crowch") == false)
-        {
-            if (Mathf.Round(inputAxis * 10) / 10 < 0) _isTurn = true;
-            else if (Mathf.Round(inputAxis * 10) / 10 > 0) _isTurn = false;
-        }
+
+        if (Mathf.Round(inputAxis * 10) / 10 < 0) _isTurn = true;
+        else if (Mathf.Round(inputAxis * 10) / 10 > 0) _isTurn = false;
 
         if (_isTurn)
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 270f, 0), Time.deltaTime * 10);
