@@ -272,4 +272,13 @@ public class Weapon : MonoBehaviour
     {
         power += damage;
     }
+
+    /// <summary>
+    /// 近接のダメージ取得
+    /// </summary>
+    /// <returns>ダメージ</returns>
+    public int GetDamage()
+    {
+        return (int)power;
+    }
 }
