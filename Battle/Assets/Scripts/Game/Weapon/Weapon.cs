@@ -6,6 +6,13 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    // プレイヤー
+    [SerializeField]
+    private GameObject possesor;
+
+    // プレイヤーの状態管理
+    //private PlayerStates pStates;
+
     // 攻撃回数
     [SerializeField]
     private int attackValue;
@@ -182,7 +189,10 @@ public class Weapon : MonoBehaviour
                     float diffusivity = Random.Range(-diffusion, diffusion);
 
                     // 弾速を設定
-                    force = gameObject.transform.forward * attackSpeed * 1000;
+                    if (possesor == null)
+                        force = gameObject.transform.forward * attackSpeed * 1000;
+                    else
+                        force = possesor.transform.forward * attackSpeed * 1000;
 
                     // 弾の弾速を設定
                     bulletInstance.GetComponent<Rigidbody>().AddForce(force);
@@ -214,7 +224,11 @@ public class Weapon : MonoBehaviour
 
                 Vector3 force;
 
-                force = gameObject.transform.forward * attackSpeed * 1000;
+                // 弾速を設定
+                if (possesor == null)
+                    force = gameObject.transform.forward * attackSpeed * 1000;
+                else
+                    force = possesor.transform.forward * attackSpeed * 1000;
 
                 bulletInstance.GetComponent<Rigidbody>().AddForce(force);
 
