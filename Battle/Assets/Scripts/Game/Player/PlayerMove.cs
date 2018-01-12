@@ -60,6 +60,8 @@ public class PlayerMove : MonoBehaviour {
         else
             moveDirection.x = inputAxis * pStates.DushSpd;
 
+        if (animator.GetBool("crowch")) moveDirection.x = 0f;
+
         // アニメーター処理
         if (Mathf.Round(inputAxis * 10) / 10 == 0)
         {

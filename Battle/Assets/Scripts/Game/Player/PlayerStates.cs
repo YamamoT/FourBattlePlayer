@@ -88,10 +88,7 @@ public class PlayerStates : MonoBehaviour {
                 _time = _invincibleTime;
                 _isDamage = false;
             }
-
         }
-        
-        Debug.Log("DamageTime :" + _time);
     }
 
     /// <summary>
