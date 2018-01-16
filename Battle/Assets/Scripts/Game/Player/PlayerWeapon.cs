@@ -18,6 +18,7 @@ public class PlayerWeapon : MonoBehaviour {
 
     private EquipManager _charEquipManager;
     private PlayerStates pStates;
+    private GameObject activeWeapon = null;
 
     private string[] _weaponPath = new string[] 
     {
@@ -33,47 +34,42 @@ public class PlayerWeapon : MonoBehaviour {
 	void Start() {
         playerAnime = GetComponent<Animator>();
         _charEquipManager = GetComponent<EquipManager>();
-
-        for (int i = 0; _weapons.Length > i; i++)
-        {
-        //    if (_weapons[i].name.Contains("Hand")) _weapons[i].GetComponent<HandGun>();
-        }
-
     }
 	
 	// Update is called once per frame
 	void Update () {
-        for (int i = 0; _weapons.Length > i; i++)
-        {
-            //if (_weapons[i].name.Contains("Hand")) _weapons[i].GetComponent<>();
-        }
 
+        Debug.Log(activeWeapon);
+        Debug.Log("_isWeapon :" + _isWeapon);
 
         if (_isWeapon)
         {
+            // 武器が非アクティブなら処理終了
+            if (activeWeapon = null) return;
 
-            // ここに武器持った時の攻撃
-            
+            // 武器攻撃
+            if (Input.GetButton("Attack")) activeWeapon.GetComponent<Weapon>().Attack();
 
+            // 武器を捨てる
             if (Input.GetButtonDown("Throw"))
             {
-                for (int i = 0; _weapons.Length > i; i++)
-                {
-                    _weapons[i].SetActive(false);
-                }
-                _isWeapon = false;
+                activeWeapon.SetActive(false);
+                activeWeapon = null; // 武器を空に
+                _isWeapon = false; // 武器を持っていない状態にする
             }
         }
         else
         {
             //　武器持ってないときの攻撃
+
+            // 武器がない状態
+            activeWeapon = null;
         }
         
 
         // アニメーション用
         if (_isWeapon)
         {
-           
            if(_isSword)
             {
                 //アニメーション(武器[剣]持っているとき)
@@ -106,7 +102,11 @@ public class PlayerWeapon : MonoBehaviour {
                     string wepName = col.gameObject.name;
                     for (int i = 0; _weapons.Length > i; i++)
                     {
-                        if (wepName.Contains(_weapons[i].name)) _weapons[i].SetActive(true);
+                        if (wepName.Contains(_weapons[i].name))
+                        {
+                            activeWeapon = _weapons[i];
+                            activeWeapon.SetActive(true);
+                        }
                     }
 
                     Destroy(col.gameObject);

@@ -8,6 +8,13 @@ public class PlayerMove : MonoBehaviour {
     Animator animator;
     
     private CharacterController charaCon;
+
+    private Transform charaRay;
+    private float charaRayRange = 1;
+    private Rigidbody rigid;
+    private Vector3 velocity;
+    private bool ground;
+
     private Vector3 moveDirection = Vector3.zero;
     private PlayerStates pStates;
 
@@ -35,21 +42,48 @@ public class PlayerMove : MonoBehaviour {
         animator = GetComponent<Animator>();
         pStates = GetComponent<PlayerStates>();
         charaCon = GetComponent<CharacterController>();
+        rigid = GetComponent<Rigidbody>();
+        velocity = Vector3.zero;
         dushTime = 0f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
+       
+
         float inputAxis = Input.GetAxis("Horizontal");
         float inputAxisRaw = Input.GetAxisRaw("Horizontal");
-        
-        if(!pStates.IsJump)
+
+        //Debug.Log("moveDirection:" + moveDirection.x);
+        //Debug.Log("inputAxis:" + inputAxis);
+
+        //if (!pStates.IsGround)
+        //{
+        //    if (Physics.Linecast(charaRay.position, (transform.position - transform.up * charaRayRange)))
+        //        ground = true;
+        //    else
+        //        ground = false;
+        //}
+        if (pStates.IsGround)
         {
+            moveDirection = Vector3.zero;
+            rigid.useGravity = true;
+            if (Input.GetButtonDown("Jump"))
+            {
+                moveDirection.y = pStates.JumpPow;
+                animator.SetTrigger("jump");
+            }
             // コントローラー用
             GamePadDush(inputAxis, inputAxisRaw);
             // キーボード用
             KeyboardDush(inputAxisRaw);
+        }
+
+
+        if (!pStates.IsGround)
+        {
+            moveDirection.y -= _gravity * Time.deltaTime;
         }
 
         // ダッシュ状態か否かで速度を変える
@@ -58,6 +92,29 @@ public class PlayerMove : MonoBehaviour {
         else
             moveDirection.x = inputAxis * pStates.DushSpd;
         
+        // 向きの回転
+        if (Mathf.Round(inputAxis * 10) / 10 < 0) pStates.IsTrun = true;
+        else if (Mathf.Round(inputAxis * 10) / 10 > 0) pStates.IsTrun = false;
+
+        if (pStates.IsTrun)
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 270f, 0), Time.deltaTime * 10);
+        else
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 90f, 0), Time.deltaTime * 10);
+
+        // しゃがんでると移動できないよ
+        if (animator.GetBool("crowch")) moveDirection.x = 0f;
+
+        // しゃがんだ時にすり抜け床なら降りる
+        if (Input.GetAxisRaw("Vertical") < -0.9)
+        {
+            int slidingFloorLayer = LayerMask.NameToLayer("Sliding");
+            if (Physics.Raycast(transform.position, -transform.up, slidingFloorLayer))
+            {
+                int playerLayer = LayerMask.NameToLayer("Player");
+                Physics.IgnoreLayerCollision(playerLayer, slidingFloorLayer);
+            }
+        }
+
         // アニメーター処理
         if (Mathf.Round(inputAxis * 10) / 10 == 0)
         {
@@ -69,56 +126,38 @@ public class PlayerMove : MonoBehaviour {
 
         if (animator.GetBool("run") == true) animator.SetBool("walk", false);
 
-        // 向きの回転
-        if (Mathf.Round(inputAxis * 10) / 10 < 0) pStates.IsTrun = true;
-        else if (Mathf.Round(inputAxis * 10) / 10 > 0) pStates.IsTrun = false;
-
-        if (pStates.IsTrun)
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 270f, 0), Time.deltaTime * 10);
-        else
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 90f, 0), Time.deltaTime * 10);
-        
+       
         // ジャンプ処理
-        if (charaCon.isGrounded && animator.GetBool("crowch") == false)
-        {
-            pStates.IsJump = false;
-            moveDirection.y = 0f;
-            if (Input.GetButtonDown("Jump"))
-            {
-                moveDirection.y = pStates.JumpPow;
-                animator.SetTrigger("jump");
-            }
-        }
-        else
-        {
-            pStates.IsJump = true;
-            if (Input.GetAxisRaw("Vertical") < 0)
-            {
-                moveDirection.y -= (_gravity * 4) * Time.deltaTime;
-            }
-            else
-            {
-                moveDirection.y -= _gravity * Time.deltaTime;
-            }
-        }
-        // しゃがんでると移動できないよ
-        if (animator.GetBool("crowch")) moveDirection.x = 0f;
+        //if (charaCon.isGrounded && animator.GetBool("crowch") == false)
+        //{
+        //    pStates.IsJump = false;
+        //    moveDirection.y = 0f;
+        //    if (Input.GetButtonDown("Jump"))
+        //    {
+        //        moveDirection.y = pStates.JumpPow;
+        //        animator.SetTrigger("jump");
+        //    }
+        //}
+        //else
+        //{
+        //    pStates.IsJump = true;
+        //    moveDirection.y -= _gravity * Time.deltaTime;
+        //}
 
-        // 移動するよ
+
+        /*移動するよ
         charaCon.Move(moveDirection * Time.deltaTime);
-
-        // しゃがんだ時にすり抜け床なら降りる
-        if (Input.GetAxisRaw("Vertical") < -0.9 && !pStates.IsJump)
+        if (!pStates.IsJump)
         {
-            int slidingFloorLayer = LayerMask.NameToLayer("Sliding");
-            if (Physics.Raycast(transform.position, -transform.up, slidingFloorLayer))
-            {
-                int playerLayer = LayerMask.NameToLayer("Player");
-                Physics.IgnoreLayerCollision(playerLayer, slidingFloorLayer);
-            }
-        }
+            // コントローラー用
+            GamePadDush(inputAxis, inputAxisRaw);
+            // キーボード用
+            KeyboardDush(inputAxisRaw);
+        }*/
+
+
         //しゃがみ
-        if (Input.GetAxisRaw("Vertical") < -0.5f)
+        if (Input.GetAxisRaw("Vertical") < -0.5f && pStates.IsGround)
         {
             animator.SetBool("crowch", true);
         }
@@ -128,15 +167,22 @@ public class PlayerMove : MonoBehaviour {
         }
     }
 
-    public bool CheckGrounded()
+    public void FixedUpdate()
     {
-        if (charaCon.isGrounded) { return true; }
+        //Debug.Log("moveDirection:" + moveDirection.x);
+        rigid.MovePosition(transform.position + moveDirection * Time.deltaTime);
+    }
 
-        Ray ray = new Ray(this.transform.position + Vector3.up * 0.1f, Vector3.down);
-
-        float tolerance = 0.3f;
-
-        return Physics.Raycast(ray, tolerance);
+    void OnCollisionEnter(Collision col)
+    {
+        if (Physics.Linecast(transform.position, -transform.up, LayerMask.GetMask("Stage", "Sliding")))
+        {
+            pStates.IsGround = true;
+        }
+    }
+    private void OnCollisionExit(Collision col)
+    {
+        pStates.IsGround = false;
     }
 
     void GamePadDush(float Axis,float AxisRaw)
