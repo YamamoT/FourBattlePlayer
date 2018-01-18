@@ -10,9 +10,6 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     private GameObject possesor;
 
-    // プレイヤーの状態管理
-    //private PlayerStates pStates;
-
     // 攻撃回数
     [SerializeField]
     private int attackValue;
@@ -26,6 +23,7 @@ public class Weapon : MonoBehaviour
     // 威力
     [SerializeField]
     private float power;
+    private float c_power;
 
     // 攻撃速度
     [SerializeField]
@@ -57,18 +55,33 @@ public class Weapon : MonoBehaviour
     private float meleeDuration;
     private float c_meleeDuration;
 
-    // 弓
+    // 撃ちだす弾の大きさ
     [SerializeField]
-    private float arrowGravity = 1.0f;
+    private float shotSize;
+    private float c_shotSize;
 
+    // チャージ時のダメージ上限
+    [SerializeField]
+    private float damageLimit;
 
-    // 攻撃種類
+    // チャージ時間
+    private float chargeTime;
+    // チャージ中に切り替わるまでの時間
+    [SerializeField]
+    private float changeTime;
+
+    // チャージした状態かどうか
+    private bool isCharge = false;
+
+    // 武器種類
     enum TYPE
     {
         Melee,
         Range,
         Special
     };
+
+    // 現在の武器種
     [SerializeField]
     private TYPE type = TYPE.Range;
 
@@ -89,7 +102,10 @@ public class Weapon : MonoBehaviour
         c_attackValue = attackValue;
         // 攻撃間隔の初期化
         c_attackInterval = attackInterval;
+        // ダメージの初期化
+        c_power = power;
 
+        // 近接処理
         if(type == TYPE.Melee)
         {
             isMeleeAttack = false;
@@ -107,7 +123,7 @@ public class Weapon : MonoBehaviour
     /// </summary>
 	protected void Update ()
     {
-		// 攻撃間隔の処理
+		// 攻撃中の処理
         if(isAttack)
         {
             // 攻撃間隔を減少
@@ -127,6 +143,7 @@ public class Weapon : MonoBehaviour
             // 剣の持続時間を減らす
             c_meleeDuration -= 0.1f;
 
+            // 近接攻撃の持続時間が0になったらリセット
             if(c_meleeDuration <= 0.0f)
             {
                 isMeleeAttack = false;
@@ -134,14 +151,17 @@ public class Weapon : MonoBehaviour
             }
         }
 
+        // デバッグモード
         if(isDebugMode)
         {
 
+            // 現在の武器種が近接なら
             if (type == TYPE.Melee)
             {
                 if (Input.GetKey(KeyCode.Space))
                     Attack();
             }
+            // 現在の武器種が遠距離なら
             else if (type == TYPE.Range)
             {
                 if (Input.GetKey(KeyCode.Space))
@@ -150,13 +170,30 @@ public class Weapon : MonoBehaviour
                 if (Input.GetKey(KeyCode.R))
                     ReLoad();
             }
+            // 現在の武器種が特殊なら
             else if (type == TYPE.Special)
             {
                 if (Input.GetKey(KeyCode.Space))
-                    ArrowSetStatus(0.2f, 0.02f);
+                {
+                    chargeTime += 0.1f;
+
+                    if (chargeTime > changeTime)
+                    {
+                        Charge(0.2f, 0.01f);
+                    }
+
+                    if (isCharge)
+                        Attack();  
+                }
 
                 if (Input.GetKeyUp(KeyCode.Space))
-                    Attack();
+                {
+                    if (chargeTime > changeTime)
+                        isCharge = true;
+
+                    if (chargeTime < changeTime && !isCharge)
+                        Attack();
+                }
             }
         }
        
@@ -204,7 +241,6 @@ public class Weapon : MonoBehaviour
                     bulletInstance.GetComponent<Bullet>().SetDeviation(diffusivity);
                 }
 
-
                 c_attackValue--;
             }
             // 近接攻撃 (剣)
@@ -217,10 +253,14 @@ public class Weapon : MonoBehaviour
             {
                 // 攻撃中
                 isAttack = true;
-
+                // 弾を生成
                 GameObject bulletInstance = GameObject.Instantiate(bullet) as GameObject;
-                bulletInstance.GetComponent<Rigidbody>().mass = arrowGravity;
-                bulletInstance.GetComponent<Bullet>().SetDamage((int)power);
+                // 弾に重力を掛けないようにする
+                bulletInstance.GetComponent<Rigidbody>().useGravity = false;
+                // 弾にダメージを設定する
+                bulletInstance.GetComponent<Bullet>().SetDamage((int)c_power);
+                // 弾にチャージした分だけの大きさを設定する
+                bulletInstance.GetComponent<Transform>().localScale = new Vector3(c_shotSize, c_shotSize, c_shotSize);
 
                 Vector3 force;
 
@@ -230,12 +270,15 @@ public class Weapon : MonoBehaviour
                 else
                     force = possesor.transform.forward * attackSpeed * 1000;
 
+                // 弾に速度を設定
                 bulletInstance.GetComponent<Rigidbody>().AddForce(force);
-
+                // 弾の発射位置を設定
                 bulletInstance.transform.position = muzzle.position;
 
-                power = 0;
-                attackSpeed = 0.0f;
+                c_power = power;
+                c_shotSize = shotSize;
+                changeTime = 0.0f;
+                isCharge = false;
             }
         }
     }
@@ -254,15 +297,17 @@ public class Weapon : MonoBehaviour
     }
 
     /// <summary>
-    /// 弓の攻撃速度とダメージを設定 (チャージ)
+    /// レイガンの弾のダメージと弾の大きさを設定
     /// </summary>
     /// <param name="damage">ダメージ</param>
-    /// <param name="speed">攻撃速度</param>
-    /// note : 弓の攻撃時はEnterを押している時はこの関数、離した時にAttackを呼んでほしい
-    public void ArrowSetStatus(float damage, float speed)
+    /// <param name="shotSize">弾の大きさ</param>
+    public void Charge(float damage, float size)
     {
-        power += damage;
-        attackSpeed += speed;
+        if (c_power < damageLimit)
+        {
+            c_power += damage;
+            c_shotSize += size;
+        }
     }
 
     /// <summary>
