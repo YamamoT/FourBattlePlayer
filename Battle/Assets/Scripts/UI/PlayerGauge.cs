@@ -14,7 +14,6 @@ public class PlayerGauge : MonoBehaviour
     // プレイヤーのHP上限
     private int hpLimit;
 
-
     // 緑ゲージ
     [SerializeField]
     private Image greenGauge;
@@ -34,7 +33,7 @@ public class PlayerGauge : MonoBehaviour
         HandGun,
         MachineGun,
         ShotGun,
-        Bow,
+        RayGun,
         Sword
     }
     // 格納用攻撃回数
@@ -94,10 +93,12 @@ public class PlayerGauge : MonoBehaviour
     /// </summary>
     public void WeponsPossessed()
     {
-        if(weapon)
+        if (weapon)
         {
-             // ハンドガン
-            if (weapon.name == "HandGun")
+            if (weapon.name == "Fist")
+                currentWeaponImage.sprite = WeaponsImage[(int)Weapons.Fist].sprite;
+            // ハンドガン
+            else if (weapon.name == "HandGun")
                 currentWeaponImage.sprite = WeaponsImage[(int)Weapons.HandGun].sprite;
             // マシンガン
             else if (weapon.name == "MachineGun")
@@ -105,18 +106,13 @@ public class PlayerGauge : MonoBehaviour
             // ショットガン
             else if (weapon.name == "ShotGun")
                 currentWeaponImage.sprite = WeaponsImage[(int)Weapons.ShotGun].sprite;
-            // 弓
-            else if (weapon.name == "Bow")
-                currentWeaponImage.sprite = WeaponsImage[(int)Weapons.Bow].sprite;
+            // レイガン
+            else if (weapon.name == "RayGun")
+                currentWeaponImage.sprite = WeaponsImage[(int)Weapons.RayGun].sprite;
             // 刀
             else if (weapon.name == "SamuraiSword")
                 currentWeaponImage.sprite = WeaponsImage[(int)Weapons.Sword].sprite;
         }
-        // 武器を持っていない
-        else
-            currentWeaponImage.sprite = WeaponsImage[(int)Weapons.Fist].sprite;
-           
-           
     }
 
     /// <summary>
@@ -132,7 +128,7 @@ public class PlayerGauge : MonoBehaviour
 
             // 攻撃回数の値が0なら何も表示しない
             if (attackValue == 100)
-                bulletValueText.text = "∞";
+                bulletValueText.text = "　";
             // 攻撃回数の値をテキストに
             else
                 bulletValueText.text = attackValue.ToString();

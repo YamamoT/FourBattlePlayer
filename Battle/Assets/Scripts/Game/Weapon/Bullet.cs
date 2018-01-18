@@ -62,16 +62,27 @@ public class Bullet : MonoBehaviour
     /// <param name="other"></param>
     public void OnTriggerEnter(Collider other)
     {
-        // 衝突対象のタグがBulletでない場合
-        if(other.tag != "Bullet")
-        {
-            Destroy(gameObject);
-        }
+        //Debug.Log("当たった : " + other.name);
 
-        //if(other.tag == "DebugObject")
+        //// 衝突対象のタグがBulletでない場合
+        //if (other.tag != "Bullet")
         //{
+        //    Debug.Log("弾以外のものに当たった");
         //    Destroy(gameObject);
         //}
+        //if (other.tag != "Weapon")
+        //{
+        //    Debug.Log("武器以外のものに当たった");
+        //    Destroy(gameObject);
+        //}
+
+        if(other.tag != "Weapon")
+        {
+            if(other.tag != "Bullet")
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
 }
