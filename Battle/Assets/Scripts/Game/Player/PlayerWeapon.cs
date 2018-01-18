@@ -83,6 +83,10 @@ public class PlayerWeapon : MonoBehaviour {
         }
     }
 
+
+    
+
+
     private void OnTriggerStay(Collider col)
     {
         if(col.gameObject.tag == "Weapon")
