@@ -6,6 +6,8 @@ TagManager:
   tags:
   - TriggerCollider
   - Weapon
+  - MoveObject
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - Collider
   - Player
   - Weapon
-  - 
+  - Stage
   - 
   - 
   - 

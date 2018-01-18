@@ -36,6 +36,9 @@ public class PlayerMove : MonoBehaviour {
     private float nextButtonDownTime;    //　次に移動ボタンが押されるまでの時間
     private float nowTime = 0f;			//　最初に移動ボタンが押されてからの経過時間
 
+    int playerLayer;
+    int slidingFloorLayer;
+
     // Use this for initialization
     void Start () {
         //アニメーター取得
@@ -45,7 +48,10 @@ public class PlayerMove : MonoBehaviour {
         rigid = GetComponent<Rigidbody>();
         velocity = Vector3.zero;
         dushTime = 0f;
-	}
+
+        playerLayer = LayerMask.NameToLayer("Player");
+        slidingFloorLayer = LayerMask.NameToLayer("Sliding");
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -54,17 +60,7 @@ public class PlayerMove : MonoBehaviour {
 
         float inputAxis = Input.GetAxis("Horizontal");
         float inputAxisRaw = Input.GetAxisRaw("Horizontal");
-
-        //Debug.Log("moveDirection:" + moveDirection.x);
-        //Debug.Log("inputAxis:" + inputAxis);
-
-        //if (!pStates.IsGround)
-        //{
-        //    if (Physics.Linecast(charaRay.position, (transform.position - transform.up * charaRayRange)))
-        //        ground = true;
-        //    else
-        //        ground = false;
-        //}
+        
         if (pStates.IsGround)
         {
             moveDirection = Vector3.zero;
@@ -102,18 +98,17 @@ public class PlayerMove : MonoBehaviour {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 90f, 0), Time.deltaTime * 10);
 
         // しゃがんでると移動できないよ
-        if (animator.GetBool("crowch")) moveDirection.x = 0f;
+        if (animator.GetBool("crowch") || Input.GetAxisRaw("Vertical") < -0.5f) moveDirection.x = 0f;
 
         // しゃがんだ時にすり抜け床なら降りる
         if (Input.GetAxisRaw("Vertical") < -0.9)
         {
-            int slidingFloorLayer = LayerMask.NameToLayer("Sliding");
-            if (Physics.Raycast(transform.position, -transform.up, slidingFloorLayer))
+            if (Physics.Raycast(transform.position, -transform.up, LayerMask.NameToLayer("Sliding")))
             {
-                int playerLayer = LayerMask.NameToLayer("Player");
-                Physics.IgnoreLayerCollision(playerLayer, slidingFloorLayer);
+                Physics.IgnoreLayerCollision(playerLayer, LayerMask.NameToLayer("Sliding"));
             }
         }
+
 
         // アニメーター処理
         if (Mathf.Round(inputAxis * 10) / 10 == 0)
@@ -169,7 +164,6 @@ public class PlayerMove : MonoBehaviour {
 
     public void FixedUpdate()
     {
-        //Debug.Log("moveDirection:" + moveDirection.x);
         rigid.MovePosition(transform.position + moveDirection * Time.deltaTime);
     }
 

@@ -27,10 +27,8 @@ public class PlayerWeapon : MonoBehaviour {
         "s",
         "t"
     };
-
-
-    GameObject hand;
-	// Use this for initialization
+    
+    // Use this for initialization
 	void Start() {
         playerAnime = GetComponent<Animator>();
         _charEquipManager = GetComponent<EquipManager>();
@@ -38,14 +36,12 @@ public class PlayerWeapon : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        Debug.Log(activeWeapon);
         Debug.Log("_isWeapon :" + _isWeapon);
 
         if (_isWeapon)
         {
             // 武器が非アクティブなら処理終了
-            if (activeWeapon = null) return;
+            if (activeWeapon == null) return;
 
             // 武器攻撃
             if (Input.GetButton("Attack")) activeWeapon.GetComponent<Weapon>().Attack();
@@ -62,8 +58,6 @@ public class PlayerWeapon : MonoBehaviour {
         {
             //　武器持ってないときの攻撃
 
-            // 武器がない状態
-            activeWeapon = null;
         }
         
 
@@ -93,7 +87,7 @@ public class PlayerWeapon : MonoBehaviour {
     {
         if(col.gameObject.tag == "Weapon")
         {
-            if(Input.GetAxisRaw("Vertical") < 0) 
+            if(Input.GetAxisRaw("Vertical") < -0.9f) 
             {
                 if (!_isWeapon)
                 {
