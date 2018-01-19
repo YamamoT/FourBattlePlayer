@@ -50,7 +50,6 @@ public class PlayerStates : MonoBehaviour {
     private void Start()
     {
         _time = _invincibleTime; // 無敵時間の登録
-        
         _list = GetAll(gameObject);
     }
 

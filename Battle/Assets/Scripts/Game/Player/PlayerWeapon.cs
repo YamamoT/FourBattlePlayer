@@ -81,9 +81,6 @@ public class PlayerWeapon : MonoBehaviour {
             playerAnime.SetBool("gun", false);
             playerAnime.SetBool("sword", false);
         }
-
-        playerAnime.SetBool("gun", true);
-
     }
 
 
