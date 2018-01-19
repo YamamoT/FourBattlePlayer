@@ -27,8 +27,7 @@ public class PlayerMove : MonoBehaviour {
     
     private int count = 0;
     private float dushDir = 0f;
-
-    private bool _isTurn = false;
+    
 
     // 参考元 https://gametukurikata.com/program/run
 
@@ -56,16 +55,14 @@ public class PlayerMove : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-       
 
         float inputAxis = Input.GetAxis("Horizontal");
         float inputAxisRaw = Input.GetAxisRaw("Horizontal");
         
         if (pStates.IsGround)
         {
-            moveDirection = Vector3.zero;
-            rigid.useGravity = true;
-            if (Input.GetButtonDown("Jump"))
+            moveDirection.y = 0f;
+            if (Input.GetButtonDown("Jump") && Input.GetAxisRaw("Vertical") >= 0f)
             {
                 moveDirection.y = pStates.JumpPow;
                 animator.SetTrigger("jump");
@@ -75,9 +72,7 @@ public class PlayerMove : MonoBehaviour {
             // キーボード用
             KeyboardDush(inputAxisRaw);
         }
-
-
-        if (!pStates.IsGround)
+        else
         {
             moveDirection.y -= _gravity * Time.deltaTime;
         }
@@ -167,8 +162,8 @@ public class PlayerMove : MonoBehaviour {
         rigid.MovePosition(transform.position + moveDirection * Time.deltaTime);
     }
 
-    void OnCollisionEnter(Collision col)
-    {
+    void OnCollisionStay(Collision col)
+    { 
         if (Physics.Linecast(transform.position, -transform.up, LayerMask.GetMask("Stage", "Sliding")))
         {
             pStates.IsGround = true;
