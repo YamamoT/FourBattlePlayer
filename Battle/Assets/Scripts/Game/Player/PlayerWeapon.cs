@@ -49,6 +49,7 @@ public class PlayerWeapon : MonoBehaviour {
             // 武器を捨てる
             if (Input.GetButtonDown("Throw"))
             {
+                activeWeapon.GetComponent<Weapon>().ReLoad();
                 activeWeapon.SetActive(false);
                 activeWeapon = null; // 武器を空に
                 _isWeapon = false; // 武器を持っていない状態にする

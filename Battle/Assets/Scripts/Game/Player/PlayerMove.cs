@@ -58,13 +58,16 @@ public class PlayerMove : MonoBehaviour {
 
         float inputAxis = Input.GetAxis("Horizontal");
         float inputAxisRaw = Input.GetAxisRaw("Horizontal");
+
+        Debug.Log("IsGround:" + pStates.IsGround);
         
         if (pStates.IsGround)
         {
             moveDirection.y = 0f;
-            if (Input.GetButtonDown("Jump") && Input.GetAxisRaw("Vertical") >= 0f)
+            // ジャンプ処理
+            if (Input.GetButtonDown("Jump") && Input.GetAxisRaw("Vertical") >= -0.5f)
             {
-                moveDirection.y = pStates.JumpPow;
+                moveDirection.y += pStates.JumpPow;
                 animator.SetTrigger("jump");
             }
             // コントローラー用
@@ -74,14 +77,13 @@ public class PlayerMove : MonoBehaviour {
         }
         else
         {
-            //moveDirection.y -= _gravity * Time.deltaTime;
+            moveDirection.y -= _gravity * Time.deltaTime;
         }
 
         // ダッシュ状態か否かで速度を変える
-        //if (!pStates.IsDash)
-        //    moveDirection.x = inputAxis * pStates.WalkSpd;
-        //else
-            moveDirection.x = inputAxis * pStates.Spead;
+        moveDirection.x = inputAxis * pStates.Spead;
+
+        
         
         // 向きの回転
         if (Mathf.Round(inputAxis * 10) / 10 < 0) pStates.IsTrun = true;
