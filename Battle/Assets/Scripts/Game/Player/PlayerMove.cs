@@ -64,11 +64,11 @@ public class PlayerMove : MonoBehaviour {
         if (pStates.IsGround)
         {
             moveDirection.y = 0f;
-            // ジャンプ処理
+            //// ジャンプ処理
             if (Input.GetButtonDown("Jump") && Input.GetAxisRaw("Vertical") >= -0.5f)
             {
-                moveDirection.y += pStates.JumpPow;
                 animator.SetTrigger("jump");
+                moveDirection.y += pStates.JumpPow;
             }
             // コントローラー用
             GamePadDush(inputAxis, inputAxisRaw);

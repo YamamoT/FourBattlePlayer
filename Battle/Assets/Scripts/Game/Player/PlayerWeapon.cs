@@ -6,6 +6,8 @@ public class PlayerWeapon : MonoBehaviour {
 
     [SerializeField]
     private GameObject[] _weapons;
+    [SerializeField]
+    private GameObject _fist;
 
     [SerializeField]
     private bool _isWeapon = false; // 武器持ってるか持ってないか
@@ -38,13 +40,19 @@ public class PlayerWeapon : MonoBehaviour {
 	void Update () {
         Debug.Log("_isWeapon :" + _isWeapon);
 
+        if (activeWeapon == null) activeWeapon = _fist;
+
         if (_isWeapon)
         {
             // 武器が非アクティブなら処理終了
             if (activeWeapon == null) return;
 
             // 武器攻撃
-            if (Input.GetButton("Attack")) activeWeapon.GetComponent<Weapon>().Attack();
+            if (Input.GetButtonDown("Attack"))
+            {
+                activeWeapon.GetComponent<Weapon>().Attack();
+                playerAnime.SetTrigger("attack");
+            }
 
             // 武器を捨てる
             if (Input.GetButtonDown("Throw"))
@@ -58,7 +66,16 @@ public class PlayerWeapon : MonoBehaviour {
         else
         {
             //　武器持ってないときの攻撃
-
+            if (Input.GetButtonDown("Attack"))
+            {
+                if (activeWeapon == _fist)
+                {
+                    activeWeapon.GetComponent<Weapon>().Attack();
+                    playerAnime.SetTrigger("attack");
+                }
+            }
+                
+               
         }
         
 
