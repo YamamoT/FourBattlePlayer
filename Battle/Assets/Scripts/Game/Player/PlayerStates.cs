@@ -8,7 +8,7 @@ public class PlayerStates : MonoBehaviour {
     private int _hp; // 体力
     [SerializeField][Range(1f, 10f)]
     private float _spead; // 移動速度
-    [SerializeField][Range(1f, 10f)]
+    [SerializeField][Range(1f, 20f)]
     private float _jumpPower; // ジャンプ力
     [SerializeField]
     private float _nomalAttack; // 素手の攻撃力

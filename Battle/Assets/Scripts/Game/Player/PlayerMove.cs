@@ -74,7 +74,7 @@ public class PlayerMove : MonoBehaviour {
         }
         else
         {
-            moveDirection.y -= _gravity * Time.deltaTime;
+            //moveDirection.y -= _gravity * Time.deltaTime;
         }
 
         // ダッシュ状態か否かで速度を変える
