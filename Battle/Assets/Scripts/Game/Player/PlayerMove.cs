@@ -74,14 +74,14 @@ public class PlayerMove : MonoBehaviour {
         }
         else
         {
-            moveDirection.y -= _gravity * Time.deltaTime;
+            //moveDirection.y -= _gravity * Time.deltaTime;
         }
 
         // ダッシュ状態か否かで速度を変える
-        if (!pStates.IsDash)
-            moveDirection.x = inputAxis * pStates.WalkSpd;
-        else
-            moveDirection.x = inputAxis * pStates.DushSpd;
+        //if (!pStates.IsDash)
+        //    moveDirection.x = inputAxis * pStates.WalkSpd;
+        //else
+            moveDirection.x = inputAxis * pStates.Spead;
         
         // 向きの回転
         if (Mathf.Round(inputAxis * 10) / 10 < 0) pStates.IsTrun = true;
@@ -106,17 +106,32 @@ public class PlayerMove : MonoBehaviour {
 
 
         // アニメーター処理
+        //if (Mathf.Round(inputAxis * 10) / 10 == 0)
+        //{
+        //    animator.SetBool("run", false);
+        //    animator.SetBool("walk", false);
+        //}
+        //else if ((inputAxis == 1 || inputAxis == -1) && pStates.IsDash) animator.SetBool("run", true);
+        //else if(inputAxis > 0 && inputAxis < 1 || inputAxis < 0 && inputAxis > -1) animator.SetBool("walk", true);
+
+        //if (animator.GetBool("run") == true) animator.SetBool("walk", false);
+
         if (Mathf.Round(inputAxis * 10) / 10 == 0)
         {
             animator.SetBool("run", false);
             animator.SetBool("walk", false);
         }
-        else if ((inputAxis == 1 || inputAxis == -1) && pStates.IsDash) animator.SetBool("run", true);
-        else if(inputAxis > 0 && inputAxis < 1 || inputAxis < 0 && inputAxis > -1) animator.SetBool("walk", true);
+        else if (inputAxis >= 0.7f || inputAxis <= -0.7f)
+        {
+            animator.SetBool("walk", false);
+            animator.SetBool("run", true);
+        }
+        else if(inputAxis < 0.7f || inputAxis > -0.7f)
+        {
+            animator.SetBool("run", false);
+            animator.SetBool("walk", true);
+        }
 
-        if (animator.GetBool("run") == true) animator.SetBool("walk", false);
-
-       
         // ジャンプ処理
         //if (charaCon.isGrounded && animator.GetBool("crowch") == false)
         //{
@@ -163,7 +178,7 @@ public class PlayerMove : MonoBehaviour {
     }
 
     void OnCollisionStay(Collision col)
-    { 
+    {
         if (Physics.Linecast(transform.position, -transform.up, LayerMask.GetMask("Stage", "Sliding")))
         {
             pStates.IsGround = true;

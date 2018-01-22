@@ -7,10 +7,8 @@ public class PlayerStates : MonoBehaviour {
     [SerializeField][Range(0,100)]
     private int _hp; // 体力
     [SerializeField][Range(1f, 10f)]
-    private float _walkSpead; // 移動速度(歩き)
-    [SerializeField][Range(1f, 10f)]
-    private float _dushSpead; // 移動速度(走り)
-    [SerializeField][Range(1f, 10f)]
+    private float _spead; // 移動速度
+    [SerializeField][Range(1f, 20f)]
     private float _jumpPower; // ジャンプ力
     [SerializeField]
     private float _nomalAttack; // 素手の攻撃力
@@ -124,13 +122,9 @@ public class PlayerStates : MonoBehaviour {
         set { _hp = value; }
     }
     
-    public float WalkSpd
+    public float Spead
     {
-        get { return _walkSpead; }
-    }
-    public float DushSpd
-    {
-        get { return _dushSpead; }
+        get { return _spead; }
     }
     public float JumpPow
     {
