@@ -109,6 +109,8 @@ public class Weapon : MonoBehaviour
         if(type == TYPE.Melee)
         {
             isMeleeAttack = false;
+            if (possesor)
+                gameObject.GetComponent<BoxCollider>().enabled = false;
         }
 
         // 剣の攻撃持続時間が攻撃間隔よりも長い時、持続時間を攻撃間隔と同じにする
@@ -148,54 +150,13 @@ public class Weapon : MonoBehaviour
             {
                 isMeleeAttack = false;
                 c_meleeDuration = meleeDuration;
+                gameObject.GetComponent<BoxCollider>().enabled = false;
             }
         }
 
         // デバッグモード
         if(isDebugMode)
-        {
-
-            // 現在の武器種が近接なら
-            if (type == TYPE.Melee)
-            {
-                if (Input.GetKey(KeyCode.Space))
-                    Attack();
-            }
-            // 現在の武器種が遠距離なら
-            else if (type == TYPE.Range)
-            {
-                if (Input.GetKey(KeyCode.Space))
-                    Attack();
-
-                if (Input.GetKey(KeyCode.R))
-                    ReLoad();
-            }
-            // 現在の武器種が特殊なら
-            else if (type == TYPE.Special)
-            {
-                if (Input.GetKey(KeyCode.Space))
-                {
-                    chargeTime += 0.1f;
-
-                    if (chargeTime > changeTime)
-                    {
-                        Charge(0.2f, 0.01f);
-                    }
-
-                    if (isCharge)
-                        Attack();  
-                }
-
-                if (Input.GetKeyUp(KeyCode.Space))
-                {
-                    if (chargeTime > changeTime)
-                        isCharge = true;
-
-                    if (chargeTime < changeTime && !isCharge)
-                        Attack();
-                }
-            }
-        }
+            DebugMode();
        
 	}
 
@@ -248,6 +209,7 @@ public class Weapon : MonoBehaviour
             {
                 isAttack = true;
                 isMeleeAttack = true;
+                gameObject.GetComponent<BoxCollider>().enabled = true;
             }
             else if(type == TYPE.Special)
             {
@@ -284,6 +246,37 @@ public class Weapon : MonoBehaviour
     }
 
     /// <summary>
+    /// 武器の試運転用
+    /// </summary>
+    private void DebugMode()
+
+    {
+        // 現在の武器種が近接なら
+        if (type == TYPE.Melee)
+        {
+            if (Input.GetKey(KeyCode.Space))
+                Attack();
+        }
+        // 現在の武器種が遠距離なら
+        else if (type == TYPE.Range)
+        {
+            if (Input.GetKey(KeyCode.Space))
+                Attack();
+
+            if (Input.GetKey(KeyCode.R))
+                ReLoad();
+        }
+        // 現在の武器種が特殊なら
+        else if (type == TYPE.Special)
+        {
+            if (Input.GetKey(KeyCode.Space))
+                Charge(0.2f, 0.01f);
+
+            if (Input.GetKeyUp(KeyCode.Space))
+                Attack();
+        }
+    }
+    /// <summary>
     /// 近接専用衝突判定
     /// </summary>
     /// <param name="other">衝突対象</param>
@@ -293,6 +286,7 @@ public class Weapon : MonoBehaviour
         {
             isMeleeAttack = false;
             c_meleeDuration = meleeDuration;
+            gameObject.GetComponent<BoxCollider>().enabled = false;
         }
     }
 
@@ -303,11 +297,17 @@ public class Weapon : MonoBehaviour
     /// <param name="shotSize">弾の大きさ</param>
     public void Charge(float damage, float size)
     {
-        if (c_power < damageLimit)
-        {
-            c_power += damage;
-            c_shotSize += size;
-        }
+        chargeTime += Time.deltaTime;
+
+        if (chargeTime > changeTime)
+            isCharge = true;
+
+        if (isCharge)
+            if (c_power < damageLimit)
+            {
+                c_power += damage;
+                c_shotSize += size;
+            }
     }
 
     /// <summary>
