@@ -41,7 +41,7 @@ public class TestFallingBox : MonoBehaviour {
 
         if (fall)
         {
-            transform.position = transform.position + new Vector3(0,-0.05f,0);
+            transform.position = transform.position + new Vector3(0,-0.1f,0);
         }
 
         if(transform.position.y <= -10.0f)
@@ -50,7 +50,6 @@ public class TestFallingBox : MonoBehaviour {
             count = 0;
             fall = false;
         }
-        Debug.Log("count :" + count);
     }
 
     private void OnTriggerExit(Collider other)
