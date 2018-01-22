@@ -270,7 +270,7 @@ public class Weapon : MonoBehaviour
         else if (type == TYPE.Special)
         {
             if (Input.GetKey(KeyCode.Space))
-                Charge(0.2f, 0.01f);
+                Charge(0.05f, 0.01f);
 
             if (Input.GetKeyUp(KeyCode.Space))
                 Attack();
