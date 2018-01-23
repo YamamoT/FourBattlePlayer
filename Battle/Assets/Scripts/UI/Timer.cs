@@ -62,8 +62,10 @@ public class Timer : MonoBehaviour
 	void Update ()
     {
         // デバッグ用
-        if (Input.GetKey(KeyCode.A))
-            isTimerProgress = !isTimerProgress;
+        if (Input.GetKeyDown(KeyCode.A))
+            isTimerProgress = true;
+        if (Input.GetKeyDown(KeyCode.R))
+            TimerReset();
 
         // テキスト更新
         minuteText.text = minutesTime.ToString("D2");
@@ -83,12 +85,13 @@ public class Timer : MonoBehaviour
         // ミリ秒
         if (milliSeconds > 0)
             milliSeconds--;
-        else
+        else if(minutesTime == 0 && secondsTime == 0 && milliSeconds == 0)
         {
             milliSeconds = 0;
             isTimerFinished = true;
             isTimerProgress = false;
         }
+                
             
 
         // 60ミリ秒経ったら値をリセットして、1秒経たせる

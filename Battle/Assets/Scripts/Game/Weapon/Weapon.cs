@@ -340,4 +340,22 @@ public class Weapon : MonoBehaviour
     {
         return (int)power;
     }
+
+    /// <summary>
+    /// 攻撃間隔の値を取する
+    /// </summary>
+    /// <returns>攻撃間隔の値</returns>
+    public float GetAttackInterval()
+    {
+        return c_attackInterval;
+    }
+
+    /// <summary>
+    /// 攻撃中か
+    /// </summary>
+    /// <returns></returns>
+    public bool GetIsAttack()
+    {
+        return isAttack;
+    }
 }
