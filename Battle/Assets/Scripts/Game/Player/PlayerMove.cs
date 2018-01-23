@@ -166,7 +166,13 @@ public class PlayerMove : MonoBehaviour {
         //しゃがみ
         if (Input.GetAxisRaw("Vertical") < -0.5f && pStates.IsGround)
         {
+            if (animator.GetBool("crowch") == false)
+            {
+                animator.SetTrigger("crowchTrigger");
+            }
             animator.SetBool("crowch", true);
+            animator.SetBool("walk", false);
+            animator.SetBool("run", false);
         }
         else
         {
