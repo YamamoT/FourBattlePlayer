@@ -2908,7 +2908,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1578242133819598}
-  m_LocalRotation: {x: 0.61543465, y: 0.3481959, z: -0.61543417, w: 0.34819618}
+  m_LocalRotation: {x: 0.6154347, y: 0.34819594, z: -0.6154342, w: 0.3481962}
   m_LocalPosition: {x: 0.24865364, y: 0.66157883, z: 0.00000030517577}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -5672,7 +5672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37cdc7425e78aea45b7ff5db561dfc65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possesor: {fileID: 0}
+  possesor: {fileID: 1071939655261078}
   attackValue: 30
   attackInterval: 1
   power: 1
@@ -5723,7 +5723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37cdc7425e78aea45b7ff5db561dfc65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possesor: {fileID: 0}
+  possesor: {fileID: 1071939655261078}
   attackValue: 7
   attackInterval: 3
   power: 1
@@ -5750,7 +5750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37cdc7425e78aea45b7ff5db561dfc65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possesor: {fileID: 0}
+  possesor: {fileID: 1071939655261078}
   attackValue: 80
   attackInterval: 1
   power: 1
@@ -5777,7 +5777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37cdc7425e78aea45b7ff5db561dfc65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possesor: {fileID: 0}
+  possesor: {fileID: 1071939655261078}
   attackValue: 100
   attackInterval: 3
   power: 2
@@ -5804,7 +5804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37cdc7425e78aea45b7ff5db561dfc65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possesor: {fileID: 0}
+  possesor: {fileID: 1071939655261078}
   attackValue: 7
   attackInterval: 2
   power: 10

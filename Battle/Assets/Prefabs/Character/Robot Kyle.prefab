@@ -4533,7 +4533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37cdc7425e78aea45b7ff5db561dfc65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possesor: {fileID: 0}
+  possesor: {fileID: 1227384588637400}
   attackValue: 30
   attackInterval: 1
   power: 1
@@ -4588,7 +4588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37cdc7425e78aea45b7ff5db561dfc65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possesor: {fileID: 0}
+  possesor: {fileID: 1227384588637400}
   attackValue: 100
   attackInterval: 3
   power: 2
@@ -4615,7 +4615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37cdc7425e78aea45b7ff5db561dfc65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possesor: {fileID: 0}
+  possesor: {fileID: 1227384588637400}
   attackValue: 7
   attackInterval: 2
   power: 10
@@ -4693,7 +4693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37cdc7425e78aea45b7ff5db561dfc65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possesor: {fileID: 0}
+  possesor: {fileID: 1227384588637400}
   attackValue: 80
   attackInterval: 1
   power: 1
@@ -4720,7 +4720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37cdc7425e78aea45b7ff5db561dfc65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possesor: {fileID: 0}
+  possesor: {fileID: 1227384588637400}
   attackValue: 7
   attackInterval: 3
   power: 1
