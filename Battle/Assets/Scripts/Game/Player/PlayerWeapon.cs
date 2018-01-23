@@ -74,8 +74,6 @@ public class PlayerWeapon : MonoBehaviour {
                     playerAnime.SetTrigger("attack");
                 }
             }
-                
-               
         }
         
 
