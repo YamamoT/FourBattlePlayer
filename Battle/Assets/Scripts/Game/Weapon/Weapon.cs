@@ -328,9 +328,23 @@ public class Weapon : MonoBehaviour
         c_attackValue = attackValue;
     }
 
+    /// <summary>
+    /// ダメージの補設定
+    /// </summary>
+    /// <param name="damage">元のパワーにどれだけ足し引きするか</param>
     public void SetDamage(int damage)
     {
         power += damage;
+    }
+
+    /// <summary>
+    /// 銃の集弾率を設定
+    /// </summary>
+    /// <param name="diff">集弾率</param>
+    /// <note> 0に近いほど集弾率が良い
+    public void SetDiffusion(float diff)
+    {
+        diffusion = diff;
     }
 
     /// <summary>
@@ -359,4 +373,6 @@ public class Weapon : MonoBehaviour
     {
         return isAttack;
     }
+
+
 }
