@@ -753,7 +753,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4472790153278304}
   - component: {fileID: 114927419997127352}
-  - component: {fileID: 135883073858029034}
+  - component: {fileID: 65408041973849438}
   m_Layer: 0
   m_Name: Fist
   m_TagString: Weapon
@@ -5002,8 +5002,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1246731199149744}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: -0.0000013527, y: 0.00000064881, z: -0.0000054154}
+  m_LocalScale: {x: 0.37219802, y: 0.37219793, z: 0.37219793}
   m_Children: []
   m_Father: {fileID: 4133456650437084}
   m_RootOrder: 5
@@ -8075,6 +8075,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.8108845, z: 0.6011985}
   m_Center: {x: -5.637491e-17, y: 0.022584021, z: -0.06646702}
+--- !u!65 &65408041973849438
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1246731199149744}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65540592821387360
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -8224,7 +8236,7 @@ MonoBehaviour:
   - {fileID: 1139954304015338}
   - {fileID: 1842230809585036}
   - {fileID: 1686787311728962}
-  - {fileID: 1246731199149744}
+  _fist: {fileID: 1246731199149744}
   _isWeapon: 0
   _isSword: 0
   _attack: 0
@@ -8378,21 +8390,9 @@ MonoBehaviour:
   shotSize: 0
   damageLimit: 0
   changeTime: 0
-  type: 1
+  type: 0
   bullet: {fileID: 0}
   muzzle: {fileID: 0}
---- !u!135 &135883073858029034
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1246731199149744}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &136037398050484236
 CapsuleCollider:
   m_ObjectHideFlags: 1
