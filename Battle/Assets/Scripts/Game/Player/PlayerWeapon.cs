@@ -48,7 +48,7 @@ public class PlayerWeapon : MonoBehaviour {
             if (activeWeapon == null) return;
 
             // 武器攻撃
-            if (Input.GetButtonDown("Attack"))
+            if (Input.GetButtonDown("Fire"))
             {
                 activeWeapon.GetComponent<Weapon>().Attack();
                 playerAnime.SetTrigger("attack");
@@ -66,7 +66,7 @@ public class PlayerWeapon : MonoBehaviour {
         else
         {
             //　武器持ってないときの攻撃
-            if (Input.GetButtonDown("Attack"))
+            if (Input.GetButtonDown("Fire"))
             {
                 if (activeWeapon == _fist)
                 {
