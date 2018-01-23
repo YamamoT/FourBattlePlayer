@@ -152,6 +152,7 @@ public class Weapon : MonoBehaviour
                 c_meleeDuration = meleeDuration;
                 gameObject.GetComponent<BoxCollider>().enabled = false;
             }
+            Debug.Log("enabled:" + gameObject.GetComponent<BoxCollider>().enabled);
         }
 
         // デバッグモード
