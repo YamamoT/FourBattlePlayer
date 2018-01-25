@@ -68,7 +68,6 @@ public class PlayerMove : MonoBehaviour {
         //アニメーター取得
         animator = GetComponent<Animator>();
         pStates = GetComponent<PlayerStates>();
-        charaCon = GetComponent<CharacterController>();
         rigid = GetComponent<Rigidbody>();
         velocity = Vector3.zero;
         dushTime = 0f;
@@ -98,10 +97,6 @@ public class PlayerMove : MonoBehaviour {
                 animator.SetTrigger("jump");
                 moveDirection.y += pStates.JumpPow;
             }
-            // コントローラー用
-            //GamePadDush(inputAxis, inputAxisRaw);
-            // キーボード用
-            //KeyboardDush(inputAxis);
         }
         else
         {
@@ -136,16 +131,6 @@ public class PlayerMove : MonoBehaviour {
 
 
         // アニメーター処理
-        //if (Mathf.Round(inputAxis * 10) / 10 == 0)
-        //{
-        //    animator.SetBool("run", false);
-        //    animator.SetBool("walk", false);
-        //}
-        //else if ((inputAxis == 1 || inputAxis == -1) && pStates.IsDash) animator.SetBool("run", true);
-        //else if(inputAxis > 0 && inputAxis < 1 || inputAxis < 0 && inputAxis > -1) animator.SetBool("walk", true);
-
-        //if (animator.GetBool("run") == true) animator.SetBool("walk", false);
-
         if (Mathf.Round(inputAxis * 10) / 10 == 0)
         {
             animator.SetBool("run", false);
@@ -161,35 +146,6 @@ public class PlayerMove : MonoBehaviour {
             animator.SetBool("run", false);
             animator.SetBool("walk", true);
         }
-
-        // ジャンプ処理
-        //if (charaCon.isGrounded && animator.GetBool("crowch") == false)
-        //{
-        //    pStates.IsJump = false;
-        //    moveDirection.y = 0f;
-        //    if (Input.GetButtonDown("Jump"))
-        //    {
-        //        moveDirection.y = pStates.JumpPow;
-        //        animator.SetTrigger("jump");
-        //    }
-        //}
-        //else
-        //{
-        //    pStates.IsJump = true;
-        //    moveDirection.y -= _gravity * Time.deltaTime;
-        //}
-
-
-        /*移動するよ
-        charaCon.Move(moveDirection * Time.deltaTime);
-        if (!pStates.IsJump)
-        {
-            // コントローラー用
-            GamePadDush(inputAxis, inputAxisRaw);
-            // キーボード用
-            KeyboardDush(inputAxisRaw);
-        }*/
-
 
         //しゃがみ
         if (axis.y < -0.5f && pStates.IsGround)
