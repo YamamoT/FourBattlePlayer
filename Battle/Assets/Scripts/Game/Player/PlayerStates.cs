@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerStates : MonoBehaviour {
 
+    [SerializeField][Range(1, 4)]
+    public int PlayerID; //プレイヤーナンバー
+
     [SerializeField][Range(0,100)]
     private int _hp; // 体力
     [SerializeField][Range(1f, 10f)]
@@ -53,8 +56,9 @@ public class PlayerStates : MonoBehaviour {
 
     private void Update()
     {
+
         // ダメージ発生時の無敵時間
-        if(_isDamage)
+        if (_isDamage)
         {
             _time -= Time.deltaTime;
 

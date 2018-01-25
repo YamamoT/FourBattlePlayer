@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour {
 
-    //アニメーター
-    Animator animator;
-    
+    private int PlayerID;
+    GamepadInput.GamePad.Index playerNo; //コントローラナンバー
+    public GamepadInput.GamepadState keyState; //キー情報
+    Vector2 axis; //スティック情報
+
+    Animator animator; //アニメーター
+
     private CharacterController charaCon;
 
     private Transform charaRay;
@@ -40,6 +44,27 @@ public class PlayerMove : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        //コントローラ情報取得
+        PlayerID = this.GetComponent<PlayerStates>().PlayerID;
+        switch (PlayerID)
+        {
+            case 1:
+                playerNo = GamepadInput.GamePad.Index.One;
+                break;
+            case 2:
+                playerNo = GamepadInput.GamePad.Index.Two;
+                break;
+            case 3:
+                playerNo = GamepadInput.GamePad.Index.Three;
+                break;
+            case 4:
+                playerNo = GamepadInput.GamePad.Index.Four;
+                break;
+            default:
+                playerNo = GamepadInput.GamePad.Index.Any;
+                break;
+        }
+
         //アニメーター取得
         animator = GetComponent<Animator>();
         pStates = GetComponent<PlayerStates>();
@@ -55,9 +80,12 @@ public class PlayerMove : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        //キー情報取得
+        keyState = GamepadInput.GamePad.GetState(playerNo, false);
+        axis = GamepadInput.GamePad.GetAxis(GamepadInput.GamePad.Axis.LeftStick, playerNo, false);
 
-        float inputAxis = Input.GetAxis("Horizontal");
-        float inputAxisRaw = Input.GetAxisRaw("Horizontal");
+
+        float inputAxis = axis.x;
 
         Debug.Log("IsGround:" + pStates.IsGround);
         
@@ -65,15 +93,15 @@ public class PlayerMove : MonoBehaviour {
         {
             moveDirection.y = 0f;
             //// ジャンプ処理
-            if (Input.GetButtonDown("Jump") && Input.GetAxisRaw("Vertical") >= -0.5f)
+            if (keyState.A && axis.y >= -0.5f)
             {
                 animator.SetTrigger("jump");
                 moveDirection.y += pStates.JumpPow;
             }
             // コントローラー用
-            GamePadDush(inputAxis, inputAxisRaw);
+            //GamePadDush(inputAxis, inputAxisRaw);
             // キーボード用
-            KeyboardDush(inputAxisRaw);
+            //KeyboardDush(inputAxis);
         }
         else
         {
@@ -95,10 +123,10 @@ public class PlayerMove : MonoBehaviour {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 90f, 0), Time.deltaTime * 10);
 
         // しゃがんでると移動できないよ
-        if (animator.GetBool("crowch") || Input.GetAxisRaw("Vertical") < -0.5f) moveDirection.x = 0f;
+        if (animator.GetBool("crowch") || axis.y < -0.5f) moveDirection.x = 0f;
 
         // しゃがんだ時にすり抜け床なら降りる
-        if (Input.GetAxisRaw("Vertical") < -0.9)
+        if (axis.y < -0.9)
         {
             if (Physics.Raycast(transform.position, -transform.up, LayerMask.NameToLayer("Sliding")))
             {
@@ -164,7 +192,7 @@ public class PlayerMove : MonoBehaviour {
 
 
         //しゃがみ
-        if (Input.GetAxisRaw("Vertical") < -0.5f && pStates.IsGround)
+        if (axis.y < -0.5f && pStates.IsGround)
         {
             if (animator.GetBool("crowch") == false)
             {
@@ -197,72 +225,72 @@ public class PlayerMove : MonoBehaviour {
         pStates.IsGround = false;
     }
 
-    void GamePadDush(float Axis,float AxisRaw)
-    {
-        if (AxisRaw == 0) { pStates.IsDash = false; count = 0; }
-        if (dushTime <= 0) dushTime = 0;
+    //void GamePadDush(float Axis,float AxisRaw)
+    //{
+    //    if (AxisRaw == 0) { pStates.IsDash = false; count = 0; }
+    //    if (dushTime <= 0) dushTime = 0;
 
-        // 移動入力されたらカウントを増やして時間を設定する
-        if (Axis != 0 && count == 0) { dushTime = _dushIntervalTime; count++; }
+    //    // 移動入力されたらカウントを増やして時間を設定する
+    //    if (Axis != 0 && count == 0) { dushTime = _dushIntervalTime; count++; }
 
-        if (dushTime != 0)
-        {
-            dushTime -= Time.deltaTime;
-            if (Axis == 1 || Axis == -1) pStates.IsDash = true;
-        }
-    }
+    //    if (dushTime != 0)
+    //    {
+    //        dushTime -= Time.deltaTime;
+    //        if (Axis == 1 || Axis == -1) pStates.IsDash = true;
+    //    }
+    //}
 
-    void KeyboardDush(float AxisRaw)
-    {
-        if (!pStates.IsDash)
-        {
+    //void KeyboardDush(float AxisRaw)
+    //{
+    //    if (!pStates.IsDash)
+    //    {
 
-            //　移動キーを押した
-            if ((Input.GetButtonDown("Horizontal")))
-            {
-                Debug.Log("登録");
-                //　最初に1回押していない時は押した事にする
-                if (!push)
-                {
-                    push = true;
-                    //　最初に移動キーを押した時にその方向ベクトルを取得
-                    dushDir = AxisRaw;
-                    nowTime = 0f;
-                    //　2回目のボタンだったら1→２までの制限時間内だったら走る
+    //        //　移動キーを押した
+    //        if ((Input.GetButtonDown("Horizontal")))
+    //        {
+    //            Debug.Log("登録");
+    //            //　最初に1回押していない時は押した事にする
+    //            if (!push)
+    //            {
+    //                push = true;
+    //                //　最初に移動キーを押した時にその方向ベクトルを取得
+    //                dushDir = AxisRaw;
+    //                nowTime = 0f;
+    //                //　2回目のボタンだったら1→２までの制限時間内だったら走る
 
-                }
-                else
-                {
-                    //　2回目に移動キーを押した時の方向ベクトルを取得
-                    var nowDirection = AxisRaw;
+    //            }
+    //            else
+    //            {
+    //                //　2回目に移動キーを押した時の方向ベクトルを取得
+    //                var nowDirection = AxisRaw;
 
-                    //　押した方向がリミットの角度を越えていない　かつ　制限時間内に移動キーが押されていれば走る
-                    if (nowDirection == dushDir && nowTime <= nextButtonDownTime)
-                    {
-                        pStates.IsDash = true;
-                    }
-                }
-            }
-            //　走っている時にキーを押すのをやめたら走るのをやめる
-        }
-        else
-        {
-            if (!Input.GetButton("Horizontal"))
-            {
-                //_dush = false;
-                push = false;
-            }
-        }
-        //　最初の移動キーを押していれば時間計測
-        if (push)
-        {
-            //　時間計測
-            nowTime += Time.deltaTime;
+    //                //　押した方向がリミットの角度を越えていない　かつ　制限時間内に移動キーが押されていれば走る
+    //                if (nowDirection == dushDir && nowTime <= nextButtonDownTime)
+    //                {
+    //                    pStates.IsDash = true;
+    //                }
+    //            }
+    //        }
+    //        //　走っている時にキーを押すのをやめたら走るのをやめる
+    //    }
+    //    else
+    //    {
+    //        if (!Input.GetButton("Horizontal"))
+    //        {
+    //            //_dush = false;
+    //            push = false;
+    //        }
+    //    }
+    //    //　最初の移動キーを押していれば時間計測
+    //    if (push)
+    //    {
+    //        //　時間計測
+    //        nowTime += Time.deltaTime;
 
-            if (nowTime > nextButtonDownTime)
-            {
-                push = false;
-            }
-        }
-    }
+    //        if (nowTime > nextButtonDownTime)
+    //        {
+    //            push = false;
+    //        }
+    //    }
+    //}
 }
