@@ -12,7 +12,7 @@ public class SwitchDoor : MonoBehaviour {
     public FloorSwitch f_switch;
     public float count;
     public float journeyLength;
-    private float speed = 1.0f;
+    private float speed = 0.2f;
     [SerializeField]
     float fracJourney;
 
@@ -36,16 +36,14 @@ public class SwitchDoor : MonoBehaviour {
 
         if (open)
         {
-            count += 0.2f;
+            count += speed;
             if (count >= end.y) { count = end.y; }
         }
         else
         {
-            count -= 0.2f;
+            count -= speed;
             if(count <= 0) { count = 0; }
         }
-        //float elapsedTime = count * speed;
-        //if(elapsedTime >= end.y * speed) { elapsedTime = end.y * speed; }
         fracJourney = count / journeyLength;
 
         transform.position = Vector3.Lerp(start, end, fracJourney/4);
