@@ -20,7 +20,9 @@ public class TestBlast : MonoBehaviour {
     {
         if(other.tag == "Player")
         {
-            other.GetComponent<Rigidbody>().AddForce(new Vector3(Random.onUnitSphere.x, Random.onUnitSphere.y,0) * 10000.0f);
+            //other.GetComponent<Rigidbody>().AddForce(new Vector3(Random.onUnitSphere.x, Random.onUnitSphere.y,0) * 10000.0f);
+            Vector3 velocity = (other.transform.position - this.transform.position).normalized * speed;
+            other.GetComponent<Rigidbody>().AddForce(velocity * speed);
         }
     }
 }
