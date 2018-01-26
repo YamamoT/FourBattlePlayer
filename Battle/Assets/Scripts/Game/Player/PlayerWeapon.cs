@@ -27,14 +27,6 @@ public class PlayerWeapon : MonoBehaviour {
     private EquipManager _charEquipManager;
     private PlayerStates pStates;
     private GameObject activeWeapon = null;
-
-    private string[] _weaponPath = new string[] 
-    {
-        "t",
-        "e",
-        "s",
-        "t"
-    };
     
     // Use this for initialization
 	void Start() {
@@ -134,9 +126,6 @@ public class PlayerWeapon : MonoBehaviour {
             playerAnime.SetBool("sword", false);
         }
     }
-
-
-    
 
 
     private void OnTriggerStay(Collider col)
