@@ -7,6 +7,7 @@ public class PlayerWeapon : MonoBehaviour {
     private int PlayerID;
     GamepadInput.GamePad.Index playerNo; //コントローラナンバー
     public GamepadInput.GamepadState keyState; //キー情報
+    public GamepadInput.GamepadState Trigger; //トリガー処理用(書き方の例→ && !Trigger.X)
     Vector2 axis; //スティック情報
 
     [SerializeField]
@@ -108,7 +109,9 @@ public class PlayerWeapon : MonoBehaviour {
                 }
             }
         }
-        
+
+        //トリガー処理(キー操作系処理はここより上に書く)
+        Trigger = keyState;
 
         // アニメーション用
         if (_isWeapon)
@@ -161,5 +164,4 @@ public class PlayerWeapon : MonoBehaviour {
             }    
         }
     }
-
 }

@@ -7,6 +7,7 @@ public class PlayerMove : MonoBehaviour {
     private int PlayerID;
     GamepadInput.GamePad.Index playerNo; //コントローラナンバー
     public GamepadInput.GamepadState keyState; //キー情報
+    public GamepadInput.GamepadState Trigger; //キー情報
     Vector2 axis; //スティック情報
 
     Animator animator; //アニメーター
@@ -93,7 +94,7 @@ public class PlayerMove : MonoBehaviour {
         {
             moveDirection.y = 0f;
             //// ジャンプ処理
-            if (keyState.A && axis.y >= -0.5f)
+            if (keyState.A && !Trigger.A && axis.y >= -0.5f)
             {
                 animator.SetTrigger("jump");
                 moveDirection.y += pStates.JumpPow;
@@ -206,6 +207,10 @@ public class PlayerMove : MonoBehaviour {
         {
             animator.SetBool("crowch", false);
         }
+
+        //トリガー処理
+        Trigger = keyState;
+
     }
 
     public void FixedUpdate()
