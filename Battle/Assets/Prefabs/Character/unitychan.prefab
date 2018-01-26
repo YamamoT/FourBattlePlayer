@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 4085743556189124}
   - component: {fileID: 33753324142172374}
   - component: {fileID: 23751545895657054}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4466810689959104}
   - component: {fileID: 114208626999946378}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: FixedMuzzle
   m_TagString: Untagged
   m_Icon: {fileID: -6488666005112524639, guid: 0000000000000000d000000000000000, type: 0}
@@ -160,7 +160,7 @@ GameObject:
   - component: {fileID: 4488768194400670}
   - component: {fileID: 33045738077181786}
   - component: {fileID: 23552874592191136}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: StockBody_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 4516016244078334}
   - component: {fileID: 33691940099829180}
   - component: {fileID: 23340283476360674}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: FeedBarrelRing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 4309075044408036}
   - component: {fileID: 33284468430604634}
   - component: {fileID: 23054306052094210}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: blade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -440,7 +440,7 @@ GameObject:
   - component: {fileID: 4200341997229900}
   - component: {fileID: 33677329805638718}
   - component: {fileID: 23928600628402056}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Clip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -472,7 +472,7 @@ GameObject:
   - component: {fileID: 4523156130424076}
   - component: {fileID: 33436593097393546}
   - component: {fileID: 23032152937509058}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BarrelBodyDeco_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -549,7 +549,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4555325508114242}
   - component: {fileID: 114822629945866404}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: FixedMuzzle
   m_TagString: Untagged
   m_Icon: {fileID: -6488666005112524639, guid: 0000000000000000d000000000000000, type: 0}
@@ -672,7 +672,7 @@ GameObject:
   - component: {fileID: 4626359661794334}
   - component: {fileID: 33089102668832834}
   - component: {fileID: 23769077001853994}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: handgrip2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -704,7 +704,7 @@ GameObject:
   - component: {fileID: 4823412115757076}
   - component: {fileID: 33574904510429004}
   - component: {fileID: 23947772622241364}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: FeedBarrelRing_Mirror
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -721,7 +721,7 @@ GameObject:
   - component: {fileID: 4739572771661972}
   - component: {fileID: 33037173290456060}
   - component: {fileID: 23013830941294314}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Object001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -738,7 +738,7 @@ GameObject:
   - component: {fileID: 4498657734618488}
   - component: {fileID: 114264033736703652}
   - component: {fileID: 65959259360953132}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: RayGun
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -755,7 +755,7 @@ GameObject:
   - component: {fileID: 4429544487048080}
   - component: {fileID: 33309111711440616}
   - component: {fileID: 23627685627813524}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: handgrip1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -922,7 +922,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4352898595984922}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: muzzle
   m_TagString: Untagged
   m_Icon: {fileID: -1577725955494882426, guid: 0000000000000000d000000000000000, type: 0}
@@ -938,7 +938,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4346155197167422}
   - component: {fileID: 114036502070718070}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: FixedMuzzle
   m_TagString: Untagged
   m_Icon: {fileID: -6488666005112524639, guid: 0000000000000000d000000000000000, type: 0}
@@ -998,7 +998,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4126802748358748}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1015,7 +1015,7 @@ GameObject:
   - component: {fileID: 4897718491262734}
   - component: {fileID: 33302783410958824}
   - component: {fileID: 23620576470938122}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: FeedRingBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1093,7 +1093,7 @@ GameObject:
   - component: {fileID: 4804198297481246}
   - component: {fileID: 33303405628186768}
   - component: {fileID: 23740279699187028}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: IronSpike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1172,9 +1172,9 @@ GameObject:
   - component: {fileID: 4239274210002270}
   - component: {fileID: 65676722245297258}
   - component: {fileID: 114072831707852998}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SamuraiSword
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1219,7 +1219,7 @@ GameObject:
   - component: {fileID: 4068810482376120}
   - component: {fileID: 33064926922824686}
   - component: {fileID: 23876432101735706}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1284,7 +1284,7 @@ GameObject:
   - component: {fileID: 4984690916379382}
   - component: {fileID: 33084596343479360}
   - component: {fileID: 23689317173218460}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BarrelBodyDeco_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1481,7 +1481,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4387305499235328}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: muzzle
   m_TagString: Untagged
   m_Icon: {fileID: -1577725955494882426, guid: 0000000000000000d000000000000000, type: 0}
@@ -1527,9 +1527,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4398208004477868}
   - component: {fileID: 114229655183367388}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: MachineGun
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1605,7 +1605,7 @@ GameObject:
   - component: {fileID: 4589020145532856}
   - component: {fileID: 33459692113259338}
   - component: {fileID: 23987105752321604}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BarrelBodyDeco_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1637,7 +1637,7 @@ GameObject:
   - component: {fileID: 4964665632118618}
   - component: {fileID: 33660721754181336}
   - component: {fileID: 23372541114725246}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: blade base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1682,7 +1682,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4964314609573346}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: RayGun_EW1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1699,7 +1699,7 @@ GameObject:
   - component: {fileID: 4053589611356210}
   - component: {fileID: 33678255928407246}
   - component: {fileID: 23558390858073698}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: InteriorFeed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1744,7 +1744,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4019774037741308}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: katana
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1759,7 +1759,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4663347100067314}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: -1577725955494882426, guid: 0000000000000000d000000000000000, type: 0}
@@ -1791,7 +1791,7 @@ GameObject:
   - component: {fileID: 4299923124122164}
   - component: {fileID: 33842293124641696}
   - component: {fileID: 23992082087554294}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BarrelBodyDeco_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1823,7 +1823,7 @@ GameObject:
   - component: {fileID: 4173724363597244}
   - component: {fileID: 114807861311179620}
   - component: {fileID: 65249792674473964}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Fist
   m_TagString: Weapon
   m_Icon: {fileID: -1577725955494882426, guid: 0000000000000000d000000000000000, type: 0}
@@ -1870,8 +1870,25 @@ GameObject:
   - component: {fileID: 4477812946111458}
   - component: {fileID: 33361472647105064}
   - component: {fileID: 23959495999288584}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BarrelBodyDeco_02
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1556653347802776
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4366683829329806}
+  - component: {fileID: 65416563305140416}
+  - component: {fileID: 114325783835858784}
+  m_Layer: 10
+  m_Name: UnderCol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1917,7 +1934,7 @@ GameObject:
   - component: {fileID: 4859518737754162}
   - component: {fileID: 33905438020763334}
   - component: {fileID: 23226620790676630}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tsuba
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1985,7 +2002,7 @@ GameObject:
   - component: {fileID: 4578351959085620}
   - component: {fileID: 33886248137722184}
   - component: {fileID: 23441322681050872}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BackPlate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2196,7 +2213,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4838076974471236}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: -1577725955494882426, guid: 0000000000000000d000000000000000, type: 0}
@@ -2260,7 +2277,7 @@ GameObject:
   - component: {fileID: 4045881346175300}
   - component: {fileID: 33425058783775634}
   - component: {fileID: 23942326223799766}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BarrelBodyDeco_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2293,7 +2310,7 @@ GameObject:
   - component: {fileID: 4197090315796210}
   - component: {fileID: 33799795193700518}
   - component: {fileID: 23694763762720658}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BarrelBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2325,7 +2342,7 @@ GameObject:
   - component: {fileID: 4915486893214204}
   - component: {fileID: 33728705830395822}
   - component: {fileID: 23359031699899072}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Grip_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2372,7 +2389,7 @@ GameObject:
   - component: {fileID: 4934041855853898}
   - component: {fileID: 33032547542803090}
   - component: {fileID: 23221420759202966}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BarrelBodyDeco_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2404,7 +2421,7 @@ GameObject:
   - component: {fileID: 4244198761070904}
   - component: {fileID: 33756172456246896}
   - component: {fileID: 23822700023294712}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: krycke_gsmg_assembled
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2496,7 +2513,7 @@ GameObject:
   - component: {fileID: 4405901277015008}
   - component: {fileID: 33464026630130934}
   - component: {fileID: 23359214846899770}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: FeedCable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2543,7 +2560,7 @@ GameObject:
   - component: {fileID: 4235551587980102}
   - component: {fileID: 33313639486553010}
   - component: {fileID: 23151937255593736}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: FeedCable_Mirror
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2604,9 +2621,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4762344637407036}
   - component: {fileID: 114832994504847518}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: ShotGun
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2621,7 +2638,7 @@ GameObject:
   - component: {fileID: 4168011137405858}
   - component: {fileID: 33482375903059310}
   - component: {fileID: 23470091782479038}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: FeedRingBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2683,7 +2700,7 @@ GameObject:
   - component: {fileID: 4505713587402266}
   - component: {fileID: 33582904716824828}
   - component: {fileID: 23020863902501934}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SlingRing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3018,7 +3035,7 @@ GameObject:
   - component: {fileID: 4877674957237002}
   - component: {fileID: 33711112180515160}
   - component: {fileID: 23890488053795148}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: InteriorBarrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3096,7 +3113,7 @@ GameObject:
   - component: {fileID: 4768133278303872}
   - component: {fileID: 33793510607604224}
   - component: {fileID: 23102537730042310}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: InteriorFeed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3263,7 +3280,7 @@ GameObject:
   - component: {fileID: 4999297535531946}
   - component: {fileID: 33810907586465090}
   - component: {fileID: 23776695156429836}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Rail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3280,7 +3297,7 @@ GameObject:
   - component: {fileID: 4485633281521368}
   - component: {fileID: 33657838345384804}
   - component: {fileID: 23963902090186242}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BarrelBodyDeco_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3390,9 +3407,9 @@ GameObject:
   - component: {fileID: 33835602084339280}
   - component: {fileID: 23885094372910608}
   - component: {fileID: 114620545725310750}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HandGun
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4591,6 +4608,19 @@ Transform:
   m_Father: {fileID: 4973780978437418}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4366683829329806
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1556653347802776}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4753997333580812}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4370104966433472
 Transform:
   m_ObjectHideFlags: 1
@@ -5719,12 +5749,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1579773750671976}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.78, y: 1.67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4124964904120598}
   - {fileID: 4630433368608552}
   - {fileID: 4811504699299724}
+  - {fileID: 4366683829329806}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8056,12 +8087,12 @@ Rigidbody:
   m_GameObject: {fileID: 1579773750671976}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 1
+  m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 120
   m_CollisionDetection: 1
 --- !u!65 &65120165364033128
 BoxCollider:
@@ -8087,6 +8118,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65416563305140416
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1556653347802776}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5273781, y: 0.1532737, z: 0.61449814}
+  m_Center: {x: 0.037519693, y: 0.001506865, z: -0.052136898}
 --- !u!65 &65676722245297258
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -8154,7 +8197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37cdc7425e78aea45b7ff5db561dfc65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possesor: {fileID: 0}
+  possesor: {fileID: 1579773750671976}
   attackValue: 100
   attackInterval: 3
   power: 2
@@ -8250,9 +8293,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0533ec6eb68581d49a2f0fb450ba11a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerID: 2
   _hp: 50
   _spead: 4
-  _jumpPower: 10
+  _jumpPower: 5
   _nomalAttack: 0
   _weaponAttack: 0
   _bulletDense: 0
@@ -8263,6 +8307,18 @@ MonoBehaviour:
   _isDash: 0
   _isJump: 0
   _isCrouch: 0
+--- !u!114 &114325783835858784
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1556653347802776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3709ff496be5e7648bdac28a023f2af6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flag: 0
 --- !u!114 &114620545725310750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8301,8 +8357,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bba6582c70a5c64093e08759723c5c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dushIntervalTime: 0.05
-  _gravity: 10
+  jg: {fileID: 114325783835858784}
+  _gravity: 3
 --- !u!114 &114807861311179620
 MonoBehaviour:
   m_ObjectHideFlags: 1

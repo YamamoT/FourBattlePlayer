@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerWeapon : MonoBehaviour {
-
-    private int PlayerID;
-    GamepadInput.GamePad.Index playerNo; //コントローラナンバー
+    
     public GamepadInput.GamepadState keyState; //キー情報
     public GamepadInput.GamepadState Trigger; //トリガー処理用(書き方の例→ && !Trigger.X)
     Vector2 axis; //スティック情報
@@ -23,49 +21,23 @@ public class PlayerWeapon : MonoBehaviour {
     private int _attack = 0;
 
     Animator playerAnime;
-
-    private EquipManager _charEquipManager;
+    
     private PlayerStates pStates;
     private GameObject activeWeapon = null;
     
     // Use this for initialization
 	void Start() {
-        //コントローラ情報取得
-        PlayerID = this.GetComponent<PlayerStates>().PlayerID;
-        switch (PlayerID)
-        {
-            case 1:
-                playerNo = GamepadInput.GamePad.Index.One;
-                break;
-            case 2:
-                playerNo = GamepadInput.GamePad.Index.Two;
-                break;
-            case 3:
-                playerNo = GamepadInput.GamePad.Index.Three;
-                break;
-            case 4:
-                playerNo = GamepadInput.GamePad.Index.Four;
-                break;
-            default:
-                playerNo = GamepadInput.GamePad.Index.Any;
-                break;
-        }
-
-
-
+        pStates = GetComponent<PlayerStates>();
         playerAnime = GetComponent<Animator>();
-        _charEquipManager = GetComponent<EquipManager>();
     }
 	
 	// Update is called once per frame
 	void Update () {
 
         //キー情報取得
-        keyState = GamepadInput.GamePad.GetState(playerNo, false);
-        axis = GamepadInput.GamePad.GetAxis(GamepadInput.GamePad.Axis.LeftStick, playerNo, false);
-
-        Debug.Log(keyState);
-
+        keyState = GamepadInput.GamePad.GetState(pStates.ConNum, false);
+        axis = GamepadInput.GamePad.GetAxis(GamepadInput.GamePad.Axis.LeftStick, pStates.ConNum, false);
+        
         if (activeWeapon == null) activeWeapon = _fist;
 
         if (_isWeapon)
@@ -74,12 +46,26 @@ public class PlayerWeapon : MonoBehaviour {
             if (activeWeapon == null) return;
 
             // 武器攻撃
-            if (keyState.X || keyState.Y)
+            if (activeWeapon.name.Contains("Machine") || activeWeapon.name.Contains("Ray"))
             {
-                activeWeapon.GetComponent<Weapon>().Attack();
-                playerAnime.SetTrigger("attack");
+                if(keyState.X)
+                {
+                    if(activeWeapon.GetComponent<Weapon>().GetIsAttack() == false)
+                    {
+                        activeWeapon.GetComponent<Weapon>().Attack();
+                        playerAnime.SetTrigger("attack");
+                    }
+                }
             }
-
+            else
+            {
+                if (keyState.X && !Trigger.X)
+                {
+                    activeWeapon.GetComponent<Weapon>().Attack();
+                    playerAnime.SetTrigger("attack");
+                }
+            }
+           
             // 武器を捨てる
             if (keyState.LeftShoulder)
             {
@@ -92,12 +78,15 @@ public class PlayerWeapon : MonoBehaviour {
         else
         {
             //　武器持ってないときの攻撃
-            if (keyState.X || keyState.Y)
+            if (keyState.X && !Trigger.X)
             {
                 if (activeWeapon == _fist)
                 {
-                    activeWeapon.GetComponent<Weapon>().Attack();
-                    playerAnime.SetTrigger("attack");
+                    if (activeWeapon.GetComponent<Weapon>().GetIsAttack() == false)
+                    {
+                        activeWeapon.GetComponent<Weapon>().Attack();
+                        playerAnime.SetTrigger("attack");
+                    }
                 }
             }
         }

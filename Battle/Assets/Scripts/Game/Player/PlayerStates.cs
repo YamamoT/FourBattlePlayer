@@ -22,6 +22,8 @@ public class PlayerStates : MonoBehaviour {
     [SerializeField][Range(0f, 5f)]
     private float _invincibleTime; // 無敵時間
 
+    GamepadInput.GamePad.Index _conNum;
+
     float _time; // 時間
 
     // 生死判定
@@ -46,67 +48,32 @@ public class PlayerStates : MonoBehaviour {
     bool _isGround = false;
     bool _isTurn = false;
 
+    SkinnedMeshRenderer skinMeshRen;
+    MeshRenderer meshRen;
     List<GameObject> _list;
 
     private void Start()
     {
         _time = _invincibleTime; // 無敵時間の登録
         _list = GetAll(gameObject);
+        PlayerNum();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-
-        // ダメージ発生時の無敵時間
-        if (_isDamage)
-        {
-            _time -= Time.deltaTime;
-
-            // ダメージ受けた時の無敵描画処理
-            foreach (GameObject obj in _list)
-            {
-                if (obj.GetComponent<SkinnedMeshRenderer>() != null)
-                {
-                    obj.GetComponent<SkinnedMeshRenderer>().enabled = !obj.GetComponent<SkinnedMeshRenderer>().enabled;
-                }
-                if (obj.GetComponent<MeshRenderer>() != null)
-                {
-                    obj.GetComponent<MeshRenderer>().enabled = !obj.GetComponent<MeshRenderer>().enabled;
-                }
-            }
-
-            if (_time <= 0f)
-            {
-                foreach (GameObject obj in _list)
-                {
-
-                    if (obj.GetComponent<SkinnedMeshRenderer>() != null)
-                    {
-                        obj.GetComponent<SkinnedMeshRenderer>().enabled = true;
-                    }
-                    if (obj.GetComponent<MeshRenderer>() != null)
-                    {
-                        obj.GetComponent<MeshRenderer>().enabled = true;
-                    }
-                }
-                _time = _invincibleTime;
-                _isDamage = false;
-            }
-        }
+        DamageExpression(_isDamage);
     }
 
     /// <summary>
     /// 全ての子要素をリストに入れ、取得する方法
     /// 参考サイト：http://kazuooooo.hatenablog.com/entry/2015/08/07/010938
     /// </summary>
-
     public static List<GameObject> GetAll(GameObject obj)
     {
         List<GameObject> allChild = new List<GameObject>();
         GetChildren(obj, ref allChild);
         return allChild;
     }
-
     public static void GetChildren(GameObject obj, ref List<GameObject> allChild)
     {
         Transform children = obj.GetComponentInChildren<Transform>();
@@ -117,6 +84,74 @@ public class PlayerStates : MonoBehaviour {
             allChild.Add(tObj.gameObject);
             GetChildren(tObj.gameObject, ref allChild);
         }
+    }
+
+    /// <summary>
+    /// 一定ダメージを受けた時の無敵処理
+    /// </summary>
+    private void DamageExpression(bool isDamage)
+    {
+
+        if (!isDamage) return;
+
+        _time -= Time.deltaTime;
+
+        // ダメージ受けた時の無敵描画処理
+        foreach (GameObject obj in _list)
+        {
+            // 武器は点滅しないようにする
+            if (obj.tag == "Weapon") break;
+
+            // メッシュの表示非表示処理
+            skinMeshRen = obj.GetComponent<SkinnedMeshRenderer>();
+            meshRen = obj.GetComponent<MeshRenderer>();
+            if (skinMeshRen != null)skinMeshRen.enabled = !skinMeshRen.enabled;
+            if (meshRen != null) meshRen.enabled = !meshRen.enabled;
+        }
+        if (_time <= 0f)
+        {
+            // 全メッシュの表示処理
+            foreach (GameObject obj in _list)
+            {
+                skinMeshRen = obj.GetComponent<SkinnedMeshRenderer>();
+                meshRen = obj.GetComponent<MeshRenderer>();
+                if (skinMeshRen != null) skinMeshRen.enabled = true;
+                if (meshRen != null) meshRen.enabled = true;
+            }
+            _time = _invincibleTime;
+            _isDamage = false;
+        }
+    
+}
+
+    /// <summary>
+    /// プレイヤーのコントローラ番号を設定する
+    /// </summary>
+    public void PlayerNum()
+    {
+        switch (PlayerID)
+        {
+            case 1:
+                _conNum = GamepadInput.GamePad.Index.One;
+                break;
+            case 2:
+                _conNum = GamepadInput.GamePad.Index.Two;
+                break;
+            case 3:
+                _conNum = GamepadInput.GamePad.Index.Three;
+                break;
+            case 4:
+                _conNum = GamepadInput.GamePad.Index.Four;
+                break;
+            default:
+                _conNum = GamepadInput.GamePad.Index.Any;
+                break;
+        }
+    }
+
+    public GamepadInput.GamePad.Index ConNum
+    {
+        get { return _conNum; }
     }
 
 
