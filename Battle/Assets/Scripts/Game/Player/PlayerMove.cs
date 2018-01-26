@@ -34,19 +34,24 @@ public class PlayerMove : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        
         //キー情報取得
         keyState = GamepadInput.GamePad.GetState(pStates.ConNum, false);
         axis = GamepadInput.GamePad.GetAxis(GamepadInput.GamePad.Axis.LeftStick, pStates.ConNum, false);
         
         if (jg.flag)
         {
-            //// ジャンプ処理
+            animator.SetBool("isground", true);
+            // ジャンプ処理
             if (keyState.A && !Trigger.A && axis.y >= -0.5f)
             {
                 animator.SetTrigger("jump");
                 rigid.AddForce(0, 100f * pStates.JumpPow, 0);
             }
+        }
+        else
+        {
+            animator.SetBool("isground", false);
         }
 
         // ダッシュ状態か否かで速度を変える
@@ -99,6 +104,8 @@ public class PlayerMove : MonoBehaviour {
             animator.SetBool("crowch", false);
             pStates.IsCrouch = false;
         }
+
+        if(pStates.IsDamage) animator.SetTrigger("damage");
 
         //トリガー処理
         Trigger = keyState;

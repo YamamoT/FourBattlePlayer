@@ -13,6 +13,8 @@ public class PlayerWeapon : MonoBehaviour {
     [SerializeField]
     private GameObject _fist;
 
+    private Weapon _weaponFunc;
+
     [SerializeField]
     private bool _isWeapon = false; // 武器持ってるか持ってないか
     [SerializeField]
@@ -40,21 +42,33 @@ public class PlayerWeapon : MonoBehaviour {
         
         if (activeWeapon == null) activeWeapon = _fist;
 
+        _weaponFunc = activeWeapon.GetComponent<Weapon>();
+
         if (_isWeapon)
         {
             // 武器が非アクティブなら処理終了
             if (activeWeapon == null) return;
 
             // 武器攻撃
-            if (activeWeapon.name.Contains("Machine") || activeWeapon.name.Contains("Ray"))
+            if (activeWeapon.name.Contains("Machine"))
             {
                 if(keyState.X)
                 {
-                    if(activeWeapon.GetComponent<Weapon>().GetIsAttack() == false)
+                    if(_weaponFunc.GetIsAttack() == false)
                     {
-                        activeWeapon.GetComponent<Weapon>().Attack();
+                        _weaponFunc.Attack();
                         playerAnime.SetTrigger("attack");
                     }
+                }
+            }
+            else if (activeWeapon.name.Contains("Ray"))
+            {
+                if(keyState.X)_weaponFunc.Charge(0.05f, 0.005f);
+
+                if (GamepadInput.GamePad.GetButtonUp(GamepadInput.GamePad.Button.X, pStates.ConNum))
+                {
+                    _weaponFunc.Attack();
+                    playerAnime.SetTrigger("attack");
                 }
             }
             else
