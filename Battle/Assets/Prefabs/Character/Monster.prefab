@@ -2939,7 +2939,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1578242133819598}
-  m_LocalRotation: {x: 0.6154347, y: 0.34819594, z: -0.6154342, w: 0.3481962}
+  m_LocalRotation: {x: 0.61543465, y: 0.3481959, z: -0.61543417, w: 0.34819618}
   m_LocalPosition: {x: 0.24865364, y: 0.66157883, z: 0.00000030517577}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -5732,7 +5732,7 @@ MonoBehaviour:
   type: 2
   bullet: {fileID: 1065169040548614, guid: 3679e60b8b8786d49accd4eaeb79fbd0, type: 2}
   muzzle: {fileID: 4599059980268154}
-  flash: {fileID: 0}
+  flash: {fileID: 1362330512840834, guid: 3e5259cb0f02f0c42a14d8905acf737a, type: 2}
 --- !u!114 &114546778249089254
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5785,7 +5785,7 @@ MonoBehaviour:
   type: 1
   bullet: {fileID: 1065169040548614, guid: 3679e60b8b8786d49accd4eaeb79fbd0, type: 2}
   muzzle: {fileID: 4302139185329140}
-  flash: {fileID: 0}
+  flash: {fileID: 1362330512840834, guid: 3e5259cb0f02f0c42a14d8905acf737a, type: 2}
 --- !u!114 &114647035071937588
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5813,7 +5813,7 @@ MonoBehaviour:
   type: 1
   bullet: {fileID: 1065169040548614, guid: 3679e60b8b8786d49accd4eaeb79fbd0, type: 2}
   muzzle: {fileID: 4259001688458202}
-  flash: {fileID: 0}
+  flash: {fileID: 1362330512840834, guid: 3e5259cb0f02f0c42a14d8905acf737a, type: 2}
 --- !u!114 &114754420415987750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5881,7 +5881,7 @@ MonoBehaviour:
   type: 1
   bullet: {fileID: 1065169040548614, guid: 3679e60b8b8786d49accd4eaeb79fbd0, type: 2}
   muzzle: {fileID: 4628339911043850}
-  flash: {fileID: 0}
+  flash: {fileID: 1362330512840834, guid: 3e5259cb0f02f0c42a14d8905acf737a, type: 2}
 --- !u!136 &136520784160105968
 CapsuleCollider:
   m_ObjectHideFlags: 1

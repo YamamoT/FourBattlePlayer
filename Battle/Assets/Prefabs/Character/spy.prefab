@@ -5461,7 +5461,7 @@ MonoBehaviour:
   type: 1
   bullet: {fileID: 1065169040548614, guid: 3679e60b8b8786d49accd4eaeb79fbd0, type: 2}
   muzzle: {fileID: 4037980348972368}
-  flash: {fileID: 0}
+  flash: {fileID: 1362330512840834, guid: 3e5259cb0f02f0c42a14d8905acf737a, type: 2}
 --- !u!114 &114188388388837694
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5502,7 +5502,7 @@ MonoBehaviour:
   type: 2
   bullet: {fileID: 1065169040548614, guid: 3679e60b8b8786d49accd4eaeb79fbd0, type: 2}
   muzzle: {fileID: 4769701357325102}
-  flash: {fileID: 0}
+  flash: {fileID: 1362330512840834, guid: 3e5259cb0f02f0c42a14d8905acf737a, type: 2}
 --- !u!114 &114210393381590696
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5530,7 +5530,7 @@ MonoBehaviour:
   type: 1
   bullet: {fileID: 1065169040548614, guid: 3679e60b8b8786d49accd4eaeb79fbd0, type: 2}
   muzzle: {fileID: 4655110990792770}
-  flash: {fileID: 0}
+  flash: {fileID: 1362330512840834, guid: 3e5259cb0f02f0c42a14d8905acf737a, type: 2}
 --- !u!114 &114286315136829126
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5622,7 +5622,7 @@ MonoBehaviour:
   type: 1
   bullet: {fileID: 1065169040548614, guid: 3679e60b8b8786d49accd4eaeb79fbd0, type: 2}
   muzzle: {fileID: 4044316678437168}
-  flash: {fileID: 0}
+  flash: {fileID: 1362330512840834, guid: 3e5259cb0f02f0c42a14d8905acf737a, type: 2}
 --- !u!114 &114731864637740768
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5634,7 +5634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0533ec6eb68581d49a2f0fb450ba11a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerID: 1
+  PlayerID: 2
   _hp: 0
   _spead: 3.31
   _jumpPower: 10
