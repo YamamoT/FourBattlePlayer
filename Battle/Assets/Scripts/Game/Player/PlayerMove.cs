@@ -19,10 +19,9 @@ public class PlayerMove : MonoBehaviour {
     private PlayerStates pStates;
 
     [SerializeField]
-    private float _gravity = 300;    
+    private float _gravity = 300;
 
-    int playerLayer;
-    int slidingFloorLayer;
+    int damegeCount = 0;
 
     // Use this for initialization
     void Start () {
@@ -62,9 +61,9 @@ public class PlayerMove : MonoBehaviour {
         else if (Mathf.Round(axis.x * 10) / 10 > 0) pStates.IsTrun = false;
 
         if (pStates.IsTrun)
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 270f, 0), Time.deltaTime * 10);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 270f, 0), Time.deltaTime * 100);
         else
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 90f, 0), Time.deltaTime * 10);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 90f, 0), Time.deltaTime * 100);
 
         // しゃがんでると移動できないよ
         if (pStates.IsCrouch) moveDirection.x = 0f;
@@ -105,7 +104,19 @@ public class PlayerMove : MonoBehaviour {
             pStates.IsCrouch = false;
         }
 
-        if(pStates.IsDamage) animator.SetTrigger("damage");
+        
+
+        if (pStates.IsDamage && damegeCount == 0)
+        {
+            damegeCount++;
+            animator.SetTrigger("damage");
+        }
+        else if(!pStates.IsDamage)
+        {
+            damegeCount = 0;
+        }
+
+
 
         //トリガー処理
         Trigger = keyState;
@@ -115,5 +126,18 @@ public class PlayerMove : MonoBehaviour {
     {
         rigid.MovePosition(transform.position + moveDirection * Time.deltaTime);
         rigid.AddForce(Vector3.down * _gravity, ForceMode.Acceleration);
+        Debug.Log(this.name +":"+pStates.Hp);
+    }
+    private void OnTriggerEnter(Collider col)
+    {
+
+        if (pStates.IsDamage) return;
+
+        if(col.tag == "Bullet")
+        {
+            GameObject bull = col.gameObject;
+            pStates.IsDamage = true;
+            pStates.Hp -= bull.GetComponent<Bullet>().GetDamage();
+        }
     }
 }

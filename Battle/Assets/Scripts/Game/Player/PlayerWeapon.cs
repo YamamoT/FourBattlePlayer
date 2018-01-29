@@ -88,7 +88,7 @@ public class PlayerWeapon : MonoBehaviour {
                 activeWeapon = null; // 武器を空に
                 _isWeapon = false; // 武器を持っていない状態にする
             }
-        }
+        } 
         else
         {
             //　武器持ってないときの攻撃
