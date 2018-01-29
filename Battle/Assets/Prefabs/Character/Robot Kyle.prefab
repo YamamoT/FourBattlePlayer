@@ -1836,8 +1836,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1227384588637400}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.94, y: 0.96, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4122973783808722}
@@ -4593,6 +4593,7 @@ MonoBehaviour:
   type: 2
   bullet: {fileID: 1065169040548614, guid: 3679e60b8b8786d49accd4eaeb79fbd0, type: 2}
   muzzle: {fileID: 4274029353879622}
+  flash: {fileID: 0}
 --- !u!114 &114167055895708790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4660,6 +4661,7 @@ MonoBehaviour:
   type: 0
   bullet: {fileID: 0}
   muzzle: {fileID: 0}
+  flash: {fileID: 0}
 --- !u!114 &114661944588888624
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4687,6 +4689,7 @@ MonoBehaviour:
   type: 1
   bullet: {fileID: 1065169040548614, guid: 3679e60b8b8786d49accd4eaeb79fbd0, type: 2}
   muzzle: {fileID: 4628595083775528}
+  flash: {fileID: 0}
 --- !u!114 &114784737541309438
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4739,6 +4742,7 @@ MonoBehaviour:
   type: 1
   bullet: {fileID: 1065169040548614, guid: 3679e60b8b8786d49accd4eaeb79fbd0, type: 2}
   muzzle: {fileID: 4136201095087926}
+  flash: {fileID: 0}
 --- !u!114 &114977680708451442
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4766,6 +4770,7 @@ MonoBehaviour:
   type: 1
   bullet: {fileID: 1065169040548614, guid: 3679e60b8b8786d49accd4eaeb79fbd0, type: 2}
   muzzle: {fileID: 4290053335629172}
+  flash: {fileID: 0}
 --- !u!114 &114979933637612850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4793,6 +4798,7 @@ MonoBehaviour:
   type: 0
   bullet: {fileID: 0}
   muzzle: {fileID: 0}
+  flash: {fileID: 0}
 --- !u!136 &136510177354413684
 CapsuleCollider:
   m_ObjectHideFlags: 1

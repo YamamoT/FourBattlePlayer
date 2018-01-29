@@ -93,10 +93,15 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     private Transform muzzle = null;
 
-	/// <summary>
+    //発射エフェクト
+    [SerializeField]
+    private GameObject flash = null;
+
+
+    /// <summary>
     /// 初期化
     /// </summary>
-	void Start ()
+    void Start ()
     {
         // 攻撃回数の初期化
         c_attackValue = attackValue;
@@ -203,7 +208,14 @@ public class Weapon : MonoBehaviour
                     bulletInstance.GetComponent<Bullet>().SetDeviation(diffusivity);
                 }
 
+                //パーティクル
+                GameObject muzzleFlash = GameObject.Instantiate(flash) as GameObject;
+                muzzleFlash.transform.position = muzzle.position;
+                muzzleFlash.transform.localRotation = possesor.transform.localRotation;
+
+
                 c_attackValue--;
+
             }
             // 近接攻撃 (剣)
             else if(type == TYPE.Melee)
@@ -242,6 +254,13 @@ public class Weapon : MonoBehaviour
                 c_shotSize = shotSize;
                 changeTime = 0.0f;
                 isCharge = false;
+
+                //パーティクル
+                GameObject muzzleFlash = GameObject.Instantiate(flash) as GameObject;
+                muzzleFlash.transform.position = muzzle.position;
+                muzzleFlash.transform.localRotation = possesor.transform.localRotation;
+
+
             }
         }
     }

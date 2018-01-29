@@ -14,6 +14,14 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private float lifeTime = 1.0f;
 
+    //プレイヤー着弾エフェクト
+    [SerializeField]
+    private GameObject hitEffect = null;
+
+    //その他着弾エフェクト
+    [SerializeField]
+    private GameObject spark = null;
+
     /// <summary>
     /// 更新
     /// </summary>
@@ -80,6 +88,19 @@ public class Bullet : MonoBehaviour
         {
             if(other.tag != "Bullet")
             {
+                if (other.tag == "Player")
+                {
+                    //パーティクル
+                    GameObject effect = GameObject.Instantiate(hitEffect) as GameObject;
+                    effect.transform.position = this.transform.position;
+                }
+                else
+                {
+                    //パーティクル
+                    GameObject effect = GameObject.Instantiate(spark) as GameObject;
+                    effect.transform.position = this.transform.position;
+                }
+
                 Destroy(gameObject);
             }
         }
