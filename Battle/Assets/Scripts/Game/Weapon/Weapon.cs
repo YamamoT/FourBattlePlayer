@@ -186,6 +186,8 @@ public class Weapon : MonoBehaviour
 
                     // 弾に銃毎のダメージを設定
                     bulletInstance.GetComponent<Bullet>().SetDamage((int)power);
+                    // 射撃者の名前を設定
+                    bulletInstance.GetComponent<Bullet>().SetPossesorName(possesor.name);
 
                     Vector3 force;
 
@@ -234,6 +236,8 @@ public class Weapon : MonoBehaviour
                 bulletInstance.GetComponent<Rigidbody>().useGravity = false;
                 // 弾にダメージを設定する
                 bulletInstance.GetComponent<Bullet>().SetDamage((int)c_power);
+                // 射撃者の名前を設定
+                bulletInstance.GetComponent<Bullet>().SetPossesorName(possesor.name);
                 // 弾にチャージした分だけの大きさを設定する
                 bulletInstance.GetComponent<Transform>().localScale = new Vector3(c_shotSize, c_shotSize, c_shotSize);
 

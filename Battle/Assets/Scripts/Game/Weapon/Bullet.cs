@@ -22,6 +22,9 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private GameObject spark = null;
 
+    // 射撃者の名前格納用
+    private string possesorName;
+
     /// <summary>
     /// 更新
     /// </summary>
@@ -65,6 +68,15 @@ public class Bullet : MonoBehaviour
     }
 
     /// <summary>
+    /// 射撃者の名前設定
+    /// </summary>
+    /// <param name="name"></param>
+    public void SetPossesorName(string name)
+    {
+        possesorName = name;
+    }
+
+    /// <summary>
     /// 衝突判定
     /// </summary>
     /// <param name="other"></param>
@@ -90,9 +102,12 @@ public class Bullet : MonoBehaviour
             {
                 if (other.tag == "Player")
                 {
-                    //パーティクル
-                    GameObject effect = GameObject.Instantiate(hitEffect) as GameObject;
-                    effect.transform.position = this.transform.position;
+                    if(other.name != possesorName)
+                    {
+                        //パーティクル
+                        GameObject effect = GameObject.Instantiate(hitEffect) as GameObject;
+                        effect.transform.position = this.transform.position;
+                    }
                 }
                 else
                 {

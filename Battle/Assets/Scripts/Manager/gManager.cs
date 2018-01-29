@@ -28,12 +28,20 @@ public class gManager : MonoBehaviour
         currentState = SceneState.Title;
     }
 
+    /// <summary>
+    /// シーン設定
+    /// </summary>
+    /// <param name="state"></param>
     public void SetCurrentState(SceneState state)
     {
         currentState = state;
         OnSceneChanged(currentState);
     }
 
+    /// <summary>
+    /// シーン切り替え時の処理
+    /// </summary>
+    /// <param name="state"></param>
     void OnSceneChanged(SceneState state)
     {
         switch (state)
@@ -53,21 +61,33 @@ public class gManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// タイトル時の処理
+    /// </summary>
     void TitleAction()
     {
         SceneManager.LoadScene("TestTitleScene");
     }
 
+    /// <summary>
+    /// プレイ時の処理
+    /// </summary>
     void PlayAction()
     {
         SceneManager.LoadScene("TestPlayScene");
     }
 
+    /// <summary>
+    /// リザルト時の処理
+    /// </summary>
     void ResultAction()
     {
         SceneManager.LoadScene("TestResultScene");
     }
 
+    /// <summary>
+    /// コンフィグ時の処理
+    /// </summary>
     void ConfigAction()
     {
         SceneManager.LoadScene("TestConfigScene");
