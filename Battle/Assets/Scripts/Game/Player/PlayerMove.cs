@@ -25,23 +25,45 @@ public class PlayerMove : MonoBehaviour {
     int stackDamage = 0;
     float stackTime = 0f;
 
+    Collider[] col;
+
+    private enum pCols
+    {
+        Stand,
+        Crouch,
+    }
+
     // Use this for initialization
     void Start () {
         //アニメーター取得
-        animator = GetComponent<Animator>();
-        pStates = GetComponent<PlayerStates>();
-        rigid = GetComponent<Rigidbody>();
+        animator = this.GetComponent<Animator>();
+        pStates = this.GetComponent<PlayerStates>();
+        rigid = this.GetComponent<Rigidbody>();
+        col = this.GetComponents<Collider>();
+
+        int i = 0;
+        foreach(Collider cols in col) col[i++] = cols;
+        col[(int)pCols.Stand].enabled = true;
+        col[(int)pCols.Crouch].enabled = false;
     }
 	
 	// Update is called once per frame
 	void Update () {
-
-        
-
         //キー情報取得
         keyState = GamepadInput.GamePad.GetState(pStates.ConNum, false);
         axis = GamepadInput.GamePad.GetAxis(GamepadInput.GamePad.Axis.LeftStick, pStates.ConNum, false);
-        
+
+        if (pStates.IsCrouch)
+        {
+            col[(int)pCols.Stand].enabled = false;
+            col[(int)pCols.Crouch].enabled = true;
+        }
+        else
+        {
+            col[(int)pCols.Stand].enabled = true;
+            col[(int)pCols.Crouch].enabled = false;
+        }
+
         if (jg.flag)
         {
             animator.SetBool("isground", true);

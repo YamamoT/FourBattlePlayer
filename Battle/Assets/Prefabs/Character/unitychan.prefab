@@ -1859,7 +1859,7 @@ GameObject:
   - component: {fileID: 65249792674473964}
   m_Layer: 11
   m_Name: Fist
-  m_TagString: Weapon
+  m_TagString: Fist
   m_Icon: {fileID: -1577725955494882426, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1986,6 +1986,7 @@ GameObject:
   - component: {fileID: 95653299224087812}
   - component: {fileID: 54035338241917430}
   - component: {fileID: 136582726080324048}
+  - component: {fileID: 136983721807528740}
   - component: {fileID: 114942107556944854}
   - component: {fileID: 114779958369099252}
   - component: {fileID: 114309185627730830}
@@ -5751,7 +5752,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1579773750671976}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -9.2}
+  m_LocalPosition: {x: 3.29, y: 0.79, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4124964904120598}
@@ -8514,6 +8515,19 @@ CapsuleCollider:
   m_Height: 1.6870685
   m_Direction: 1
   m_Center: {x: 1.869425e-16, y: 0.79836965, z: -0.049345076}
+--- !u!136 &136983721807528740
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1579773750671976}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.2739724
+  m_Height: 1.1778286
+  m_Direction: 1
+  m_Center: {x: 0.00021231174, y: 0.5415546, z: 0}
 --- !u!137 &137086618044354010
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
