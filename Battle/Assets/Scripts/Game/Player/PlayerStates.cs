@@ -7,7 +7,7 @@ public class PlayerStates : MonoBehaviour {
     [SerializeField][Range(1, 4)]
     public int PlayerID; //プレイヤーナンバー
 
-    [SerializeField][Range(0,100)]
+    [SerializeField][Range(0,300)]
     private int _hp; // 体力
     [SerializeField][Range(1f, 10f)]
     private float _spead; // 移動速度

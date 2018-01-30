@@ -1898,8 +1898,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1227384588637400}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.07, y: 0.854, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4122973783808722}
@@ -4579,7 +4579,7 @@ BoxCollider:
   m_GameObject: {fileID: 1989033320491222}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -4649,7 +4649,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   possesor: {fileID: 1227384588637400}
   attackValue: 7
-  attackInterval: 2
+  attackInterval: 3
   power: 1
   attackSpeed: 0.7
   diffusion: 0.1
@@ -4827,7 +4827,7 @@ MonoBehaviour:
   attackInterval: 2
   power: 10
   attackSpeed: 1
-  diffusion: 0
+  diffusion: 0.005
   isAttack: 0
   isDebugMode: 0
   shellInValue: 1
@@ -4851,14 +4851,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerID: 1
-  _hp: 0
-  _spead: 6
-  _jumpPower: 5
-  _nomalAttack: 0
-  _weaponAttack: 10
+  _hp: 220
+  _spead: 3
+  _jumpPower: 4.5
+  _nomalAttack: 5
+  _weaponAttack: 0
   _bulletDense: 0
   _invincibleTime: 2
-  _flinch: 15
+  _flinch: 21
   _isDead: 0
   _isAttack: 0
   _isDamage: 0
