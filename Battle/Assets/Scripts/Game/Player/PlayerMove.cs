@@ -53,6 +53,7 @@ public class PlayerMove : MonoBehaviour {
         keyState = GamepadInput.GamePad.GetState(pStates.ConNum, false);
         axis = GamepadInput.GamePad.GetAxis(GamepadInput.GamePad.Axis.LeftStick, pStates.ConNum, false);
 
+        // コライダー変更処理
         if (pStates.IsCrouch)
         {
             col[(int)pCols.Stand].enabled = false;
@@ -91,6 +92,8 @@ public class PlayerMove : MonoBehaviour {
         else
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 90f, 0), Time.deltaTime * 100);
 
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+        
         // しゃがんでると移動できないよ
         if (pStates.IsCrouch) moveDirection.x = 0f;
 
