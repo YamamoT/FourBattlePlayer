@@ -52,7 +52,7 @@ public class PlayerWeapon : MonoBehaviour {
             // 武器攻撃
             if (activeWeapon.name.Contains("Machine"))
             {
-                if(keyState.X)
+                if(keyState.X && !pStates.IsDamage)
                 {
                     if(_weaponFunc.GetIsAttack() == false)
                     {
@@ -61,7 +61,7 @@ public class PlayerWeapon : MonoBehaviour {
                     }
                 }
             }
-            else if (activeWeapon.name.Contains("Ray"))
+            else if (activeWeapon.name.Contains("Ray") && !pStates.IsDamage)
             {
                 if(keyState.X)_weaponFunc.Charge(0.05f, 0.005f);
 
@@ -73,7 +73,7 @@ public class PlayerWeapon : MonoBehaviour {
             }
             else
             {
-                if (keyState.X && !Trigger.X)
+                if (keyState.X && !Trigger.X && !pStates.IsDamage)
                 {
                     activeWeapon.GetComponent<Weapon>().Attack();
                     playerAnime.SetTrigger("attack");
@@ -92,7 +92,7 @@ public class PlayerWeapon : MonoBehaviour {
         else
         {
             //　武器持ってないときの攻撃
-            if (keyState.X && !Trigger.X)
+            if (keyState.X && !Trigger.X && !pStates.IsDamage)
             {
                 if (activeWeapon == _fist)
                 {

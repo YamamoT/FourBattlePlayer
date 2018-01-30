@@ -21,6 +21,8 @@ public class PlayerStates : MonoBehaviour {
     private float _bulletDense; // 弾の密集率
     [SerializeField][Range(0f, 5f)]
     private float _invincibleTime; // 無敵時間
+    [SerializeField]
+    private int _flinch = 15;
 
     GamepadInput.GamePad.Index _conNum;
 
@@ -160,7 +162,13 @@ public class PlayerStates : MonoBehaviour {
         get { return _hp; }
         set { _hp = value; }
     }
-    
+    public int Flinch
+    {
+        get { return _flinch; }
+        set { _flinch = value; }
+    }
+
+
     public float Spead
     {
         get { return _spead; }

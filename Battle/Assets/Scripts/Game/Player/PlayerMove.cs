@@ -22,6 +22,8 @@ public class PlayerMove : MonoBehaviour {
     private float _gravity = 300;
 
     int damegeCount = 0;
+    int stackDamage = 0;
+    float stackTime = 0f;
 
     // Use this for initialization
     void Start () {
@@ -69,6 +71,27 @@ public class PlayerMove : MonoBehaviour {
 
         // しゃがんでると移動できないよ
         if (pStates.IsCrouch) moveDirection.x = 0f;
+
+        Debug.Log("stackDamage : " + stackDamage);
+
+        // ダメージのスタック処理
+        if (stackDamage != 0)
+        {
+            stackTime += Time.deltaTime;
+        }
+        else
+        {
+            stackTime = 0;
+        }
+
+        if (stackTime >= 1f) stackDamage = 0;
+
+        if(stackDamage >= pStates.Flinch)
+        {
+            pStates.IsDamage = true;
+            stackDamage = 0;
+        }
+
                 
         // アニメーター処理
         if (Mathf.Round(axis.x * 10) / 10 == 0)
@@ -128,18 +151,23 @@ public class PlayerMove : MonoBehaviour {
     {
         rigid.MovePosition(transform.position + moveDirection * Time.deltaTime);
         rigid.AddForce(Vector3.down * _gravity, ForceMode.Acceleration);
-        Debug.Log(this.name +":"+pStates.Hp);
     }
     private void OnTriggerEnter(Collider col)
     {
 
         if (pStates.IsDamage) return;
 
-        if(col.tag == "Bullet")
+        GameObject bull = col.gameObject;
+
+        if (col.tag == "Bullet")
         {
-            GameObject bull = col.gameObject;
-            pStates.IsDamage = true;
+            stackDamage += bull.GetComponent<Bullet>().GetDamage();
             pStates.Hp -= bull.GetComponent<Bullet>().GetDamage();
+        }
+        else if(col.tag == "Fist")
+        {
+            stackDamage += bull.GetComponent<Weapon>().GetDamage();
+            pStates.Hp -= bull.GetComponent<Weapon>().GetDamage();
         }
     }
 }
