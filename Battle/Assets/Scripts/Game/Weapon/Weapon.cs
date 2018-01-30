@@ -269,7 +269,7 @@ public class Weapon : MonoBehaviour
                 muzzleFlash.transform.position = muzzle.position;
                 muzzleFlash.transform.localRotation = possesor.transform.localRotation;
 
-
+                c_attackValue--;
             }
         }
     }
