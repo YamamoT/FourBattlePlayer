@@ -117,6 +117,11 @@ public class Weapon : MonoBehaviour
             if (possesor)
                 gameObject.GetComponent<BoxCollider>().enabled = false;
         }
+        else
+        {
+            if (possesor)
+                muzzle.GetComponent<FixedMuzzle>().SetFixedPosition(true,true,false);
+        }
 
         // 剣の攻撃持続時間が攻撃間隔よりも長い時、持続時間を攻撃間隔と同じにする
         if(meleeDuration >= attackInterval)

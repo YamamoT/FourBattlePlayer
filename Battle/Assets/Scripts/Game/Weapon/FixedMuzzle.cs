@@ -23,6 +23,10 @@ public class FixedMuzzle : MonoBehaviour
         // 初期位置設定
         transform.position = muzzle.position;
         muzzlePos = transform.position;
+
+        fixedPosX = true;
+        fixedPosY = true;
+        fixedPosZ = true;
 	}
 	
 	// 更新
@@ -38,4 +42,11 @@ public class FixedMuzzle : MonoBehaviour
 
         transform.position = muzzlePos;
 	}
+
+    public void SetFixedPosition(bool isX = true, bool isY = true, bool isZ = true)
+    {
+        fixedPosX = isX;
+        fixedPosY = isY;
+        fixedPosZ = isZ;
+    }
 }

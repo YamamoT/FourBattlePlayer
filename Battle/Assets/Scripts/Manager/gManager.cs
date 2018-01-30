@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// 状態一覧
+/// </summary>
 public enum SceneState
 {
     Title,
+    Select,
     Play,
     Result,
     Config
@@ -13,7 +17,7 @@ public enum SceneState
 
 public class gManager : MonoBehaviour
 {
-    // 
+    // インスタンス
     public static gManager instance;
     // 現在のシーン
     private SceneState currentState;
@@ -49,6 +53,9 @@ public class gManager : MonoBehaviour
             case SceneState.Title:
                 TitleAction();
                 break;
+            case SceneState.Select:
+                SelectAction();
+                break;
             case SceneState.Play:
                 PlayAction();
                 break;
@@ -67,6 +74,11 @@ public class gManager : MonoBehaviour
     void TitleAction()
     {
         SceneManager.LoadScene("TestTitleScene");
+    }
+
+    void SelectAction()
+    {
+        SceneManager.LoadScene("TestSelectScene");
     }
 
     /// <summary>
@@ -92,4 +104,5 @@ public class gManager : MonoBehaviour
     {
         SceneManager.LoadScene("TestConfigScene");
     }
+
 }
