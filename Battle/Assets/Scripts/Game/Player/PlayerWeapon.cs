@@ -111,7 +111,7 @@ public class PlayerWeapon : MonoBehaviour {
         // アニメーション用
         if (_isWeapon)
         {
-           if(_isSword)
+           if(activeWeapon.name.Contains("Sword"))
             {
                 //アニメーション(武器[剣]持っているとき)
                 playerAnime.SetBool("sword", true);

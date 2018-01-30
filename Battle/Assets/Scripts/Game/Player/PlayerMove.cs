@@ -33,7 +33,9 @@ public class PlayerMove : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
         
+
         //キー情報取得
         keyState = GamepadInput.GamePad.GetState(pStates.ConNum, false);
         axis = GamepadInput.GamePad.GetAxis(GamepadInput.GamePad.Axis.LeftStick, pStates.ConNum, false);
@@ -55,7 +57,7 @@ public class PlayerMove : MonoBehaviour {
 
         // ダッシュ状態か否かで速度を変える
         moveDirection.x = axis.x * pStates.Spead;
-        
+
         // 向きの回転
         if (Mathf.Round(axis.x * 10) / 10 < 0) pStates.IsTrun = true;
         else if (Mathf.Round(axis.x * 10) / 10 > 0) pStates.IsTrun = false;
