@@ -24,14 +24,12 @@ public class FixedMuzzle : MonoBehaviour
         transform.position = muzzle.position;
         muzzlePos = transform.position;
 
-        fixedPosX = true;
-        fixedPosY = true;
-        fixedPosZ = true;
 	}
 	
 	// 更新
 	void Update ()
     {
+
         // 座標更新
         if (fixedPosX)
             muzzlePos.x = muzzle.position.x;
@@ -40,10 +38,12 @@ public class FixedMuzzle : MonoBehaviour
         if (fixedPosZ)
             muzzlePos.z = muzzle.position.z;
 
-        transform.position = muzzlePos;
+        fixedPosZ = false;
+
+        transform.position =new Vector3(muzzle.position.x, muzzle.position.y, 0);
 	}
 
-    public void SetFixedPosition(bool isX = true, bool isY = true, bool isZ = true)
+    public void SetFixedPosition(bool isX, bool isY, bool isZ)
     {
         fixedPosX = isX;
         fixedPosY = isY;

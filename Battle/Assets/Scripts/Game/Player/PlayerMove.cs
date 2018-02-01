@@ -141,7 +141,7 @@ public class PlayerMove : MonoBehaviour {
         }
 
         //しゃがみ
-        if (axis.y < -0.5f && jg.flag)
+        if (axis.y < -0.9f && jg.flag)
         {
             if (animator.GetBool("crowch") == false)
             {
@@ -185,7 +185,7 @@ public class PlayerMove : MonoBehaviour {
 
         GameObject bull = col.gameObject;
 
-        if (col.tag == "Bullet")
+        if (col.tag == "Bullet" && col.GetComponent<Bullet>().GetPossesorName() != this.name)
         {
             stackDamage += bull.GetComponent<Bullet>().GetDamage();
             pStates.Hp -= bull.GetComponent<Bullet>().GetDamage();

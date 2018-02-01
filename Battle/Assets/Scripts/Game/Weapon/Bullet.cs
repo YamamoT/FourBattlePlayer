@@ -76,37 +76,30 @@ public class Bullet : MonoBehaviour
         possesorName = name;
     }
 
+    public string GetPossesorName()
+    {
+        return possesorName;
+    }
+
     /// <summary>
     /// 衝突判定
     /// </summary>
     /// <param name="other"></param>
     public void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("当たった : " + other.name);
-
-        //// 衝突対象のタグがBulletでない場合
-        //if (other.tag != "Bullet")
-        //{
-        //    Debug.Log("弾以外のものに当たった");
-        //    Destroy(gameObject);
-        //}
-        //if (other.tag != "Weapon")
-        //{
-        //    Debug.Log("武器以外のものに当たった");
-        //    Destroy(gameObject);
-        //}
-
-        if(other.tag != "Weapon")
+        if (other.tag != "Weapon")
         {
-            if(other.tag != "Bullet")
+            if (other.tag != "Bullet")
             {
                 if (other.tag == "Player")
                 {
-                    if(other.name != possesorName)
+                    if (other.name != possesorName)
                     {
                         //パーティクル
                         GameObject effect = GameObject.Instantiate(hitEffect) as GameObject;
                         effect.transform.position = this.transform.position;
+                        Debug.Log("射撃者とは違う人に当たった" + other.name);
+                        Destroy(gameObject);
                     }
                 }
                 else
@@ -114,11 +107,12 @@ public class Bullet : MonoBehaviour
                     //パーティクル
                     GameObject effect = GameObject.Instantiate(spark) as GameObject;
                     effect.transform.position = this.transform.position;
-                }
+                    Destroy(gameObject);
+                    Debug.Log("Player以外に当たった" + other.name);
 
-                Destroy(gameObject);
+                }
             }
         }
     }
 
-}
+    }

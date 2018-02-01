@@ -66,7 +66,7 @@ public class Weapon : MonoBehaviour
     // 撃ちだす弾の大きさ
     [SerializeField]
     private float shotSize;
-    private float c_shotSize;
+    private float c_shotSize = 0.1f;
 
     // チャージ時のダメージ上限
     [SerializeField]
@@ -111,6 +111,7 @@ public class Weapon : MonoBehaviour
     /// </summary>
     void Start ()
     {
+        Debug.Log("呼ばれた" + this.name);
         // 攻撃回数の初期化
         c_attackValue = attackValue;
         // 攻撃間隔の初期化
@@ -129,8 +130,13 @@ public class Weapon : MonoBehaviour
         }
         else
         {
+            Debug.Log("melee以外");
             if (possesor)
-                muzzle.GetComponent<FixedMuzzle>().SetFixedPosition(true,true,false);
+            {
+                Debug.Log("FixedMuzzle変更");
+                muzzle.GetComponent<FixedMuzzle>().SetFixedPosition(true, true, false);
+            }
+                
         }
 
         // 剣の攻撃持続時間が攻撃間隔よりも長い時、持続時間を攻撃間隔と同じにする
@@ -178,7 +184,7 @@ public class Weapon : MonoBehaviour
         if(meleeIsOccurs)
         {
             c_occursTime -= Time.deltaTime;
-            Debug.Log(c_occursTime);
+            //Debug.Log(c_occursTime);
             if(c_occursTime <= 0.0f)
             {
                 isAttack = true;
@@ -186,7 +192,6 @@ public class Weapon : MonoBehaviour
                 gameObject.GetComponent<BoxCollider>().enabled = true;
                 meleeIsOccurs = false;
                 c_occursTime = occursTime;
-                Debug.Log("ここまできた");
             }
         }
 
@@ -255,7 +260,6 @@ public class Weapon : MonoBehaviour
                 //isAttack = true;
                 //isMeleeAttack = true;
                 //gameObject.GetComponent<BoxCollider>().enabled = true;
-                Debug.Log("攻撃発生");
                 meleeIsOccurs = true;
             }
             else if(type == TYPE.Special)
@@ -273,6 +277,7 @@ public class Weapon : MonoBehaviour
                 // 弾にチャージした分だけの大きさを設定する
                 bulletInstance.GetComponent<Transform>().localScale = new Vector3(c_shotSize, c_shotSize, c_shotSize);
 
+                Debug.Log(c_shotSize);
                 Vector3 force;
 
                 // 弾速を設定
@@ -381,6 +386,14 @@ public class Weapon : MonoBehaviour
     public void ReLoad()
     {
         c_attackValue = attackValue;
+
+        if(type == TYPE.Special)
+        {
+            c_power = power;
+            c_shotSize = shotSize;
+            changeTime = 0.0f;
+            isCharge = false;
+        }
     }
 
     /// <summary>

@@ -73,12 +73,12 @@ public class gManager : MonoBehaviour
     /// </summary>
     void TitleAction()
     {
-        SceneManager.LoadScene("TestTitleScene");
+        SceneManager.LoadScene("Title");
     }
 
     void SelectAction()
     {
-        SceneManager.LoadScene("TestSelectScene");
+        SceneManager.LoadScene("Select");
     }
 
     /// <summary>
@@ -86,7 +86,6 @@ public class gManager : MonoBehaviour
     /// </summary>
     void PlayAction()
     {
-        SceneManager.LoadScene("TestPlayScene");
     }
 
     /// <summary>
@@ -94,7 +93,6 @@ public class gManager : MonoBehaviour
     /// </summary>
     void ResultAction()
     {
-        SceneManager.LoadScene("TestResultScene");
     }
 
     /// <summary>
@@ -102,7 +100,6 @@ public class gManager : MonoBehaviour
     /// </summary>
     void ConfigAction()
     {
-        SceneManager.LoadScene("TestConfigScene");
     }
 
 }
