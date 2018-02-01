@@ -60,6 +60,10 @@ public class PlayerStates : MonoBehaviour {
         _list = GetAll(gameObject);
         PlayerNum();
     }
+    private void Update()
+    {
+        if (_hp <= 0) Destroy(this);
+    }
 
     private void FixedUpdate()
     {

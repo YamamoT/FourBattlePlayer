@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour {
+public class SpinObj : MonoBehaviour {
 
+    [SerializeField]
+    private float _rotSpeed = 5;
 	// Use this for initialization
 	void Start () {
 		
@@ -11,6 +13,6 @@ public class NewBehaviourScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        this.transform.Rotate(0, _rotSpeed, 0);
 	}
 }
