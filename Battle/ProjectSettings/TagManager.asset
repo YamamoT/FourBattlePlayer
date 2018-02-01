@@ -8,6 +8,7 @@ TagManager:
   - Weapon
   - MoveObject
   - Bullet
+  - Fist
   layers:
   - Default
   - TransparentFX
