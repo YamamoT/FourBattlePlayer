@@ -156,4 +156,9 @@ public class PlayerWeapon : MonoBehaviour {
             }    
         }
     }
+
+    public Weapon GetCurrentWeapon()
+    {
+        return _weaponFunc;
+    }
 }

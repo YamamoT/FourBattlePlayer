@@ -23,7 +23,7 @@ public class PlayerGauge : MonoBehaviour
 
     // 所持中の武器
     [SerializeField]
-    private GameObject weapon = null;
+    private Weapon weapon = null;
     // 武器画像
     [SerializeField]
     private Image[] WeaponsImage;
@@ -47,6 +47,9 @@ public class PlayerGauge : MonoBehaviour
     [SerializeField]
     private Text bulletValueText = null;
 
+    // HP上限保存用
+    private int HpLimit;
+
     
 	/// <summary>
     /// 初期化
@@ -59,6 +62,9 @@ public class PlayerGauge : MonoBehaviour
             currentWeaponImage = currentWeaponImage.GetComponent<Image>();
             // テキスト初期化
             bulletValueText.text = "00";
+            // HP初期化
+            HpLimit = player.GetComponent<PlayerStates>().Hp;
+            SetHp(player.GetComponent<PlayerStates>().Hp, HpLimit);
         }
     }
 	
@@ -67,12 +73,16 @@ public class PlayerGauge : MonoBehaviour
     /// </summary>
 	void Update ()
     {
+        SetWeapon(player.GetComponent<PlayerWeapon>().GetCurrentWeapon());
+
         GaugeProcess();
 
         // 武器の切り替え表示
         WeponsPossessed();
         // 武器の残弾表示
         WeponRemainBullet();
+
+        SetHp(player.GetComponent<PlayerStates>().Hp, HpLimit);
     }
 
    /// <summary>
@@ -153,7 +163,7 @@ public class PlayerGauge : MonoBehaviour
     /// 所持中の武器設定
     /// </summary>
     /// <param name="weponObject">所持中の武器</param>
-    public void SetWeapon(GameObject weaponObject)
+    public void SetWeapon(Weapon weaponObject)
     {
         weapon = weaponObject;
     }

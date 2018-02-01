@@ -87,6 +87,8 @@ public class Bullet : MonoBehaviour
     /// <param name="other"></param>
     public void OnTriggerEnter(Collider other)
     {
+        Debug.Log(" 当たった" + other.name);
+
         if (other.tag != "Weapon")
         {
             if (other.tag != "Bullet")
