@@ -8231,7 +8231,7 @@ MonoBehaviour:
   possesor: {fileID: 1579773750671976}
   attackValue: 100
   attackInterval: 3
-  power: 2
+  power: 15
   attackSpeed: 0
   diffusion: 0
   isAttack: 0
@@ -8289,7 +8289,7 @@ MonoBehaviour:
   possesor: {fileID: 1579773750671976}
   attackValue: 80
   attackInterval: 1
-  power: 1
+  power: 3
   attackSpeed: 0.8
   diffusion: 0.03
   isAttack: 0
@@ -8325,7 +8325,7 @@ MonoBehaviour:
   shellInValue: 1
   meleeDuration: 0
   shotSize: 0.1
-  damageLimit: 10
+  damageLimit: 25
   changeTime: 2
   type: 2
   bullet: {fileID: 1065169040548614, guid: 3679e60b8b8786d49accd4eaeb79fbd0, type: 2}
@@ -8346,7 +8346,7 @@ MonoBehaviour:
   _hp: 200
   _spead: 6
   _jumpPower: 7
-  _nomalAttack: 3
+  _nomalAttack: 0
   _weaponAttack: 0
   _bulletDense: 0
   _invincibleTime: 2
@@ -8396,7 +8396,7 @@ MonoBehaviour:
   possesor: {fileID: 1579773750671976}
   attackValue: 100
   attackInterval: 3
-  power: 1
+  power: 3
   attackSpeed: 0
   diffusion: 0
   isAttack: 0
@@ -8439,7 +8439,7 @@ MonoBehaviour:
   possesor: {fileID: 1579773750671976}
   attackValue: 7
   attackInterval: 3
-  power: 1
+  power: 4
   attackSpeed: 0.7
   diffusion: 0.1
   isAttack: 0

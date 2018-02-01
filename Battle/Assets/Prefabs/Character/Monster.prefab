@@ -892,7 +892,7 @@ GameObject:
   - component: {fileID: 65149253662770250}
   m_Layer: 11
   m_Name: Fist
-  m_TagString: Weapon
+  m_TagString: Fist
   m_Icon: {fileID: -1577725955494882426, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5733,7 +5733,7 @@ MonoBehaviour:
   possesor: {fileID: 1071939655261078}
   attackValue: 100
   attackInterval: 3
-  power: 1
+  power: 15
   attackSpeed: 0
   diffusion: 0
   isAttack: 0
@@ -5825,7 +5825,7 @@ MonoBehaviour:
   possesor: {fileID: 1071939655261078}
   attackValue: 80
   attackInterval: 1
-  power: 1
+  power: 3
   attackSpeed: 1
   diffusion: 0.05
   isAttack: 0
@@ -5876,7 +5876,7 @@ MonoBehaviour:
   shellInValue: 1
   meleeDuration: 0
   shotSize: 0.1
-  damageLimit: 10
+  damageLimit: 25
   changeTime: 2
   type: 2
   bullet: {fileID: 1065169040548614, guid: 3679e60b8b8786d49accd4eaeb79fbd0, type: 2}
@@ -5977,7 +5977,7 @@ MonoBehaviour:
   possesor: {fileID: 1071939655261078}
   attackValue: 7
   attackInterval: 1
-  power: 1
+  power: 4
   attackSpeed: 0.7
   diffusion: 0.1
   isAttack: 0
