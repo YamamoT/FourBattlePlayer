@@ -311,7 +311,7 @@ public class Weapon : MonoBehaviour
     /// <param name="other">衝突対象</param>
     public void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player" && isMeleeAttack && isAttack)
+        if(type == TYPE.Melee)
         {
             isMeleeAttack = false;
             c_meleeDuration = meleeDuration;

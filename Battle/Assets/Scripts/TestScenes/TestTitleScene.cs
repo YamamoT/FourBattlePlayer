@@ -29,6 +29,10 @@ public class TestTitleScene : MonoBehaviour
         {
             gManager.instance.SetCurrentState(SceneState.Config);
         }
+        else if(Input.GetKeyDown(KeyCode.S))
+        {
+            gManager.instance.SetCurrentState(SceneState.Select);
+        }
             
 	}
 }
