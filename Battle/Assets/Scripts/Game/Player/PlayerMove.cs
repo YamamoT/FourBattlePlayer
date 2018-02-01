@@ -9,6 +9,7 @@ public class PlayerMove : MonoBehaviour {
     Vector2 axis; //スティック情報
 
     public JudgGround jg;
+    public WallJudg wall;
 
     Animator animator; //アニメーター
 
@@ -97,10 +98,10 @@ public class PlayerMove : MonoBehaviour {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 90f, 0), Time.deltaTime * 100);
 
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
-        
-        // しゃがんでると移動できないよ
-        if (pStates.IsCrouch) moveDirection.x = 0f;
 
+        // しゃがんでると移動できないよ
+        if (pStates.IsCrouch || wall.jg == true) moveDirection.x = 0f;
+        
         Debug.Log("stackDamage : " + stackDamage);
 
         // ダメージのスタック処理
@@ -158,8 +159,6 @@ public class PlayerMove : MonoBehaviour {
             pStates.IsCrouch = false;
         }
 
-        
-
         if (pStates.IsDamage && damegeCount == 0)
         {
             damegeCount++;
@@ -169,8 +168,6 @@ public class PlayerMove : MonoBehaviour {
         {
             damegeCount = 0;
         }
-
-
 
         //トリガー処理
         Trigger = keyState;
@@ -201,8 +198,6 @@ public class PlayerMove : MonoBehaviour {
             //パーティクル
             GameObject effect = GameObject.Instantiate(hitEffect) as GameObject;
             effect.transform.position = col.transform.position;
-
-
         }
     }
 }
