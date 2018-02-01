@@ -8238,6 +8238,7 @@ MonoBehaviour:
   isDebugMode: 1
   shellInValue: 1
   meleeDuration: 4
+  occursTime: 0
   shotSize: 0
   damageLimit: 0
   changeTime: 0
@@ -8296,6 +8297,7 @@ MonoBehaviour:
   isDebugMode: 1
   shellInValue: 1
   meleeDuration: 0
+  occursTime: 0
   shotSize: 0
   damageLimit: 0
   changeTime: 0
@@ -8324,6 +8326,7 @@ MonoBehaviour:
   isDebugMode: 1
   shellInValue: 1
   meleeDuration: 0
+  occursTime: 0
   shotSize: 0.1
   damageLimit: 25
   changeTime: 2
@@ -8381,6 +8384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jg: {fileID: 114325783835858784}
+  hitEffect: {fileID: 1582050535588218, guid: 6632beadad4fb8e47925482e9d5501f7, type: 2}
   _gravity: 3
 --- !u!114 &114807861311179620
 MonoBehaviour:
@@ -8403,6 +8407,7 @@ MonoBehaviour:
   isDebugMode: 0
   shellInValue: 1
   meleeDuration: 5
+  occursTime: 0
   shotSize: 0
   damageLimit: 0
   changeTime: 0
@@ -8446,6 +8451,7 @@ MonoBehaviour:
   isDebugMode: 0
   shellInValue: 7
   meleeDuration: 0
+  occursTime: 0
   shotSize: 0
   damageLimit: 0
   changeTime: 0
@@ -8474,6 +8480,7 @@ MonoBehaviour:
   isDebugMode: 0
   shellInValue: 1
   meleeDuration: 0
+  occursTime: 0
   shotSize: 0
   damageLimit: 0
   changeTime: 0

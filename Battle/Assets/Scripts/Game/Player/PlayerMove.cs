@@ -12,6 +12,10 @@ public class PlayerMove : MonoBehaviour {
 
     Animator animator; //アニメーター
 
+    //プレイヤー着弾エフェクト
+    [SerializeField]
+    private GameObject hitEffect = null;
+
     private Rigidbody rigid;
     private bool ground;
 
@@ -193,6 +197,12 @@ public class PlayerMove : MonoBehaviour {
         {
             stackDamage += bull.GetComponent<Weapon>().GetDamage();
             pStates.Hp -= bull.GetComponent<Weapon>().GetDamage();
+
+            //パーティクル
+            GameObject effect = GameObject.Instantiate(hitEffect) as GameObject;
+            effect.transform.position = col.transform.position;
+
+
         }
     }
 }

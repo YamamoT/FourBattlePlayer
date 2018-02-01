@@ -2444,7 +2444,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4410146902818774}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4172444470634266
 Transform:
@@ -2871,8 +2871,8 @@ Transform:
   - {fileID: 4073382928637514}
   - {fileID: 4172444470634266}
   - {fileID: 4114980785613060}
-  - {fileID: 4412794937796392}
   - {fileID: 4164957028941878}
+  - {fileID: 4412794937796392}
   - {fileID: 4588119348678442}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -2890,7 +2890,7 @@ Transform:
   m_Children:
   - {fileID: 4238920793327288}
   m_Father: {fileID: 4410146902818774}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4419651972393702
 Transform:
@@ -5560,6 +5560,7 @@ MonoBehaviour:
   isDebugMode: 1
   shellInValue: 1
   meleeDuration: 4
+  occursTime: 0
   shotSize: 0
   damageLimit: 0
   changeTime: 0
@@ -5579,6 +5580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jg: {fileID: 114067414006382336}
+  hitEffect: {fileID: 1582050535588218, guid: 6632beadad4fb8e47925482e9d5501f7, type: 2}
   _gravity: 3
 --- !u!114 &114205869046440812
 MonoBehaviour:
@@ -5601,6 +5603,7 @@ MonoBehaviour:
   isDebugMode: 1
   shellInValue: 1
   meleeDuration: 0
+  occursTime: 0
   shotSize: 0.1
   damageLimit: 25
   changeTime: 2
@@ -5629,6 +5632,7 @@ MonoBehaviour:
   isDebugMode: 1
   shellInValue: 1
   meleeDuration: 0
+  occursTime: 0
   shotSize: 0
   damageLimit: 0
   changeTime: 0
@@ -5678,6 +5682,7 @@ MonoBehaviour:
   isDebugMode: 0
   shellInValue: 1
   meleeDuration: 0
+  occursTime: 0
   shotSize: 0
   damageLimit: 0
   changeTime: 0
@@ -5762,6 +5767,7 @@ MonoBehaviour:
   isDebugMode: 0
   shellInValue: 1
   meleeDuration: 5
+  occursTime: 0
   shotSize: 0
   damageLimit: 0
   changeTime: 0
@@ -5790,6 +5796,7 @@ MonoBehaviour:
   isDebugMode: 0
   shellInValue: 7
   meleeDuration: 0
+  occursTime: 0
   shotSize: 0
   damageLimit: 0
   changeTime: 0
