@@ -1192,7 +1192,7 @@ GameObject:
   - component: {fileID: 114072831707852998}
   m_Layer: 11
   m_Name: SamuraiSword
-  m_TagString: Weapon
+  m_TagString: Fist
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8237,7 +8237,7 @@ MonoBehaviour:
   isAttack: 0
   isDebugMode: 1
   shellInValue: 1
-  meleeDuration: 0
+  meleeDuration: 4
   shotSize: 0
   damageLimit: 0
   changeTime: 0
