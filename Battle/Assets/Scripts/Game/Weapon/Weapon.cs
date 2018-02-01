@@ -47,13 +47,21 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     private int shellInValue = 1;
 
-    // 剣が攻撃中かどうか
+    // 近接攻撃中かどうか
     private bool isMeleeAttack;
 
-    // 剣の攻撃持続時間
+    //近接の持続時間
     [SerializeField]
     private float meleeDuration;
     private float c_meleeDuration;
+
+    // 近接攻撃発生タイミング
+    [SerializeField]
+    private float occursTime;
+    private float c_occursTime;
+
+    // 近接攻撃が発生しているか
+    private bool meleeIsOccurs = false;
 
     // 撃ちだす弾の大きさ
     [SerializeField]
@@ -109,6 +117,8 @@ public class Weapon : MonoBehaviour
         c_attackInterval = attackInterval;
         // ダメージの初期化
         c_power = power;
+        // 攻撃発生タイミングの初期化
+        c_occursTime = occursTime;
 
         // 近接処理
         if(type == TYPE.Melee)
@@ -162,7 +172,22 @@ public class Weapon : MonoBehaviour
                 c_meleeDuration = meleeDuration;
                 gameObject.GetComponent<BoxCollider>().enabled = false;
             }
-            Debug.Log("enabled:" + gameObject.GetComponent<BoxCollider>().enabled);
+        }
+
+        // 近接攻撃発生
+        if(meleeIsOccurs)
+        {
+            c_occursTime -= Time.deltaTime;
+            Debug.Log(c_occursTime);
+            if(c_occursTime <= 0.0f)
+            {
+                isAttack = true;
+                isMeleeAttack = true;
+                gameObject.GetComponent<BoxCollider>().enabled = true;
+                meleeIsOccurs = false;
+                c_occursTime = occursTime;
+                Debug.Log("ここまできた");
+            }
         }
 
         // デバッグモード
@@ -227,9 +252,11 @@ public class Weapon : MonoBehaviour
             // 近接攻撃 (剣)
             else if(type == TYPE.Melee)
             {
-                isAttack = true;
-                isMeleeAttack = true;
-                gameObject.GetComponent<BoxCollider>().enabled = true;
+                //isAttack = true;
+                //isMeleeAttack = true;
+                //gameObject.GetComponent<BoxCollider>().enabled = true;
+                Debug.Log("攻撃発生");
+                meleeIsOccurs = true;
             }
             else if(type == TYPE.Special)
             {
