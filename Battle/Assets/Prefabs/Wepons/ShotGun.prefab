@@ -51,6 +51,7 @@ GameObject:
   - component: {fileID: 4753418205635818}
   - component: {fileID: 33987387375903280}
   - component: {fileID: 23608327884491264}
+  - component: {fileID: 65657505772354158}
   m_Layer: 0
   m_Name: Object001
   m_TagString: Untagged
@@ -67,6 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4356179522155558}
   - component: {fileID: 114761200003329188}
+  - component: {fileID: 65270623831550832}
   m_Layer: 0
   m_Name: ShotGun
   m_TagString: Weapon
@@ -200,6 +202,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1626079992132924}
   m_Mesh: {fileID: 4300000, guid: 8eff7ab9d6f195544942b91f34313d1d, type: 3}
+--- !u!65 &65270623831550832
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1662007200503486}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.2, y: 0.2, z: 1.5}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65657505772354158
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1626079992132924}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.1414497, y: 0.26089498, z: 0.054150514}
+  m_Center: {x: -0.000023245817, y: 0.0040654987, z: -0.08082927}
 --- !u!114 &114761200003329188
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -221,6 +247,7 @@ MonoBehaviour:
   isDebugMode: 0
   shellInValue: 7
   meleeDuration: 0
+  occursTime: 0
   shotSize: 0
   damageLimit: 0
   changeTime: 0

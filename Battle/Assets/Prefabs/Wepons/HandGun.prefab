@@ -192,6 +192,7 @@ MonoBehaviour:
   isDebugMode: 0
   shellInValue: 1
   meleeDuration: 0
+  occursTime: 0
   shotSize: 0
   damageLimit: 0
   changeTime: 0

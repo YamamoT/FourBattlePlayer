@@ -54,6 +54,7 @@ GameObject:
   - component: {fileID: 65877059960624292}
   - component: {fileID: 54036112459451776}
   - component: {fileID: 114975809414216428}
+  - component: {fileID: 65051750260946540}
   m_Layer: 0
   m_Name: SamuraiSword
   m_TagString: Weapon
@@ -205,14 +206,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1292601556975592}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
   - {fileID: 4284474289906438}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!4 &4796212775982568
 Transform:
   m_ObjectHideFlags: 1
@@ -446,6 +447,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65051750260946540
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1292601556975592}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 6.5, z: 0.5}
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!65 &65877059960624292
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -479,9 +492,11 @@ MonoBehaviour:
   isDebugMode: 1
   shellInValue: 1
   meleeDuration: 2
+  occursTime: 0
   shotSize: 0
   damageLimit: 0
   changeTime: 0
   type: 0
   bullet: {fileID: 0}
   muzzle: {fileID: 0}
+  flash: {fileID: 0}
