@@ -1915,8 +1915,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1227384588637400}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -9.596903, y: 0.5, z: 0.36559486}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4122973783808722}
@@ -4704,6 +4704,8 @@ MonoBehaviour:
   shotSize: 0
   damageLimit: 0
   changeTime: 0
+  _chargeUpVal: 0
+  _sizeUpVal: 0
   type: 1
   bullet: {fileID: 1065169040548614, guid: 3679e60b8b8786d49accd4eaeb79fbd0, type: 2}
   muzzle: {fileID: 4868543062126286}
@@ -4751,9 +4753,11 @@ MonoBehaviour:
   shellInValue: 1
   meleeDuration: 0
   occursTime: 0
-  shotSize: 0.005
+  shotSize: 0.1
   damageLimit: 25
   changeTime: 2
+  _chargeUpVal: 0.1
+  _sizeUpVal: 0.05
   type: 2
   bullet: {fileID: 1065169040548614, guid: 3679e60b8b8786d49accd4eaeb79fbd0, type: 2}
   muzzle: {fileID: 4274029353879622}
@@ -4868,6 +4872,8 @@ MonoBehaviour:
   shotSize: 0
   damageLimit: 0
   changeTime: 0
+  _chargeUpVal: 0
+  _sizeUpVal: 0
   type: 0
   bullet: {fileID: 0}
   muzzle: {fileID: 0}
@@ -4897,6 +4903,8 @@ MonoBehaviour:
   shotSize: 0
   damageLimit: 0
   changeTime: 0
+  _chargeUpVal: 0
+  _sizeUpVal: 0
   type: 1
   bullet: {fileID: 1065169040548614, guid: 3679e60b8b8786d49accd4eaeb79fbd0, type: 2}
   muzzle: {fileID: 4980976212147286}
@@ -4967,6 +4975,8 @@ MonoBehaviour:
   shotSize: 0
   damageLimit: 0
   changeTime: 0
+  _chargeUpVal: 0
+  _sizeUpVal: 0
   type: 1
   bullet: {fileID: 1065169040548614, guid: 3679e60b8b8786d49accd4eaeb79fbd0, type: 2}
   muzzle: {fileID: 4005245650786896}
@@ -4996,6 +5006,8 @@ MonoBehaviour:
   shotSize: 0
   damageLimit: 0
   changeTime: 0
+  _chargeUpVal: 0
+  _sizeUpVal: 0
   type: 0
   bullet: {fileID: 0}
   muzzle: {fileID: 0}
