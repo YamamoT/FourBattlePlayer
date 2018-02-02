@@ -1704,7 +1704,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1530228827907346, guid: 4e8cc93f9cee3c540897cd42a8222d1b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1491560802319590, guid: 4e8cc93f9cee3c540897cd42a8222d1b, type: 2}
       propertyPath: m_Layer
@@ -1732,7 +1732,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1227729157322310, guid: 4e8cc93f9cee3c540897cd42a8222d1b, type: 2}
       propertyPath: m_Layer
-      value: 0
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1509541608011008, guid: 4e8cc93f9cee3c540897cd42a8222d1b, type: 2}
       propertyPath: m_Layer
@@ -3435,6 +3435,7 @@ MonoBehaviour:
   jg: {fileID: 0}
   wall: {fileID: 0}
   hitEffect: {fileID: 0}
+  BombEffect: {fileID: 0}
   _gravity: 10
 --- !u!114 &470644502
 MonoBehaviour:
@@ -3931,6 +3932,7 @@ MonoBehaviour:
   jg: {fileID: 0}
   wall: {fileID: 0}
   hitEffect: {fileID: 0}
+  BombEffect: {fileID: 0}
   _gravity: 10
 --- !u!95 &502844470
 Animator:
@@ -4800,6 +4802,8 @@ MonoBehaviour:
   shotSize: 0
   damageLimit: 0
   changeTime: 0
+  _chargeUpVal: 0
+  _sizeUpVal: 0
   type: 1
   bullet: {fileID: 1065169040548614, guid: 3679e60b8b8786d49accd4eaeb79fbd0, type: 2}
   muzzle: {fileID: 220504131}
@@ -6176,6 +6180,8 @@ MonoBehaviour:
   shotSize: 0
   damageLimit: 0
   changeTime: 0
+  _chargeUpVal: 0
+  _sizeUpVal: 0
   type: 1
   bullet: {fileID: 1065169040548614, guid: 3679e60b8b8786d49accd4eaeb79fbd0, type: 2}
   muzzle: {fileID: 99396342}
@@ -7859,6 +7865,8 @@ MonoBehaviour:
   shotSize: 0
   damageLimit: 0
   changeTime: 0
+  _chargeUpVal: 0
+  _sizeUpVal: 0
   type: 1
   bullet: {fileID: 1065169040548614, guid: 3679e60b8b8786d49accd4eaeb79fbd0, type: 2}
   muzzle: {fileID: 142650546}
@@ -11024,6 +11032,8 @@ MonoBehaviour:
   shotSize: 0.1
   damageLimit: 10
   changeTime: 2
+  _chargeUpVal: 0
+  _sizeUpVal: 0
   type: 2
   bullet: {fileID: 1065169040548614, guid: 3679e60b8b8786d49accd4eaeb79fbd0, type: 2}
   muzzle: {fileID: 1377805328}
@@ -11807,6 +11817,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 22
       objectReference: {fileID: 0}
+    - target: {fileID: 1877322287632238, guid: ff54195aff5861b4fb4b39ebf18e5375, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ff54195aff5861b4fb4b39ebf18e5375, type: 2}
   m_IsPrefabParent: 0
@@ -12184,6 +12198,8 @@ MonoBehaviour:
   shotSize: 0
   damageLimit: 0
   changeTime: 0
+  _chargeUpVal: 0
+  _sizeUpVal: 0
   type: 1
   bullet: {fileID: 0}
   muzzle: {fileID: 0}
@@ -13208,6 +13224,8 @@ MonoBehaviour:
   shotSize: 0
   damageLimit: 0
   changeTime: 0
+  _chargeUpVal: 0
+  _sizeUpVal: 0
   type: 1
   bullet: {fileID: 1065169040548614, guid: 3679e60b8b8786d49accd4eaeb79fbd0, type: 2}
   muzzle: {fileID: 1864190791}
@@ -13656,6 +13674,8 @@ MonoBehaviour:
   shotSize: 0
   damageLimit: 0
   changeTime: 0
+  _chargeUpVal: 0
+  _sizeUpVal: 0
   type: 1
   bullet: {fileID: 1065169040548614, guid: 3679e60b8b8786d49accd4eaeb79fbd0, type: 2}
   muzzle: {fileID: 457195574}
@@ -14073,6 +14093,8 @@ MonoBehaviour:
   shotSize: 0
   damageLimit: 0
   changeTime: 0
+  _chargeUpVal: 0
+  _sizeUpVal: 0
   type: 0
   bullet: {fileID: 0}
   muzzle: {fileID: 0}
@@ -15118,6 +15140,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 114784737541309438, guid: 53b772c0027b76741b311083265876c1,
+        type: 2}
+      propertyPath: PlayerID
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 53b772c0027b76741b311083265876c1, type: 2}
   m_IsPrefabParent: 0
@@ -15478,6 +15505,10 @@ Prefab:
     - target: {fileID: 1579773750671976, guid: 5cfcfa44e97324f46942be59d820b9b1, type: 2}
       propertyPath: m_Name
       value: unitychan (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579773750671976, guid: 5cfcfa44e97324f46942be59d820b9b1, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5cfcfa44e97324f46942be59d820b9b1, type: 2}

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Punch : MonoBehaviour {
-    float speed = 30.0f;
+    float speed = 300.0f;
 	// Use this for initialization
 	void Start () {
 		

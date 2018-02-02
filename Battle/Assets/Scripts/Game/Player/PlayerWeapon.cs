@@ -26,15 +26,23 @@ public class PlayerWeapon : MonoBehaviour {
     
     private PlayerStates pStates;
     private GameObject activeWeapon = null;
-    
+
+    GameObject camera;
+    ZoomCamera zoomCamera;
+
     // Use this for initialization
-	void Start() {
+    void Start() {
         pStates = GetComponent<PlayerStates>();
         playerAnime = GetComponent<Animator>();
+        camera = GameObject.FindGameObjectWithTag("MainCamera");
+        zoomCamera = camera.GetComponent<ZoomCamera>();
+
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
+
+        if (zoomCamera.GetIsFinished() == false) return;
 
         //キー情報取得
         keyState = GamepadInput.GamePad.GetState(pStates.ConNum, false);

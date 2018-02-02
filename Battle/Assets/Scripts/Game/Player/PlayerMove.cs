@@ -36,6 +36,9 @@ public class PlayerMove : MonoBehaviour {
 
     Collider[] col;
 
+    GameObject camera;
+    ZoomCamera zoomCamera;
+
     private enum pCols
     {
         Stand,
@@ -50,6 +53,8 @@ public class PlayerMove : MonoBehaviour {
         rigid = this.GetComponent<Rigidbody>();
         col = this.GetComponents<Collider>();
 
+        camera = GameObject.FindGameObjectWithTag("MainCamera");
+        zoomCamera = camera.GetComponent<ZoomCamera>();
         int i = 0;
         foreach(Collider cols in col) col[i++] = cols;
         col[(int)pCols.Stand].enabled = true;
@@ -74,11 +79,21 @@ public class PlayerMove : MonoBehaviour {
             col[(int)pCols.Crouch].enabled = false;
         }
 
+        if (zoomCamera.GetIsFinished() == true)
+        {
+            // ダッシュ状態か否かで速度を変える
+            moveDirection.x = axis.x * pStates.Spead;
+            // 向きの回転
+            if (Mathf.Round(axis.x * 10) / 10 < 0) pStates.IsTrun = true;
+            else if (Mathf.Round(axis.x * 10) / 10 > 0) pStates.IsTrun = false;
+        }
+
+
         if (jg.flag)
         {
             animator.SetBool("isground", true);
             // ジャンプ処理
-            if (keyState.A && !Trigger.A && axis.y >= -0.5f)
+            if (keyState.A && !Trigger.A && axis.y >= -0.5f && zoomCamera.GetIsFinished() == true)
             {
                 animator.SetTrigger("jump");
                 rigid.AddForce(0, 100f * pStates.JumpPow, 0);
@@ -89,24 +104,19 @@ public class PlayerMove : MonoBehaviour {
             animator.SetBool("isground", false);
         }
 
-        // ダッシュ状態か否かで速度を変える
-        moveDirection.x = axis.x * pStates.Spead;
-
-        // 向きの回転
-        if (Mathf.Round(axis.x * 10) / 10 < 0) pStates.IsTrun = true;
-        else if (Mathf.Round(axis.x * 10) / 10 > 0) pStates.IsTrun = false;
-
+       
         if (pStates.IsTrun)
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 270f, 0), Time.deltaTime * 100);
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.Euler(0, 270f, 0), Time.deltaTime * 100);
         else
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 90f, 0), Time.deltaTime * 100);
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.Euler(0, 90f, 0), Time.deltaTime * 100);
 
-        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+        this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, 0);
 
         // しゃがんでると移動できないよ
         if (pStates.IsCrouch || wall.jg == true) moveDirection.x = 0f;
-        
-        //Debug.Log("stackDamage : " + stackDamage);
+
+        //トリガー処理
+        Trigger = keyState;
 
         // ダメージのスタック処理
         if (stackDamage != 0)
@@ -134,7 +144,9 @@ public class PlayerMove : MonoBehaviour {
             GameObject effect = GameObject.Instantiate(BombEffect) as GameObject;
             effect.transform.position = this.gameObject.transform.position + new Vector3(0f,1f,0f);
         }
-                
+
+        if (zoomCamera.GetIsFinished() == false) return;
+
         // アニメーター処理
         if (Mathf.Round(axis.x * 10) / 10 == 0)
         {
@@ -181,8 +193,7 @@ public class PlayerMove : MonoBehaviour {
             damegeCount = 0;
         }
 
-        //トリガー処理
-        Trigger = keyState;
+       
     }
 
     public void FixedUpdate()
