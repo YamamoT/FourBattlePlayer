@@ -5731,8 +5731,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.3927423, z: 0.16034296}
-  m_Center: {x: -1.3244343e-15, y: 1.1579145, z: 0.24377075}
+  m_Size: {x: 1, y: 1.3473334, z: 0.16034299}
+  m_Center: {x: 0, y: 1.1352099, z: 0.24377075}
 --- !u!65 &65924919943530236
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -5776,7 +5776,7 @@ MonoBehaviour:
   possesor: {fileID: 1071939655261078}
   attackValue: 100
   attackInterval: 3
-  power: 15
+  power: 10
   attackSpeed: 0
   diffusion: 0
   isAttack: 0
@@ -5869,7 +5869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possesor: {fileID: 1071939655261078}
-  attackValue: 80
+  attackValue: 40
   attackInterval: 1
   power: 3
   attackSpeed: 1
@@ -5913,11 +5913,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possesor: {fileID: 1071939655261078}
-  attackValue: 30
+  attackValue: 7
   attackInterval: 1
   power: 1
   attackSpeed: 1
-  diffusion: 0.02
+  diffusion: 0.03
   isAttack: 0
   isDebugMode: 0
   shellInValue: 1
@@ -5942,14 +5942,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerID: 1
-  _hp: 280
+  _hp: 260
   _spead: 5
-  _jumpPower: 6
+  _jumpPower: 5
   _nomalAttack: 15
   _weaponAttack: 0
   _bulletDense: 0
   _invincibleTime: 3
-  _flinch: 31
+  _flinch: 22
   _isDead: 0
   _isAttack: 0
   _isDamage: 0
@@ -5985,7 +5985,7 @@ MonoBehaviour:
   possesor: {fileID: 1071939655261078}
   attackValue: 100
   attackInterval: 3
-  power: 30
+  power: 25
   attackSpeed: 0
   diffusion: 0
   isAttack: 0
@@ -6025,8 +6025,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   possesor: {fileID: 1071939655261078}
   attackValue: 7
-  attackInterval: 1
-  power: 4
+  attackInterval: 4
+  power: 3
   attackSpeed: 0.7
   diffusion: 0.1
   isAttack: 0
@@ -6065,9 +6065,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possesor: {fileID: 1071939655261078}
-  attackValue: 7
+  attackValue: 11
   attackInterval: 1
-  power: 10
+  power: 7
   attackSpeed: 1
   diffusion: 0.03
   isAttack: 0

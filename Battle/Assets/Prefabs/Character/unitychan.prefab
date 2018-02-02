@@ -8331,7 +8331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possesor: {fileID: 1579773750671976}
-  attackValue: 80
+  attackValue: 40
   attackInterval: 1
   power: 3
   attackSpeed: 0.8
@@ -8360,11 +8360,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possesor: {fileID: 1579773750671976}
-  attackValue: 30
+  attackValue: 7
   attackInterval: 1
   power: 1
   attackSpeed: 1
-  diffusion: 0.01
+  diffusion: 0.02
   isAttack: 0
   isDebugMode: 1
   shellInValue: 1
@@ -8391,12 +8391,12 @@ MonoBehaviour:
   PlayerID: 1
   _hp: 200
   _spead: 6
-  _jumpPower: 7
+  _jumpPower: 5
   _nomalAttack: 0
   _weaponAttack: 0
   _bulletDense: 0
   _invincibleTime: 2
-  _flinch: 11
+  _flinch: 13
   _isDead: 0
   _isAttack: 0
   _isDamage: 0
@@ -8499,8 +8499,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   possesor: {fileID: 1579773750671976}
   attackValue: 7
-  attackInterval: 3
-  power: 4
+  attackInterval: 5
+  power: 3
   attackSpeed: 0.7
   diffusion: 0.1
   isAttack: 0
@@ -8527,11 +8527,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possesor: {fileID: 1579773750671976}
-  attackValue: 7
+  attackValue: 11
   attackInterval: 2
-  power: 10
+  power: 7
   attackSpeed: 1
-  diffusion: 0.01
+  diffusion: 0.02
   isAttack: 0
   isDebugMode: 0
   shellInValue: 1
