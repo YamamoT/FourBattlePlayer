@@ -24,6 +24,8 @@ public class PlayerStates : MonoBehaviour {
     [SerializeField]
     private int _flinch = 15;
 
+    private int _maxHp;
+
     GamepadInput.GamePad.Index _conNum;
 
     float _time; // 時間
@@ -59,6 +61,7 @@ public class PlayerStates : MonoBehaviour {
         _time = _invincibleTime; // 無敵時間の登録
         _list = GetAll(gameObject);
         PlayerNum();
+        _maxHp = _hp;
     }
     private void Update()
     {
@@ -165,6 +168,10 @@ public class PlayerStates : MonoBehaviour {
     {
         get { return _hp; }
         set { _hp = value; }
+    }
+    public int MaxHp
+    {
+        get { return _maxHp; }
     }
     public int Flinch
     {

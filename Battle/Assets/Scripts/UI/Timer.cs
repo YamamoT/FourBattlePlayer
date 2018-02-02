@@ -30,6 +30,7 @@ public class Timer : MonoBehaviour
     private Text milliSecondsText;
 
     // タイマー作動中
+    [SerializeField]
     private bool isTimerProgress = false;
     // 終了したか
     private bool isTimerFinished = false;
@@ -62,10 +63,12 @@ public class Timer : MonoBehaviour
 	void Update ()
     {
         // デバッグ用
-        if (Input.GetKeyDown(KeyCode.A))
-            isTimerProgress = true;
-        if (Input.GetKeyDown(KeyCode.R))
-            TimerReset();
+        //if (Input.GetKeyDown(KeyCode.A))
+        //    isTimerProgress = true;
+        //if (Input.GetKeyDown(KeyCode.R))
+        //    TimerReset();
+
+        Debug.Log(isTimerProgress);
 
         // テキスト更新
         minuteText.text = minutesTime.ToString("D2");
@@ -121,9 +124,10 @@ public class Timer : MonoBehaviour
     /// <summary>
     /// タイマー開始＆停止
     /// </summary>
-    public void TimerSwitch()
+    public bool TimerSwitch
     {
-        isTimerProgress = !isTimerProgress;
+        get { return isTimerProgress; }
+        set { isTimerProgress = value; }
     }
 
     /// <summary>

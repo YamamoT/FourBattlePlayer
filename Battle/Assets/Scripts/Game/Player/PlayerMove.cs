@@ -138,6 +138,7 @@ public class PlayerMove : MonoBehaviour {
 
         // 死亡処理
         if (pStates.Hp <= 0) pStates.IsDead = true;
+
         if (pStates.IsDead)
         {
             //パーティクル

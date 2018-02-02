@@ -224,7 +224,7 @@ public class ZoomCamera : MonoBehaviour
             else
                 targetPos[i] = center;
 
-            Debug.Log(targetPos[i]);
+
         }
 
 
