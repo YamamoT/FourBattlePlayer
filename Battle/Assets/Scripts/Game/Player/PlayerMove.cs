@@ -102,7 +102,7 @@ public class PlayerMove : MonoBehaviour {
         // しゃがんでると移動できないよ
         if (pStates.IsCrouch || wall.jg == true) moveDirection.x = 0f;
         
-        Debug.Log("stackDamage : " + stackDamage);
+        //Debug.Log("stackDamage : " + stackDamage);
 
         // ダメージのスタック処理
         if (stackDamage != 0)
