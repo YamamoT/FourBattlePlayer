@@ -17,6 +17,10 @@ public class PlayerMove : MonoBehaviour {
     [SerializeField]
     private GameObject hitEffect = null;
 
+    //爆発
+    [SerializeField]
+    private GameObject BombEffect = null;
+
     private Rigidbody rigid;
     private bool ground;
 
@@ -124,6 +128,12 @@ public class PlayerMove : MonoBehaviour {
 
         // 死亡処理
         if (pStates.Hp <= 0) pStates.IsDead = true;
+        if (pStates.IsDead)
+        {
+            //パーティクル
+            GameObject effect = GameObject.Instantiate(BombEffect) as GameObject;
+            effect.transform.position = this.gameObject.transform.position + new Vector3(0f,1f,0f);
+        }
                 
         // アニメーター処理
         if (Mathf.Round(axis.x * 10) / 10 == 0)

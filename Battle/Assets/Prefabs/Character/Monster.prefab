@@ -5835,6 +5835,7 @@ MonoBehaviour:
   jg: {fileID: 114878716335066610}
   wall: {fileID: 114936301346832352}
   hitEffect: {fileID: 1582050535588218, guid: 6632beadad4fb8e47925482e9d5501f7, type: 2}
+  BombEffect: {fileID: 1471082379313142, guid: c593f65b0d42a754d966165e6f15b398, type: 2}
   _gravity: 3
 --- !u!114 &114365838069092972
 MonoBehaviour:
