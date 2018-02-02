@@ -203,13 +203,14 @@ public class PlayerMove : MonoBehaviour {
             {
                 stackDamage += bull.GetComponent<Bullet>().GetDamage();
                 pStates.Hp -= bull.GetComponent<Bullet>().GetDamage();
+                stackTime = 0;
             }
         }
         else if(col.tag == "Fist")
         {
             stackDamage += bull.GetComponent<Weapon>().GetDamage();
             pStates.Hp -= bull.GetComponent<Weapon>().GetDamage();
-
+            stackTime = 0;
             //パーティクル
             GameObject effect = GameObject.Instantiate(hitEffect) as GameObject;
             effect.transform.position = col.transform.position;

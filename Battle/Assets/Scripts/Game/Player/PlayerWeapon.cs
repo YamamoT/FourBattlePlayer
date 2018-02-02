@@ -63,7 +63,7 @@ public class PlayerWeapon : MonoBehaviour {
             }
             else if (activeWeapon.name.Contains("Ray") && !pStates.IsDamage)
             {
-                if(keyState.X)_weaponFunc.Charge(0.05f, 0.005f);
+                if(keyState.X)_weaponFunc.Charge(_weaponFunc.ChargeDamage, _weaponFunc.ChargeSize);
 
                 if (GamepadInput.GamePad.GetButtonUp(GamepadInput.GamePad.Button.X, pStates.ConNum))
                 {

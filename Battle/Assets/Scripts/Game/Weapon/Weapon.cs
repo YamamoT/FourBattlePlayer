@@ -81,6 +81,10 @@ public class Weapon : MonoBehaviour
     // チャージした状態かどうか
     private bool isCharge = false;
 
+    // 18/02/02 更新分
+    public float _chargeUpVal; // チャージダメージの上昇値
+    public float _sizeUpVal; // チャージサイズの上昇値
+
     // 武器種類
     enum TYPE
     {
@@ -442,5 +446,22 @@ public class Weapon : MonoBehaviour
         return isAttack;
     }
 
-
+    /// <summary>
+    /// チャージ時に変わる弾のサイズ
+    /// </summary>
+    /// <returns>弾のサイズ</returns>
+    public float ChargeSize
+    {
+        get{ return _sizeUpVal; }
+        set { _sizeUpVal = value; }
+    }
+    /// <summary>
+    /// チャージ時に変わる弾のダメージ
+    /// </summary>
+    /// <returns>弾のダメージ</returns>
+    public float ChargeDamage
+    {
+        get { return _chargeUpVal; }
+        set { _chargeUpVal = value; }
+    }
 }
