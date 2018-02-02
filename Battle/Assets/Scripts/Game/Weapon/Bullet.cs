@@ -89,32 +89,54 @@ public class Bullet : MonoBehaviour
     {
         Debug.Log(" 当たった" + other.name);
 
-        if (other.tag != "Weapon")
+        if (LayerMask.LayerToName(other.gameObject.layer) == "Stage"||
+            LayerMask.LayerToName(other.gameObject.layer) == "Gimmick"||
+            other.tag == "Player")
         {
-            if (other.tag != "Bullet")
+            if (other.tag == "Player" && other.name != possesorName)
             {
-                if (other.tag == "Player")
-                {
-                    if (other.name != possesorName)
-                    {
-                        //パーティクル
-                        GameObject effect = GameObject.Instantiate(hitEffect) as GameObject;
-                        effect.transform.position = this.transform.position;
-                        Debug.Log("射撃者とは違う人に当たった" + other.name);
-                        Destroy(gameObject);
-                    }
-                }
-                else
-                {
-                    //パーティクル
-                    GameObject effect = GameObject.Instantiate(spark) as GameObject;
-                    effect.transform.position = this.transform.position;
-                    Destroy(gameObject);
-                    Debug.Log("Player以外に当たった" + other.name);
-
-                }
+                //パーティクル
+                GameObject effect = GameObject.Instantiate(hitEffect) as GameObject;
+                effect.transform.position = this.transform.position;
+                Debug.Log("射撃者とは違う人に当たった" + other.name);
+                Destroy(gameObject);
+            }
+            else
+            {
+                //パーティクル
+                GameObject effect = GameObject.Instantiate(spark) as GameObject;
+                effect.transform.position = this.transform.position;
+                Destroy(gameObject);
+                Debug.Log("Player以外に当たった" + other.name);
             }
         }
+
+        //    if (other.tag != "Weapon")
+        //{
+        //    if (other.tag != "Bullet")
+        //    {
+        //        if (other.tag == "Player")
+        //        {
+        //            if (other.name != possesorName)
+        //            {
+        //                //パーティクル
+        //                GameObject effect = GameObject.Instantiate(hitEffect) as GameObject;
+        //                effect.transform.position = this.transform.position;
+        //                Debug.Log("射撃者とは違う人に当たった" + other.name);
+        //                Destroy(gameObject);
+        //            }
+        //        }
+        //        else
+        //        {
+        //            //パーティクル
+        //            GameObject effect = GameObject.Instantiate(spark) as GameObject;
+        //            effect.transform.position = this.transform.position;
+        //            Destroy(gameObject);
+        //            Debug.Log("Player以外に当たった" + other.name);
+
+        //        }
+        //    }
+        //}
     }
 
     }
