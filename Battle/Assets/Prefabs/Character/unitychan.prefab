@@ -8378,7 +8378,7 @@ MonoBehaviour:
   damageLimit: 25
   changeTime: 2
   _chargeUpVal: 0.05
-  _sizeUpVal: 0.01
+  _sizeUpVal: 0.005
   type: 2
   bullet: {fileID: 1065169040548614, guid: 3679e60b8b8786d49accd4eaeb79fbd0, type: 2}
   muzzle: {fileID: 4346155197167422}

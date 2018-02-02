@@ -105,7 +105,7 @@ public class Bullet : MonoBehaviour
                 //パーティクル
                 GameObject effect = GameObject.Instantiate(spark) as GameObject;
                 effect.transform.position = this.transform.position;
-                //Destroy(gameObject);
+                Destroy(gameObject);
                 Debug.Log("Player以外に当たった" + other.name);
             }
         }
