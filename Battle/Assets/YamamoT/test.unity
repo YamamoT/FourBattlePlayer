@@ -706,6 +706,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jg: {fileID: 0}
+  wall: {fileID: 0}
+  hitEffect: {fileID: 0}
+  BombEffect: {fileID: 0}
   _gravity: 10
 --- !u!1 &517132371
 GameObject:
@@ -974,6 +977,11 @@ Prefab:
       propertyPath: possesor
       value: 
       objectReference: {fileID: 668027513}
+    - target: {fileID: 114975809414216428, guid: 53f4002d4e88939439c1603f6b58a16e,
+        type: 2}
+      propertyPath: isDebugMode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 53f4002d4e88939439c1603f6b58a16e, type: 2}
   m_IsPrefabParent: 0
@@ -1809,7 +1817,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1432699581}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dcbc2b65fa3f28843bfc1c7b6aa70667, type: 3}
   m_Name: 
@@ -1820,6 +1828,7 @@ MonoBehaviour:
   - {fileID: 1026495292}
   - {fileID: 614648529}
   offset: {x: 3, y: 3}
+  targetPos: []
   distance: 10
   time: 0.5
   stopTime: 0.5

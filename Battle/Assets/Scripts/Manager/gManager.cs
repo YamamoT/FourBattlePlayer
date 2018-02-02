@@ -10,9 +10,7 @@ public enum SceneState
 {
     Title,
     Select,
-    Play,
-    Result,
-    Config
+    Play
 }
 
 public class gManager : MonoBehaviour
@@ -25,10 +23,11 @@ public class gManager : MonoBehaviour
     // 操作キャラクターのサイズ
     [SerializeField]
     private static int playerValue = 0;
+    private int pValue;
 
     // 選ばれたキャラクター
     [SerializeField]
-    private GameObject[] character;
+    private static GameObject[] character;
 
     // Use this for initialization
     void Start()
@@ -67,47 +66,56 @@ public class gManager : MonoBehaviour
             case SceneState.Play:
                 PlayAction();
                 break;
-            case SceneState.Result:
-                ResultAction();
-                break;
-            case SceneState.Config:
-                ConfigAction();
-                break;
         }
     }
 
     /// <summary>
-    /// タイトル時の処理
+    /// タイトル画面時の処理
     /// </summary>
     void TitleAction()
     {
         SceneManager.LoadScene("Title");
     }
 
+    /// <summary>
+    /// セレクト画面時の処理
+    /// </summary>
     void SelectAction()
     {
         SceneManager.LoadScene("Select");
     }
 
     /// <summary>
-    /// プレイ時の処理
+    /// プレイ画面時の処理
     /// </summary>
     void PlayAction()
     {
+        SceneManager.LoadScene("Play");
     }
 
-    /// <summary>
-    /// リザルト時の処理
-    /// </summary>
-    void ResultAction()
+    public void SetPlayerValue(int value)
     {
+        playerValue = value;
+
+        character = new GameObject[playerValue];
     }
 
-    /// <summary>
-    /// コンフィグ時の処理
-    /// </summary>
-    void ConfigAction()
+    public void SetPlayCharacter(GameObject chara)
     {
+        character[pValue] = chara;
+        character[pValue].GetComponent<PlayerStates>().PlayerID = pValue + 1;
+        pValue++;
     }
+
+    public GameObject GetPlayCharacter(int charaValue)
+    {
+        return character[charaValue];
+    }
+
+    public int GetPlayerValue()
+    {
+        return playerValue;
+    }
+
 
 }

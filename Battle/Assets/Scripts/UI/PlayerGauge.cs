@@ -183,4 +183,9 @@ public class PlayerGauge : MonoBehaviour
     {
         weapon = weaponObject;
     }
+
+    public void SetPlayer(GameObject _player)
+    {
+        player = _player;
+    }
 }

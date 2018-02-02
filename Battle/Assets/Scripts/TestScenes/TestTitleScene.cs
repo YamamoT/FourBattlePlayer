@@ -17,17 +17,9 @@ public class TestTitleScene : MonoBehaviour
         {
             gManager.instance.SetCurrentState(SceneState.Play);
         }
-        else if(Input.GetKeyDown(KeyCode.R))
-        {
-            gManager.instance.SetCurrentState(SceneState.Result);
-        }
         else if(Input.GetKeyDown(KeyCode.T))
         {
             gManager.instance.SetCurrentState(SceneState.Title);
-        }
-        else if(Input.GetKeyDown(KeyCode.C))
-        {
-            gManager.instance.SetCurrentState(SceneState.Config);
         }
         else if(Input.GetKeyDown(KeyCode.S))
         {
