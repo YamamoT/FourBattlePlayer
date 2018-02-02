@@ -24,7 +24,11 @@ public class gManager : MonoBehaviour
 
     // 操作キャラクターのサイズ
     [SerializeField]
-    private int playerValue = 0;
+    private static int playerValue = 0;
+
+    // 選ばれたキャラクター
+    [SerializeField]
+    private GameObject[] character;
 
     // Use this for initialization
     void Start()
