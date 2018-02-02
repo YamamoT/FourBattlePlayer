@@ -22,6 +22,10 @@ public class gManager : MonoBehaviour
     // 現在のシーン
     private SceneState currentState;
 
+    // 操作キャラクターのサイズ
+    [SerializeField]
+    private int playerValue = 0;
+
     // Use this for initialization
     void Start()
     {

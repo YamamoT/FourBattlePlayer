@@ -315,4 +315,13 @@ public class ZoomCamera : MonoBehaviour
         Vector3 targetDiff = target1 - target2;
         return new Vector3(Mathf.Abs(targetDiff.x), Mathf.Abs(targetDiff.y));
     }
+
+    /// <summary>
+    /// 演出が終了したかどうか
+    /// </summary>
+    /// <returns></returns>
+    public bool GetIsFinished()
+    {
+        return isSwitchFinished;
+    }
 }
