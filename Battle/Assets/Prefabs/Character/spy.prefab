@@ -5650,8 +5650,8 @@ MonoBehaviour:
   shotSize: 0.1
   damageLimit: 20
   changeTime: 2
-  _chargeUpVal: 0.1
-  _sizeUpVal: 0.05
+  _chargeUpVal: 0.05
+  _sizeUpVal: 0.01
   type: 2
   bullet: {fileID: 1065169040548614, guid: 3679e60b8b8786d49accd4eaeb79fbd0, type: 2}
   muzzle: {fileID: 4769701357325102}
