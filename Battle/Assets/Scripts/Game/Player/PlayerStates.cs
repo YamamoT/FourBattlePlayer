@@ -62,7 +62,7 @@ public class PlayerStates : MonoBehaviour {
     }
     private void Update()
     {
-        if (_hp <= 0) Destroy(this.gameObject);
+        if (_isDead) Destroy(this.gameObject);
     }
 
     private void FixedUpdate()

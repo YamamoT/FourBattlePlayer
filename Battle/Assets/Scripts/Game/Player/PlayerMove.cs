@@ -122,6 +122,8 @@ public class PlayerMove : MonoBehaviour {
             stackDamage = 0;
         }
 
+        // 死亡処理
+        if (pStates.Hp <= 0) pStates.IsDead = true;
                 
         // アニメーター処理
         if (Mathf.Round(axis.x * 10) / 10 == 0)
