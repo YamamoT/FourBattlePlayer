@@ -1676,7 +1676,7 @@ GameObject:
   - component: {fileID: 65033427433135728}
   m_Layer: 11
   m_Name: Fist
-  m_TagString: Bullet
+  m_TagString: Fist
   m_Icon: {fileID: -1577725955494882426, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
