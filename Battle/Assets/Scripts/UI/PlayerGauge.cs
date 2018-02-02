@@ -50,6 +50,7 @@ public class PlayerGauge : MonoBehaviour
     // HP上限保存用
     private int HpLimit;
 
+
     
 	/// <summary>
     /// 初期化
@@ -58,6 +59,11 @@ public class PlayerGauge : MonoBehaviour
     {
 		if(player)
         {
+
+            // ゲージ初期化
+            greenGauge.fillAmount = 1;
+            redGauge.fillAmount = 1;
+
             // イメージスクリプト取得
             currentWeaponImage = currentWeaponImage.GetComponent<Image>();
             // テキスト初期化
@@ -73,16 +79,26 @@ public class PlayerGauge : MonoBehaviour
     /// </summary>
 	void Update ()
     {
-        SetWeapon(player.GetComponent<PlayerWeapon>().GetCurrentWeapon());
+
+        if (player)
+        {
+            SetWeapon(player.GetComponent<PlayerWeapon>().GetCurrentWeapon());
+
+            //GaugeProcess();
+
+            // 武器の切り替え表示
+            WeponsPossessed();
+            // 武器の残弾表示
+            WeponRemainBullet();
+
+            SetHp(player.GetComponent<PlayerStates>().Hp, HpLimit);
+        }
+        else
+        {
+            greenGauge.fillAmount = 0;
+        }
 
         GaugeProcess();
-
-        // 武器の切り替え表示
-        WeponsPossessed();
-        // 武器の残弾表示
-        WeponRemainBullet();
-
-        SetHp(player.GetComponent<PlayerStates>().Hp, HpLimit);
     }
 
    /// <summary>

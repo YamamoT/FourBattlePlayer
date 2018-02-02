@@ -11,6 +11,9 @@ public class ZoomCamera : MonoBehaviour
     [SerializeField]
     Vector2 offset = new Vector2(1, 1);
 
+    // 各オブジェクト座標格納用
+    Vector3[] targetPos;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+
     // アスペクト比
     private float screenAspect = 0;
     // カメラ
@@ -94,7 +97,7 @@ public class ZoomCamera : MonoBehaviour
 
         startPosition = new Vector3(target[order].position.x, target[order].position.y, -5);
         endPosition = new Vector3(target[order + 1].position.x, target[order + 1].position.y, -5);
-	}
+    }
 	
 	/// <summary>
     /// 更新
@@ -205,27 +208,28 @@ public class ZoomCamera : MonoBehaviour
     /// </summary>
     void CalcCenter()
     {
+        // 最端の番号
         for (int i = 0; i < target.Length; i++)
         {
-            // target1の座標設定
-            if (target1.x < target[i].position.x)
-            {
-                target1CntX = i;
-            }
-            if (target1.y < target[i].position.y)
-            {
-                target1CntY = i;
-            }
+                // target1の座標設定
+                if (target1.x < target[i].position.x)
+                {
+                    target1CntX = i;
+                }
+                if (target1.y < target[i].position.y)
+                {
+                    target1CntY = i;
+                }
 
-            // target2の座標設定
-            if (target2.x > target[i].position.x)
-            {
-                target2CntX = i;
-            }
-            if (target2.y > target[i].position.y)
-            {
-                target2CntY = i;
-            }
+                // target2の座標設定
+                if (target2.x > target[i].position.x)
+                {
+                    target2CntX = i;
+                }
+                if (target2.y > target[i].position.y)
+                {
+                    target2CntY = i;
+                }
         }
 
         // x 座標設定

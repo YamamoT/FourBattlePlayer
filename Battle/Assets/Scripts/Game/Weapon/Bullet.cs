@@ -87,7 +87,6 @@ public class Bullet : MonoBehaviour
     /// <param name="other"></param>
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log(" 当たった" + other.name);
 
         if (LayerMask.LayerToName(other.gameObject.layer) == "Stage"||
             LayerMask.LayerToName(other.gameObject.layer) == "Gimmick"||
@@ -106,7 +105,7 @@ public class Bullet : MonoBehaviour
                 //パーティクル
                 GameObject effect = GameObject.Instantiate(spark) as GameObject;
                 effect.transform.position = this.transform.position;
-                Destroy(gameObject);
+                //Destroy(gameObject);
                 Debug.Log("Player以外に当たった" + other.name);
             }
         }
