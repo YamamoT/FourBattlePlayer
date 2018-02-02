@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fall : MonoBehaviour {
+public class JugjWall : MonoBehaviour {
+    public bool flag;
 
 	// Use this for initialization
 	void Start () {
@@ -14,11 +15,13 @@ public class Fall : MonoBehaviour {
 		
 	}
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if(other.tag == "Player")
-        {
-            other.transform.position = new Vector3(0, 15, 0);
-        }
+        flag = true;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        flag = false;
     }
 }

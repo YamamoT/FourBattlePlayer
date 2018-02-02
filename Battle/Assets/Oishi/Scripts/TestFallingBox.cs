@@ -16,25 +16,7 @@ public class TestFallingBox : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        /*Ray ray = new Ray(transform.position, new Vector3(0, 1, 0));
-        Debug.DrawRay(ray.origin, ray.direction, Color.red, 1.0f);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 0.8f))
-        {
-            if (hit.collider.tag == "Player" && !fall)
-            {
-                count++;
-                if(count > 60)
-                {
-                    fall = true;
-                }
-            }
-        }
-        else
-        {
-            count = 0;
-        }*/
-        if (count > 60)
+        if (count > 30)
         {
             fall = true;
         }

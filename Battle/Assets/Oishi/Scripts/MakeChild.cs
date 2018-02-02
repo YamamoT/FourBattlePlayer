@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fall : MonoBehaviour {
+public class MakeChild : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -18,7 +18,14 @@ public class Fall : MonoBehaviour {
     {
         if(other.tag == "Player")
         {
-            other.transform.position = new Vector3(0, 15, 0);
+            other.transform.parent = gameObject.transform;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            other.transform.parent = null;
         }
     }
 }

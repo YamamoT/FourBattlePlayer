@@ -22,7 +22,7 @@ public class TestStripe : MonoBehaviour {
     {
         var material = GetComponent<Renderer>().material;
         Vector2 offset = material.mainTextureOffset;
-        offset += new Vector2(speed/10,0) * speed * Time.deltaTime;
+        offset += new Vector2(speed/50,0) * speed * Time.deltaTime;
         material.mainTextureOffset = offset;
     }
 
@@ -30,13 +30,8 @@ public class TestStripe : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            var body = other.gameObject.GetComponent<CharacterController>();
-            //Debug.Log("hit");
-            //Vector3 add = transform.forward * speed * Time.deltaTime;
-            body.Move(new Vector3(speed, 0, 0) * Time.deltaTime);
-        }
-        else
-        {
+            //var body = other.gameObject.GetComponent<Rigidbody>();
+            //body.MovePosition(new Vector3(speed, 0, 0) * Time.deltaTime);
             other.transform.position += new Vector3(speed, 0, 0) * Time.deltaTime;
         }
     }

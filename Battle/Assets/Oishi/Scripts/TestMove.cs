@@ -7,12 +7,8 @@ public class TestMove : MonoBehaviour {
     //アニメーター
     Animator animator;
 
-    private CharacterController charaCon;
-
     private Transform charaRay;
-    private float charaRayRange = 1;
     private Rigidbody rigid;
-    private Vector3 velocity;
     private bool ground;
 
     private Vector3 moveDirection = Vector3.zero;
@@ -23,10 +19,6 @@ public class TestMove : MonoBehaviour {
     private float _dushIntervalTime; // 走り判定をとるまでの時間
     private float dushTime;
 
-    [SerializeField]
-    [Range(1f, 20f)]
-    private float _gravity = 15f;
-
     private int count = 0;
     private float dushDir = 0f;
 
@@ -36,11 +28,11 @@ public class TestMove : MonoBehaviour {
     // 参考元 https://gametukurikata.com/program/run
 
     private bool push = false;           //　最初に移動ボタンを押したかどうか
-    private float nextButtonDownTime;    //　次に移動ボタンが押されるまでの時間
+    private float nextButtonDownTime = 0;    //　次に移動ボタンが押されるまでの時間
     private float nowTime = 0f;			//　最初に移動ボタンが押されてからの経過時間
 
     int playerLayer;
-    int slidingFloorLayer;
+    //int slidingFloorLayer;
 
     // Use this for initialization
     void Start()
@@ -48,13 +40,11 @@ public class TestMove : MonoBehaviour {
         //アニメーター取得
         animator = GetComponent<Animator>();
         pStates = GetComponent<PlayerStates>();
-        charaCon = GetComponent<CharacterController>();
         rigid = GetComponent<Rigidbody>();
-        velocity = Vector3.zero;
         dushTime = 0f;
 
         playerLayer = LayerMask.NameToLayer("Player");
-        slidingFloorLayer = LayerMask.NameToLayer("Sliding");
+        //slidingFloorLayer = LayerMask.NameToLayer("Sliding");
     }
 
     // Update is called once per frame
@@ -78,10 +68,6 @@ public class TestMove : MonoBehaviour {
             GamePadDush(inputAxis, inputAxisRaw);
             // キーボード用
             KeyboardDush(inputAxisRaw);
-        }
-        else
-        {
-            //moveDirection.y -= _gravity * Time.deltaTime;
         }
 
         // ダッシュ状態か否かで速度を変える
