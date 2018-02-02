@@ -2880,8 +2880,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1877322287632238}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 3.61, y: 0.86, z: -0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4291641160942844}
@@ -5602,8 +5602,8 @@ MonoBehaviour:
   isAttack: 0
   isDebugMode: 1
   shellInValue: 1
-  meleeDuration: 4
-  occursTime: 0
+  meleeDuration: 2.5
+  occursTime: 0.35
   shotSize: 0
   damageLimit: 0
   changeTime: 0
@@ -5822,8 +5822,8 @@ MonoBehaviour:
   isAttack: 0
   isDebugMode: 0
   shellInValue: 1
-  meleeDuration: 5
-  occursTime: 0
+  meleeDuration: 2.5
+  occursTime: 0.25
   shotSize: 0
   damageLimit: 0
   changeTime: 0

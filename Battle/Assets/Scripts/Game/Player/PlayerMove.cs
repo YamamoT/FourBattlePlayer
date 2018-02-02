@@ -185,10 +185,13 @@ public class PlayerMove : MonoBehaviour {
 
         GameObject bull = col.gameObject;
 
-        if (col.tag == "Bullet" && col.GetComponent<Bullet>().GetPossesorName() != this.name)
+        if (col.tag == "Bullet")
         {
-            stackDamage += bull.GetComponent<Bullet>().GetDamage();
-            pStates.Hp -= bull.GetComponent<Bullet>().GetDamage();
+            if (col.GetComponent<Bullet>().GetPossesorName() != this.name)
+            {
+                stackDamage += bull.GetComponent<Bullet>().GetDamage();
+                pStates.Hp -= bull.GetComponent<Bullet>().GetDamage();
+            }
         }
         else if(col.tag == "Fist")
         {
