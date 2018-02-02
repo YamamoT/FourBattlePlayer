@@ -12,7 +12,8 @@ public class ZoomCamera : MonoBehaviour
     Vector2 offset = new Vector2(1, 1);
 
     // 各オブジェクト座標格納用
-    Vector3[] targetPos;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+    [SerializeField]
+    private Vector3[] targetPos;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 
     // アスペクト比
     private float screenAspect = 0;
@@ -80,6 +81,7 @@ public class ZoomCamera : MonoBehaviour
         // 位置初期化
         center = new Vector3(0, 0, 0);
 
+        // 停止時間初期化
         c_stopTime = stopTime;
 
         if(time <= 0)
@@ -89,12 +91,15 @@ public class ZoomCamera : MonoBehaviour
             return;
         }
 
+        // 初期カメラ座標の初期化
         transform.position = new Vector3(target[order].position.x, target[order].position.y, -5);
 
-        c_stopTime = stopTime;
+        // c_stopTime = stopTime;
 
+        // 開始時間の初期化
         startTime = Time.timeSinceLevelLoad;
 
+        // 開始地点と終了地点の初期化
         startPosition = new Vector3(target[order].position.x, target[order].position.y, -5);
         endPosition = new Vector3(target[order + 1].position.x, target[order + 1].position.y, -5);
     }
@@ -109,15 +114,17 @@ public class ZoomCamera : MonoBehaviour
         // カメラの描画範囲計算
         CalcOrthographicSize();
 
+        // カメラ演出中
         if (!isSwitchFinished)
         {
             CameraPerformance();
         }
+        // カメラ演出終了
         else
         {
             // カメラの位置更新
             transform.position = c_center;
-
+            // カメラの描画範囲更新
             camera.orthographicSize = targetOrthographicSize;
         }
     }
@@ -208,37 +215,54 @@ public class ZoomCamera : MonoBehaviour
     /// </summary>
     void CalcCenter()
     {
+        // 各座標を格納
+        for (int i = 0; i < target.Length; i++)
+        {
+            // ターゲットが存在する場合
+            if (target[i])
+                targetPos[i] = target[i].position;
+            else
+                targetPos[i] = center;
+
+            Debug.Log(targetPos[i]);
+        }
+
+
         // 最端の番号
         for (int i = 0; i < target.Length; i++)
         {
                 // target1の座標設定
-                if (target1.x < target[i].position.x)
+                if (target1.x < targetPos[i].x)
                 {
                     target1CntX = i;
                 }
-                if (target1.y < target[i].position.y)
+                if (target1.y < targetPos[i].y)
                 {
                     target1CntY = i;
                 }
 
                 // target2の座標設定
-                if (target2.x > target[i].position.x)
+                if (target2.x > targetPos[i].x)
                 {
                     target2CntX = i;
                 }
-                if (target2.y > target[i].position.y)
+                if (target2.y > targetPos[i].y)
                 {
                     target2CntY = i;
                 }
         }
 
         // x 座標設定
-        target1.x = target[target1CntX].position.x;
-        target1.y = target[target1CntY].position.y;
+        //target1.x = target[target1CntX].position.x;
+        //target1.y = target[target1CntY].position.y;
+        target1.x = targetPos[target1CntX].x;
+        target1.y = targetPos[target1CntY].y;
 
         // y 座標設定
-        target2.x = target[target2CntX].position.x;
-        target2.y = target[target2CntY].position.y;
+        //target2.x = target[target2CntX].position.x;
+        //target2.y = target[target2CntY].position.y;
+        target2.x = targetPos[target2CntX].x;
+        target2.y = targetPos[target2CntY].y;
 
         // カメラに設定する中心位置を設定
         center = Vector3.Lerp(target1, target2, 0.5f);
