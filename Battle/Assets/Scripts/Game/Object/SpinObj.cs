@@ -9,6 +9,6 @@ public class SpinObj : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        this.transform.Rotate(0, _rotSpeed, 0);
+        this.transform.Rotate(0, _rotSpeed * Time.deltaTime, 0);
 	}
 }
