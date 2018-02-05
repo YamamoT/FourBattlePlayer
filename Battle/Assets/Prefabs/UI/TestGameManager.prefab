@@ -51,8 +51,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e940103a04fe3c478ccba27c97f76aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pop1P: {fileID: 0}
-  pop2P: {fileID: 0}
-  pop3P: {fileID: 0}
-  pop4P: {fileID: 0}
-  camera: {fileID: 0}
+  respownPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  playerValue: 0
+  _camera: {fileID: 0}
+  _player: []
+  _playerGauge:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

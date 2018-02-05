@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,14 +7,15 @@ public class ZoomCamera : MonoBehaviour
 {
     // ターゲット
     [SerializeField]
-    Transform[] target;
+    GameObject[] target;
     // オフセット
     [SerializeField]
     Vector2 offset = new Vector2(1, 1);
 
     // 各オブジェクト座標格納用
     [SerializeField]
-    private Vector3[] targetPos;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+    private Vector3[] targetPos;
+    private int targetSize = 0;
 
     // アスペクト比
     private float screenAspect = 0;
@@ -73,6 +75,7 @@ public class ZoomCamera : MonoBehaviour
     /// </summary>
     void Awake ()
     {
+        targetPos = new Vector3[targetSize];
         // アスペクト比を設定
         screenAspect = (float)Screen.height / Screen.width;
         // カメラを取得
@@ -91,17 +94,20 @@ public class ZoomCamera : MonoBehaviour
             return;
         }
 
-        // 初期カメラ座標の初期化
-        transform.position = new Vector3(target[order].position.x, target[order].position.y, -5);
+        // プレイヤーの取得
+        target = GameObject.FindGameObjectsWithTag("Player");
 
-        // c_stopTime = stopTime;
+        // 初期カメラ座標の初期化
+        transform.position = new Vector3(target[order].transform.position.x, target[order].transform.position.y, -5);
 
         // 開始時間の初期化
         startTime = Time.timeSinceLevelLoad;
 
         // 開始地点と終了地点の初期化
-        startPosition = new Vector3(target[order].position.x, target[order].position.y, -5);
-        endPosition = new Vector3(target[order + 1].position.x, target[order + 1].position.y, -5);
+        startPosition = new Vector3(target[order].transform.position.x, target[order].transform.position.y, -5);
+        endPosition = new Vector3(target[order + 1].transform.position.x, target[order + 1].transform.position.y, -5);
+
+        Debug.Log("カメラの配列サイズ初期化、プレイヤーの取得、開始地点と終了地点の初期化を行うことができた。");
     }
 	
 	/// <summary>
@@ -185,8 +191,8 @@ public class ZoomCamera : MonoBehaviour
                     order++;
 
                     // 開始地点と終了地点の変更
-                    startPosition = new Vector3(target[order].position.x, target[order].position.y, -5);
-                    endPosition = new Vector3(target[order + 1].position.x, target[order + 1].position.y, -5);
+                    startPosition = new Vector3(target[order].transform.position.x, target[order].transform.position.y, -5);
+                    endPosition = new Vector3(target[order + 1].transform.position.x, target[order + 1].transform.position.y, -5);
 
 
                     c_stopTime = stopTime;
@@ -202,7 +208,7 @@ public class ZoomCamera : MonoBehaviour
                     // ターゲットの順番変更
                     order++;
 
-                    startPosition = new Vector3(target[order].position.x, target[order].position.y, -5);
+                    startPosition = new Vector3(target[order].transform.position.x, target[order].transform.position.y, -5);
                     endPosition = c_center;
 
                     c_stopTime = stopTime;
@@ -220,7 +226,7 @@ public class ZoomCamera : MonoBehaviour
         {
             // ターゲットが存在する場合
             if (target[i])
-                targetPos[i] = target[i].position;
+                targetPos[i] = target[i].transform.position;
             else
                 targetPos[i] = center;
 
@@ -323,5 +329,10 @@ public class ZoomCamera : MonoBehaviour
     public bool GetIsFinished()
     {
         return isSwitchFinished;
+    }
+
+    public void SetTargetSize(int value)
+    {
+        targetSize = value;
     }
 }
