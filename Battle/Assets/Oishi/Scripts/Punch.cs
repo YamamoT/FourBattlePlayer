@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Punch : MonoBehaviour {
-    float speed = 300.0f;
+    float speed = 500.0f;
+    public Transform player;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -19,8 +21,8 @@ public class Punch : MonoBehaviour {
         Rigidbody rb = other.GetComponent<Rigidbody>();
         if (rb != null)
         {
-            Vector3 velocity = (other.transform.position - transform.position).normalized * speed;
-            rb.AddForce(velocity * speed);
+            Vector3 velocity = (other.transform.position - player.transform.position).normalized * speed;
+            rb.AddForce(new Vector3(velocity.x, velocity.y * 1.5f, 0));// * speed);
         }
     }
 }
