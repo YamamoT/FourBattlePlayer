@@ -30,6 +30,11 @@ public class PlayerWeapon : MonoBehaviour {
     GameObject camera;
     ZoomCamera zoomCamera;
 
+    //サウンド
+    public AudioSource Sound;
+    public AudioClip SE;
+    public AudioClip SE2;
+
     // Use this for initialization
     void Start() {
         pStates = GetComponent<PlayerStates>();
@@ -95,6 +100,10 @@ public class PlayerWeapon : MonoBehaviour {
                 activeWeapon.SetActive(false);
                 activeWeapon = null; // 武器を空に
                 _isWeapon = false; // 武器を持っていない状態にする
+
+                //サウンド
+                Sound.PlayOneShot(SE2);
+
             }
         } 
         else
@@ -156,6 +165,9 @@ public class PlayerWeapon : MonoBehaviour {
                         {
                             activeWeapon = _weapons[i];
                             activeWeapon.SetActive(true);
+
+                            //サウンド
+                            Sound.PlayOneShot(SE);
                         }
                     }
 
