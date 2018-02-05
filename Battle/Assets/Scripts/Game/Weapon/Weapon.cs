@@ -109,6 +109,11 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     private GameObject flash = null;
 
+    //サウンド
+    public AudioSource Sound;
+    public AudioClip SE;
+    public AudioClip SE2;
+
 
     /// <summary>
     /// 初期化
@@ -196,6 +201,9 @@ public class Weapon : MonoBehaviour
                 gameObject.GetComponent<BoxCollider>().enabled = true;
                 meleeIsOccurs = false;
                 c_occursTime = occursTime;
+
+                //サウンド再生
+                Sound.PlayOneShot(SE);
             }
         }
 
@@ -254,6 +262,8 @@ public class Weapon : MonoBehaviour
                 muzzleFlash.transform.position = muzzle.position;
                 muzzleFlash.transform.localRotation = possesor.transform.localRotation;
 
+                //サウンド再生
+                Sound.PlayOneShot(SE);
 
                 c_attackValue--;
 
@@ -305,8 +315,16 @@ public class Weapon : MonoBehaviour
                 muzzleFlash.transform.position = muzzle.position;
                 muzzleFlash.transform.localRotation = possesor.transform.localRotation;
 
+                //サウンド再生
+                Sound.PlayOneShot(SE);
+
                 c_attackValue--;
             }
+        }
+        else
+        {
+            //サウンド再生
+            Sound.PlayOneShot(SE2);
         }
     }
 
