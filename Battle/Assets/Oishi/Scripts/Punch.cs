@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Punch : MonoBehaviour {
+    [SerializeField]
     float speed = 500.0f;
     public Transform player;
 
