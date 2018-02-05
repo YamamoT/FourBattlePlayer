@@ -76,20 +76,28 @@ public class CreateManager : MonoBehaviour
     /// </summary>
     public void CharacterDecision()
     {
-        if(playerValue < maxPlayerValue && entryCharacter[playerValue -1])
+        if(playerValue < maxPlayerValue + 1 && entryCharacter[playerValue -1])
             playerValue += 1;
     }
 
     public void GameStart()
     {
-        gManager.instance.SetPlayerValue(playerValue);
-
-        for(int i = 0; i < playerValue; i++)
+        if (playerValue > 2)
         {
-            gManager.instance.SetPlayCharacter(entryCharacter[i]);
-        }
+            Debug.Log("入れる数 : " + (playerValue - 1));
+            gManager.instance.SetPlayerValue(playerValue - 1);
 
-        // プレイシーンへ移行
-        gManager.instance.SetCurrentState(SceneState.Play);
+            for (int i = 0; i < playerValue; i++)
+            {
+                gManager.instance.SetPlayCharacter(i, entryCharacter[i]);
+            }
+
+            // プレイシーンへ移行
+            gManager.instance.SetCurrentState(SceneState.Play);
+        }
+        else
+        {
+            Debug.Log("1人では遊べません");
+        }
     }
 }

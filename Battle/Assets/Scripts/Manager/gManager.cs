@@ -23,7 +23,6 @@ public class gManager : MonoBehaviour
     // 操作キャラクターのサイズ
     [SerializeField]
     private static int playerValue = 0;
-    private int pValue;
 
     // 選ばれたキャラクター
     [SerializeField]
@@ -100,11 +99,14 @@ public class gManager : MonoBehaviour
         character = new GameObject[playerValue];
     }
 
-    public void SetPlayCharacter(GameObject chara)
+    public void SetPlayCharacter(int number, GameObject chara)
     {
-        character[pValue] = chara;
-        character[pValue].GetComponent<PlayerStates>().PlayerID = pValue + 1;
-        pValue++;
+        if (number < playerValue)
+        {
+            Debug.Log("number : " + number);
+            character[number] = chara;
+            character[number].GetComponent<PlayerStates>().PlayerID = number + 1;
+        }
     }
 
     public GameObject GetPlayCharacter(int charaValue)
