@@ -87,9 +87,11 @@ public class CreateManager : MonoBehaviour
             Debug.Log("入れる数 : " + (playerValue - 1));
             gManager.instance.SetPlayerValue(playerValue - 1);
 
-            for (int i = 0; i < playerValue; i++)
+            for (int i = 0; i < playerValue - 1; i++)
             {
+                Debug.Log(i);
                 gManager.instance.SetPlayCharacter(i, entryCharacter[i]);
+                
             }
 
             // プレイシーンへ移行
