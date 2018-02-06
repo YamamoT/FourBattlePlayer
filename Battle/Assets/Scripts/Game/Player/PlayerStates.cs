@@ -10,7 +10,7 @@ public class PlayerStates : MonoBehaviour {
     [SerializeField][Range(0,300)]
     private int _hp; // 体力
     [SerializeField][Range(1f, 10f)]
-    private float _spead; // 移動速度
+    private float _speed; // 移動速度
     [SerializeField][Range(1f, 10f)]
     private float _jumpPower; // ジャンプ力
     [SerializeField]
@@ -23,7 +23,7 @@ public class PlayerStates : MonoBehaviour {
     private float _invincibleTime; // 無敵時間
     [SerializeField]
     private int _flinch = 15;
-
+   
     private int _maxHp;
 
     GamepadInput.GamePad.Index _conNum;
@@ -48,7 +48,7 @@ public class PlayerStates : MonoBehaviour {
     // しゃがみかどうか
     [SerializeField]
     bool _isCrouch = false;
-
+    [SerializeField]
     bool _isGround = false;
     bool _isTurn = false;
 
@@ -163,79 +163,107 @@ public class PlayerStates : MonoBehaviour {
         get { return _conNum; }
     }
 
-
+    // 現在のHP
     public int Hp
     {
         get { return _hp; }
         set { _hp = value; }
     }
+
+    // 初期HP
     public int MaxHp
     {
         get { return _maxHp; }
     }
+
+    // 怯み値
     public int Flinch
     {
         get { return _flinch; }
         set { _flinch = value; }
     }
 
-
-    public float Spead
+    // 移動速度
+    public float Speed
     {
-        get { return _spead; }
+        get { return _speed; }
     }
+
+    // ジャンプ力
     public float JumpPow
     {
         get { return _jumpPower; }
     }
+
+    // パンチの攻撃力
     public float NomalATK
     {
         get { return _nomalAttack; }
     }
+
+    // 銃の攻撃力
     public float WeaponATK
     {
         get { return _weaponAttack; }
     }
+
+    // 武器の集弾率
     public float BulletDense
     {
         get { return _bulletDense; }
         set { _bulletDense = value; }
     }
+
+    // 死亡判定
     public bool IsDead
     {
         get { return _isDead; }
         set { _isDead = value; }
     }
+
+    // 攻撃判定
     public bool IsAttack
     {
         get { return _isAttack; }
         set { _isAttack = value; }
     }
+
+    // ダメージ判定(怯み)
     public bool IsDamage
     {
         get { return _isDamage; }
         set { _isDamage = value; }
     }
+
+    // 走っているか
     public bool IsDash
     {
         get { return _isDash; }
         set { _isDash = value; }
     }
+
+    // ジャンプ中か
     public bool IsJump
     {
         get { return _isJump; }
         set { _isJump = value; }
     }
+
+    // しゃがみ中か
     public bool IsCrouch
     {
         get { return _isCrouch; }
         set { _isCrouch = value; }
     }
+
+    // 向きの判定(左右どちらを見ているか)
     public bool IsTrun
     {
         get { return _isTurn; }
         set { _isTurn = value; }
     }
+
+    // 地面の上か
     public bool IsGround
     {
         get { return _isGround; }

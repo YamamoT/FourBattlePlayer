@@ -17,17 +17,13 @@ public class PlayerWeapon : MonoBehaviour {
 
     [SerializeField]
     private bool _isWeapon = false; // 武器持ってるか持ってないか
-    [SerializeField]
-    private bool _isSword = false;
-    [SerializeField]
-    private int _attack = 0;
 
     Animator playerAnime;
     
     private PlayerStates pStates;
     private GameObject activeWeapon = null;
 
-    GameObject camera;
+    GameObject _camera;
     ZoomCamera zoomCamera;
 
     //サウンド
@@ -39,8 +35,8 @@ public class PlayerWeapon : MonoBehaviour {
     void Start() {
         pStates = GetComponent<PlayerStates>();
         playerAnime = GetComponent<Animator>();
-        camera = GameObject.FindGameObjectWithTag("MainCamera");
-        zoomCamera = camera.GetComponent<ZoomCamera>();
+        _camera = GameObject.FindGameObjectWithTag("MainCamera");
+        zoomCamera = _camera.GetComponent<ZoomCamera>();
 
     }
 
@@ -61,8 +57,6 @@ public class PlayerWeapon : MonoBehaviour {
         {
             // 武器が非アクティブなら処理終了
             if (activeWeapon == null) return;
-
-            //if (activeWeapon.GetComponent<Weapon>().GetAttackValue() <= 0) return;
 
             // 武器攻撃
             if (activeWeapon.name.Contains("Machine"))
@@ -89,7 +83,6 @@ public class PlayerWeapon : MonoBehaviour {
                         playerAnime.SetTrigger("attack");
                     }
                 }
-               
             }
             else
             {

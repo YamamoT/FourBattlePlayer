@@ -74,7 +74,7 @@ public class TestMove : MonoBehaviour {
         //if (!pStates.IsDash)
         //    moveDirection.x = inputAxis * pStates.WalkSpd;
         //else
-        moveDirection.x = inputAxis * pStates.Spead;
+        moveDirection.x = inputAxis * pStates.Speed;
 
         // 向きの回転
         if (Mathf.Round(inputAxis * 10) / 10 < 0) pStates.IsTrun = true;

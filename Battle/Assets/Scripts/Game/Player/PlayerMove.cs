@@ -36,7 +36,7 @@ public class PlayerMove : MonoBehaviour {
 
     Collider[] col;
 
-    GameObject camera;
+    GameObject _camera;
     ZoomCamera zoomCamera;
 
     private enum pCols
@@ -53,8 +53,8 @@ public class PlayerMove : MonoBehaviour {
         rigid = this.GetComponent<Rigidbody>();
         col = this.GetComponents<Collider>();
 
-        camera = GameObject.FindGameObjectWithTag("MainCamera");
-        zoomCamera = camera.GetComponent<ZoomCamera>();
+        _camera = GameObject.FindGameObjectWithTag("MainCamera");
+        zoomCamera = _camera.GetComponent<ZoomCamera>();
         int i = 0;
         foreach(Collider cols in col) col[i++] = cols;
         col[(int)pCols.Stand].enabled = true;
@@ -82,7 +82,7 @@ public class PlayerMove : MonoBehaviour {
         if (zoomCamera.GetIsFinished() == true)
         {
             // ダッシュ状態か否かで速度を変える
-            moveDirection.x = axis.x * pStates.Spead;
+            moveDirection.x = axis.x * pStates.Speed;
             // 向きの回転
             if (Mathf.Round(axis.x * 10) / 10 < 0) pStates.IsTrun = true;
             else if (Mathf.Round(axis.x * 10) / 10 > 0) pStates.IsTrun = false;
