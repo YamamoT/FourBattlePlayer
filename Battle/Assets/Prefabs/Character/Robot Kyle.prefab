@@ -5707,12 +5707,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerID: 1
   _hp: 220
-  _spead: 3
+  _spead: 5
   _jumpPower: 4.5
   _nomalAttack: 0
   _weaponAttack: 0
   _bulletDense: 0
-  _invincibleTime: 2
+  _invincibleTime: 4
   _flinch: 22
   _isDead: 0
   _isAttack: 0
