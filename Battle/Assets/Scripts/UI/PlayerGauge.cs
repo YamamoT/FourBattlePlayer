@@ -111,7 +111,7 @@ public class PlayerGauge : MonoBehaviour
 
         // 赤ゲージ減少
         if (redGauge.fillAmount > greenGauge.fillAmount)
-            redGauge.fillAmount -= 0.003f;
+            redGauge.fillAmount -= 0.03f * Time.deltaTime;
     }
 
     /// <summary>

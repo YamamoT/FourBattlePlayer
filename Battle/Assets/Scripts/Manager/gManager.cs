@@ -73,6 +73,7 @@ public class gManager : MonoBehaviour
     /// </summary>
     void TitleAction()
     {
+        EntryCharacterReset();
         SceneManager.LoadScene("Title");
     }
 
@@ -117,6 +118,12 @@ public class gManager : MonoBehaviour
     public int GetPlayerValue()
     {
         return playerValue;
+    }
+
+    private void EntryCharacterReset()
+    {
+        character = null;
+        playerValue = 0;
     }
 
 

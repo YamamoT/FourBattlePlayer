@@ -211,7 +211,7 @@ public class PlayerMove : MonoBehaviour {
 
         if (col.tag == "Bullet")
         {
-            if (col.GetComponent<Bullet>().GetPossesorName() != this.name)
+            if (col.GetComponent<Bullet>().GetPossesorId() != this.GetComponent<PlayerStates>().PlayerID)
             {
                 stackDamage += bull.GetComponent<Bullet>().GetDamage();
                 pStates.Hp -= bull.GetComponent<Bullet>().GetDamage();

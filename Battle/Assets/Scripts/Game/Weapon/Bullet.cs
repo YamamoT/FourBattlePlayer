@@ -10,6 +10,10 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private int bulletDamage = 0;
 
+    // 弾の速度
+    [SerializeField]
+    private float bulletSpeed;
+
     // 弾の生存時間
     [SerializeField]
     private float lifeTime = 1.0f;
@@ -23,7 +27,7 @@ public class Bullet : MonoBehaviour
     private GameObject spark = null;
 
     // 射撃者の名前格納用
-    private string possesorName;
+    private int possesorID;
 
     /// <summary>
     /// 更新
@@ -32,7 +36,7 @@ public class Bullet : MonoBehaviour
     {
         gameObject.transform.Translate(new Vector3(0.0f, deviation, 0.0f));
 
-        lifeTime -= 0.1f;
+        lifeTime -= Time.deltaTime * 0.1f;
 
         if(lifeTime <= 0.0f)
         {
@@ -71,14 +75,19 @@ public class Bullet : MonoBehaviour
     /// 射撃者の名前設定
     /// </summary>
     /// <param name="name"></param>
-    public void SetPossesorName(string name)
+    public void SetPossesorId(int id)
     {
-        possesorName = name;
+        possesorID = id;
     }
 
-    public string GetPossesorName()
+    public int GetPossesorId()
     {
-        return possesorName;
+        return possesorID;
+    }
+
+    public void SetBulletSpeed(float speed)
+    {
+        bulletSpeed = speed;
     }
 
     /// <summary>
@@ -92,7 +101,8 @@ public class Bullet : MonoBehaviour
             LayerMask.LayerToName(other.gameObject.layer) == "Gimmick"||
             other.tag == "Player")
         {
-            if (other.tag == "Player" && other.name != possesorName)
+            if (other.tag == "Player" && 
+                other.GetComponent<PlayerStates>().PlayerID != possesorID)
             {
                 //パーティクル
                 GameObject effect = GameObject.Instantiate(hitEffect) as GameObject;
@@ -109,33 +119,6 @@ public class Bullet : MonoBehaviour
                 Debug.Log("Player以外に当たった" + other.name);
             }
         }
-
-        //    if (other.tag != "Weapon")
-        //{
-        //    if (other.tag != "Bullet")
-        //    {
-        //        if (other.tag == "Player")
-        //        {
-        //            if (other.name != possesorName)
-        //            {
-        //                //パーティクル
-        //                GameObject effect = GameObject.Instantiate(hitEffect) as GameObject;
-        //                effect.transform.position = this.transform.position;
-        //                Debug.Log("射撃者とは違う人に当たった" + other.name);
-        //                Destroy(gameObject);
-        //            }
-        //        }
-        //        else
-        //        {
-        //            //パーティクル
-        //            GameObject effect = GameObject.Instantiate(spark) as GameObject;
-        //            effect.transform.position = this.transform.position;
-        //            Destroy(gameObject);
-        //            Debug.Log("Player以外に当たった" + other.name);
-
-        //        }
-        //    }
-        //}
     }
 
     }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 // c_ が付いている変数は値が変更される
 
@@ -26,8 +27,7 @@ public class Weapon : MonoBehaviour
     private float c_power;
 
     // 攻撃速度
-    [SerializeField]
-    private float attackSpeed;
+    private float attackSpeed = 500;
 
     // 拡散率
     [SerializeField]
@@ -164,7 +164,7 @@ public class Weapon : MonoBehaviour
         if(isAttack)
         {
             // 攻撃間隔を減少
-            c_attackInterval -= 0.1f;
+            c_attackInterval -= 6.0f * Time.deltaTime;
             
             // 攻撃間隔をリセット
             if(c_attackInterval <= 0)
@@ -178,7 +178,7 @@ public class Weapon : MonoBehaviour
         if(isMeleeAttack)
         {
             // 剣の持続時間を減らす
-            c_meleeDuration -= 0.1f;
+            c_meleeDuration -= Time.deltaTime;
 
             // 近接攻撃の持続時間が0になったらリセット
             if(c_meleeDuration <= 0.0f)
@@ -193,7 +193,7 @@ public class Weapon : MonoBehaviour
         if(meleeIsOccurs)
         {
             c_occursTime -= Time.deltaTime;
-            //Debug.Log(c_occursTime);
+
             if(c_occursTime <= 0.0f)
             {
                 isAttack = true;
@@ -234,7 +234,7 @@ public class Weapon : MonoBehaviour
                     // 弾に銃毎のダメージを設定
                     bulletInstance.GetComponent<Bullet>().SetDamage((int)power);
                     // 射撃者の名前を設定
-                    bulletInstance.GetComponent<Bullet>().SetPossesorName(possesor.name);
+                    bulletInstance.GetComponent<Bullet>().SetPossesorId(possesor.GetComponent<PlayerStates>().PlayerID);
 
                     Vector3 force;
 
@@ -243,12 +243,12 @@ public class Weapon : MonoBehaviour
 
                     // 弾速を設定
                     if (possesor == null)
-                        force = gameObject.transform.forward * attackSpeed * 1000;
+                        force = gameObject.transform.forward * ((float)attackSpeed * 100f);
                     else
-                        force = possesor.transform.forward * attackSpeed * 1000;
+                        force = possesor.transform.forward * ((float)attackSpeed * 100f);
 
                     // 弾の弾速を設定
-                    bulletInstance.GetComponent<Rigidbody>().AddForce(force);
+                    bulletInstance.GetComponent<Rigidbody>().AddForce(force * Time.deltaTime);
 
                     // 弾の発射場所を設定
                     bulletInstance.transform.position = muzzle.position;
@@ -287,7 +287,7 @@ public class Weapon : MonoBehaviour
                 // 弾にダメージを設定する
                 bulletInstance.GetComponent<Bullet>().SetDamage((int)c_power);
                 // 射撃者の名前を設定
-                bulletInstance.GetComponent<Bullet>().SetPossesorName(possesor.name);
+                bulletInstance.GetComponent<Bullet>().SetPossesorId(possesor.GetComponent<PlayerStates>().PlayerID);
                 // 弾にチャージした分だけの大きさを設定する
                 bulletInstance.GetComponent<Transform>().localScale = new Vector3(c_shotSize, c_shotSize, c_shotSize);
 
@@ -296,12 +296,12 @@ public class Weapon : MonoBehaviour
 
                 // 弾速を設定
                 if (possesor == null)
-                    force = gameObject.transform.forward * attackSpeed * 1000;
+                    force = gameObject.transform.forward * ((float)attackSpeed * 100f);
                 else
-                    force = possesor.transform.forward * attackSpeed * 1000;
+                    force = possesor.transform.forward * ((float)attackSpeed * 100f);
 
                 // 弾に速度を設定
-                bulletInstance.GetComponent<Rigidbody>().AddForce(force);
+                bulletInstance.GetComponent<Rigidbody>().AddForce(force * Time.deltaTime);
                 // 弾の発射位置を設定
                 bulletInstance.transform.position = muzzle.position;
 

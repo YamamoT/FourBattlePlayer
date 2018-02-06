@@ -259,14 +259,10 @@ public class ZoomCamera : MonoBehaviour
         }
 
         // x 座標設定
-        //target1.x = target[target1CntX].position.x;
-        //target1.y = target[target1CntY].position.y;
         target1.x = targetPos[target1CntX].x;
         target1.y = targetPos[target1CntY].y;
 
         // y 座標設定
-        //target2.x = target[target2CntX].position.x;
-        //target2.y = target[target2CntY].position.y;
         target2.x = targetPos[target2CntX].x;
         target2.y = targetPos[target2CntY].y;
 

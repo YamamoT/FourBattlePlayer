@@ -87,7 +87,7 @@ public class Timer : MonoBehaviour
     {
         // ミリ秒
         if (milliSeconds > 0)
-            milliSeconds--;
+            milliSeconds -= 50.0f * Time.deltaTime;
         else if(minutesTime == 0 && secondsTime == 0 && milliSeconds == 0)
         {
             milliSeconds = 0;
@@ -100,14 +100,14 @@ public class Timer : MonoBehaviour
         // 60ミリ秒経ったら値をリセットして、1秒経たせる
         if(milliSeconds <= 0 && secondsTime != 0)
         {
-            milliSeconds = 60;
+            milliSeconds = 59;
             secondsTime--;
         }
 
         // 60秒経ったら値をリセットして、1分経たせる
         if(secondsTime <= 0 && minutesTime != 0)
         {
-            secondsTime = 60;
+            secondsTime = 59;
             minutesTime--;
         }
     }

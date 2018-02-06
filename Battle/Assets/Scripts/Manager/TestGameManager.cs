@@ -48,6 +48,11 @@ public class TestGameManager : MonoBehaviour
 
         for(int i = 0; i < playerValue; i++)
         {
+            _player[i].GetComponent<PlayerStates>().PlayerID = i + 1;
+        }
+
+        for(int i = 0; i < playerValue; i++)
+        {
             _playerGauge[i].SetActive(true);
             _playerGauge[i].GetComponent<PlayerGauge>().SetPlayer(_player[i]);
         }
