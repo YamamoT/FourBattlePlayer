@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4217987729914980}
   - component: {fileID: 114723582300690228}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,7 +35,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4525759651904156}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,7 +51,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4666183391583350}
   - component: {fileID: 114726705262428520}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WeaponPopPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4216848388267760}
   - component: {fileID: 114709380826795236}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WeaponPopPoint (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4878627020712856}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4035914257214000}
   - component: {fileID: 114930288259326460}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WeaponPopPoint (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 33670922888667510}
   - component: {fileID: 65343056478122136}
   - component: {fileID: 23755886052889764}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4679533805673158}
   - component: {fileID: 114508928374559522}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WeaponPopPoint (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,7 +168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4680146025497984}
   - component: {fileID: 114766576554081572}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WeaponPopPoint (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 33162983893481784}
   - component: {fileID: 65304121058079296}
   - component: {fileID: 23802508694056790}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 33902195775237556}
   - component: {fileID: 65158208128578792}
   - component: {fileID: 23781386073523500}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,7 +234,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4019517393176030}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 23434994007007906}
   - component: {fileID: 114193992557023846}
   - component: {fileID: 65811242388594414}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: fallingBox (2)
   m_TagString: MoveObject
   m_Icon: {fileID: 0}
@@ -275,7 +275,7 @@ GameObject:
   - component: {fileID: 54329986695725004}
   - component: {fileID: 114062875660182990}
   - component: {fileID: 65586208722229518}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Seesaw02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,7 +293,7 @@ GameObject:
   - component: {fileID: 33566463381673204}
   - component: {fileID: 65452920562351520}
   - component: {fileID: 23734951412696640}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,7 +311,7 @@ GameObject:
   - component: {fileID: 33179201603809204}
   - component: {fileID: 65789658341122502}
   - component: {fileID: 23842855149026956}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329,7 +329,7 @@ GameObject:
   - component: {fileID: 33721004105530014}
   - component: {fileID: 65689327252406798}
   - component: {fileID: 23743758829439544}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -349,7 +349,7 @@ GameObject:
   - component: {fileID: 23064898002009870}
   - component: {fileID: 114267619823442432}
   - component: {fileID: 65414467825792136}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: fallingBox (1)
   m_TagString: MoveObject
   m_Icon: {fileID: 0}
@@ -365,7 +365,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4704951187050080}
   - component: {fileID: 114114672899521686}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WeaponPopPoint (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -398,7 +398,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4671679490555232}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Stage02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -432,7 +432,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4486087716934952}
   - component: {fileID: 114805519092128510}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WeaponPopPoint (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -448,7 +448,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4677588433177004}
   - component: {fileID: 114030551545034550}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WeaponPopPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -468,7 +468,7 @@ GameObject:
   - component: {fileID: 23898606883501580}
   - component: {fileID: 114833051083801100}
   - component: {fileID: 65377681683848162}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: switch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -488,7 +488,7 @@ GameObject:
   - component: {fileID: 23287753327175200}
   - component: {fileID: 114490650801545242}
   - component: {fileID: 114608643569186590}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: lift
   m_TagString: MoveObject
   m_Icon: {fileID: 0}
@@ -504,7 +504,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4381840362910808}
   - component: {fileID: 114468680725161714}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WeaponPopPoint (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -522,7 +522,7 @@ GameObject:
   - component: {fileID: 33805145647465418}
   - component: {fileID: 65583725350839100}
   - component: {fileID: 23795618569830534}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -558,7 +558,7 @@ GameObject:
   - component: {fileID: 33243489332534140}
   - component: {fileID: 65940818017869960}
   - component: {fileID: 23470121970352792}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -576,7 +576,7 @@ GameObject:
   - component: {fileID: 33768184285684884}
   - component: {fileID: 65304443012202570}
   - component: {fileID: 23281537959419842}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -595,7 +595,7 @@ GameObject:
   - component: {fileID: 65954979218526896}
   - component: {fileID: 23049041270336924}
   - component: {fileID: 114231651647540410}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -614,7 +614,7 @@ GameObject:
   - component: {fileID: 65999228692516168}
   - component: {fileID: 23652287728894222}
   - component: {fileID: 114727252293494208}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Door (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -632,7 +632,7 @@ GameObject:
   - component: {fileID: 33398658353584140}
   - component: {fileID: 136745446588377642}
   - component: {fileID: 23401588558697960}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -650,7 +650,7 @@ GameObject:
   - component: {fileID: 33636511384074336}
   - component: {fileID: 65143594583764844}
   - component: {fileID: 23584948134350328}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -668,7 +668,7 @@ GameObject:
   - component: {fileID: 33340358885817416}
   - component: {fileID: 65608361072566426}
   - component: {fileID: 23312767638480650}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -686,7 +686,7 @@ GameObject:
   - component: {fileID: 33344157800168230}
   - component: {fileID: 65617902670455330}
   - component: {fileID: 23037993267866208}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -719,7 +719,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4822831428932512}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: F2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -736,7 +736,7 @@ GameObject:
   - component: {fileID: 4395696381624622}
   - component: {fileID: 65598367863568360}
   - component: {fileID: 114448568471712176}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: GameObject
   m_TagString: MoveObject
   m_Icon: {fileID: 0}
@@ -772,7 +772,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4916710942367696}
   - component: {fileID: 114918170396568134}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WeaponPopPoint (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -789,7 +789,7 @@ GameObject:
   - component: {fileID: 4694916274068132}
   - component: {fileID: 65479270428139444}
   - component: {fileID: 114424053783208490}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -804,7 +804,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4925326662537816}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: F3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -824,7 +824,7 @@ GameObject:
   - component: {fileID: 23885397406781550}
   - component: {fileID: 114933887734838370}
   - component: {fileID: 65535459636690368}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: fallingBox
   m_TagString: MoveObject
   m_Icon: {fileID: 0}
@@ -839,7 +839,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4933764985839982}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Lift
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -854,7 +854,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4759525118688550}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: F4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -872,7 +872,7 @@ GameObject:
   - component: {fileID: 33340283627155454}
   - component: {fileID: 65505532424886928}
   - component: {fileID: 23422274940256928}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -890,7 +890,7 @@ GameObject:
   - component: {fileID: 33206573486819240}
   - component: {fileID: 65181830063539404}
   - component: {fileID: 23693900329873234}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
