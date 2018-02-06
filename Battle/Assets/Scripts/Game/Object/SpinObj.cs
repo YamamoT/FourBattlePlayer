@@ -5,10 +5,10 @@ using UnityEngine;
 public class SpinObj : MonoBehaviour {
 
     [SerializeField]
-    private float _rotSpeed = 5;
+    private float _rotSpeed = 180;
 
 	// Update is called once per frame
 	void Update () {
-        this.transform.Rotate(0, _rotSpeed * Time.deltaTime, 0);
+        this.transform.Rotate(new Vector3(0,_rotSpeed,0) * Time.deltaTime) ;
 	}
 }
