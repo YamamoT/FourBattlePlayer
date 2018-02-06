@@ -23,7 +23,7 @@ public class TestFallingBox : MonoBehaviour {
 
         if (fall)
         {
-            transform.position = transform.position + new Vector3(0,-0.1f,0);
+            transform.position += new Vector3(0,-5.0f,0) * Time.deltaTime;
         }
 
         if(transform.position.y <= -10.0f)

@@ -21,21 +21,21 @@ public class Explosive : MonoBehaviour {
     {
         if(other.tag == "Bullet")
         {
-            GameObject _blast = Instantiate(blast, transform.position, Quaternion.identity);
+            Instantiate(blast, transform.position, Quaternion.identity);
             ParticleSystem _exp = Instantiate(exp, transform.position, Quaternion.identity);
             _exp.transform.localScale = new Vector3(3, 3, 3);
             _exp.Play();
             Destroy(gameObject);
         }
 
-        //if (other.tag == "Fist")
-        //{
-        //    Rigidbody rb = GetComponent<Rigidbody>();
-        //    if (rb != null)
-        //    {
-        //        Vector3 velocity = (transform.position - other.transform.position).normalized * speed;
-        //        rb.AddForce(velocity* speed);
-        //    }
-        //}
+        if (other.tag == "Fist")
+        {
+            Rigidbody rb = GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                Vector3 velocity = (transform.position - other.transform.position).normalized * speed;
+                rb.AddForce(velocity * speed);
+            }
+        }
     }
 }

@@ -6,27 +6,33 @@ public class Bridge : MonoBehaviour {
     float start = 0;
     float end = -90;
     public bool open = false;
+    bool flag;
     public FloorSwitch f_switch;
     public float count;
-    public float speed = 0.2f;
+    float speed = 20.0f;
     // Use this for initialization
     void Start () {
-        open = f_switch.flag;
+        flag = f_switch.flag;
         count = 0;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        open = f_switch.flag;
+        if (flag != f_switch.flag)
+        {
+            flag = f_switch.flag;
+
+            if (flag) { open = !open; }
+        }
         if (open)
         {
-            count -= speed;
+            count -= speed * Time.deltaTime;
             if (count <= end) { count = end; }
         }
         else
         {
-            count += speed/2;
-            if (count >= 0) { count = 0; }
+            count += speed/ 2 * Time.deltaTime;
+            if (count >= start) { count = start; }
         }
         
         transform.rotation = Quaternion.Euler(0,0,count);

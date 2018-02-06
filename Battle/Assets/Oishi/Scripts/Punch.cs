@@ -23,7 +23,8 @@ public class Punch : MonoBehaviour {
         if (rb != null)
         {
             Vector3 velocity = (other.transform.position - player.transform.position).normalized * speed;
-            rb.AddForce(new Vector3(velocity.x, velocity.y * 1.5f, 0));// * speed);
+            //rb.AddForce(new Vector3(velocity.x, velocity.y * 1.5f, 0));// * speed);
+            rb.AddForceAtPosition(new Vector3(velocity.x, velocity.y * 1.5f, 0), player.transform.position + new Vector3(0, -0.5f, 0));
         }
     }
 }
