@@ -62,14 +62,14 @@ public class PlayerWeapon : MonoBehaviour {
             // 武器が非アクティブなら処理終了
             if (activeWeapon == null) return;
 
-            if (activeWeapon.GetComponent<Weapon>().GetAttackValue() <= 0) return;
+            //if (activeWeapon.GetComponent<Weapon>().GetAttackValue() <= 0) return;
 
             // 武器攻撃
             if (activeWeapon.name.Contains("Machine"))
             {
                 if(keyState.X && !pStates.IsDamage)
                 {
-                    if(_weaponFunc.GetIsAttack() == false)
+                    if (_weaponFunc.GetIsAttack() == false)
                     {
                         _weaponFunc.Attack();
                         playerAnime.SetTrigger("attack");
@@ -78,21 +78,29 @@ public class PlayerWeapon : MonoBehaviour {
             }
             else if (activeWeapon.name.Contains("Ray") && !pStates.IsDamage)
             {
-                if(keyState.X)_weaponFunc.Charge(_weaponFunc.ChargeDamage, _weaponFunc.ChargeSize);
 
-                if (GamepadInput.GamePad.GetButtonUp(GamepadInput.GamePad.Button.X, pStates.ConNum))
+                if (keyState.X) _weaponFunc.Charge(_weaponFunc.ChargeDamage, _weaponFunc.ChargeSize);
+
+                if (_weaponFunc.GetIsAttack() == false)
                 {
-                    _weaponFunc.Attack();
-                    playerAnime.SetTrigger("attack");
+                    if (GamepadInput.GamePad.GetButtonUp(GamepadInput.GamePad.Button.X, pStates.ConNum))
+                    {
+                        _weaponFunc.Attack();
+                        playerAnime.SetTrigger("attack");
+                    }
                 }
+               
             }
             else
             {
                 if (keyState.X && !Trigger.X && !pStates.IsDamage)
                 {
-
-                    activeWeapon.GetComponent<Weapon>().Attack();
-                    playerAnime.SetTrigger("attack");
+                    if (_weaponFunc.GetIsAttack() == false)
+                    {
+                        activeWeapon.GetComponent<Weapon>().Attack();
+                        playerAnime.SetTrigger("attack");
+                    }
+                        
                 }
             }
            
