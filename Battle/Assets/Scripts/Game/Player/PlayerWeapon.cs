@@ -62,6 +62,8 @@ public class PlayerWeapon : MonoBehaviour {
             // 武器が非アクティブなら処理終了
             if (activeWeapon == null) return;
 
+            if (activeWeapon.GetComponent<Weapon>().GetAttackValue() <= 0) return;
+
             // 武器攻撃
             if (activeWeapon.name.Contains("Machine"))
             {
@@ -88,6 +90,7 @@ public class PlayerWeapon : MonoBehaviour {
             {
                 if (keyState.X && !Trigger.X && !pStates.IsDamage)
                 {
+
                     activeWeapon.GetComponent<Weapon>().Attack();
                     playerAnime.SetTrigger("attack");
                 }
