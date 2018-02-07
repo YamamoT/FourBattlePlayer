@@ -9,6 +9,7 @@ TagManager:
   - MoveObject
   - Bullet
   - Fist
+  - UnderCol
   layers:
   - Default
   - TransparentFX
