@@ -42,7 +42,7 @@ public class PlayerWeapon : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-
+        
         if (zoomCamera.GetIsFinished() == false) return;
 
         //キー情報取得
@@ -174,7 +174,6 @@ public class PlayerWeapon : MonoBehaviour {
                             Sound.PlayOneShot(SE);
                         }
                     }
-
                     Destroy(col.gameObject);
                 }
             }    
@@ -184,5 +183,10 @@ public class PlayerWeapon : MonoBehaviour {
     public Weapon GetCurrentWeapon()
     {
         return _weaponFunc;
+    }
+
+    public GameObject Weapon
+    {
+        get { return activeWeapon; }
     }
 }

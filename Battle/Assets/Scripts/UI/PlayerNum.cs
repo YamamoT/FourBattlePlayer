@@ -3,22 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerNum : MonoBehaviour {
-
-    private int N;
+    
     private int playerId;
     public GameObject[] Number;
     public GameObject player;
 
 	// Use this for initialization
 	void Start () {
-
-
         playerId = player.GetComponent<PlayerStates>().PlayerID;
-
-        
-
-
-
     }
 	
 

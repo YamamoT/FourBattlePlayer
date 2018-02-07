@@ -218,12 +218,19 @@ public class Weapon : MonoBehaviour
     /// </summary>
     public void Attack()
     {
-        if(!isAttack && c_attackValue > 0)
+        if(!isAttack)
         {
             // 遠距離攻撃 (銃)
             if(type == TYPE.Range)
             {
                 isAttack = true;
+
+                if (c_attackValue <= 0)
+                {
+                    //サウンド再生
+                    Sound.PlayOneShot(SE2);
+                    return;
+                }
 
                 for (int i = 0; i < shellInValue; i++)
                 {
@@ -280,6 +287,13 @@ public class Weapon : MonoBehaviour
             {
                 // 攻撃中
                 isAttack = true;
+
+                if (c_attackValue <= 0)
+                {
+                    //サウンド再生
+                    Sound.PlayOneShot(SE2);
+                    return;
+                }
                 // 弾を生成
                 GameObject bulletInstance = GameObject.Instantiate(bullet) as GameObject;
                 // 弾に重力を掛けないようにする
@@ -320,11 +334,6 @@ public class Weapon : MonoBehaviour
 
                 c_attackValue--;
             }
-        }
-        else
-        {
-            //サウンド再生
-            Sound.PlayOneShot(SE2);
         }
     }
 
@@ -481,5 +490,11 @@ public class Weapon : MonoBehaviour
     {
         get { return _chargeUpVal; }
         set { _chargeUpVal = value; }
+    }
+    
+
+    public float GetChargeSize()
+    {
+        return c_shotSize;
     }
 }
