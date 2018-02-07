@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Fall : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
+    [SerializeField]
+    Vector3 comeback = new Vector3(0, 15, 0);
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -19,7 +20,7 @@ public class Fall : MonoBehaviour {
         if(other.tag == "Player")
         {
             PlayerStates pStates = other.GetComponent<PlayerStates>();
-            other.transform.position = new Vector3(0, 15, 0);
+            other.transform.position = comeback;
             pStates.Hp -= 20;
         }
     }

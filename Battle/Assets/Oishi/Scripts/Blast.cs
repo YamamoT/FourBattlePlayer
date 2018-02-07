@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Blast : MonoBehaviour {
-    [SerializeField]
-    float speed = 10;
+    float speed = 50;
 
     // Use this for initialization
     void Start () {
@@ -27,11 +26,14 @@ public class Blast : MonoBehaviour {
         PlayerStates pStates = other.GetComponent<PlayerStates>();
         if (rb != null)
         {
-            Vector3 velocity = (other.transform.position - this.transform.position).normalized * speed;
-            rb.AddForceAtPosition(new Vector3(velocity.x * 2, velocity.y, 0), other.transform.position + new Vector3(0, 1, 0));
-            rb.AddForce(new Vector3(velocity.x * 2, velocity.y, 0) * speed);
-            if (ani != null) { ani.SetTrigger("damage"); }
-            if(pStates != null) { pStates.Hp -= pStates.Hp/2; pStates.IsDamage = true; }
+            if (other.tag == "Player" && pStates.IsDamage == false)
+            {
+                Vector3 velocity = (other.transform.position - this.transform.position).normalized * speed;
+                rb.AddForceAtPosition(new Vector3(velocity.x, velocity.y, 0), other.transform.position + new Vector3(0, 1, 0));
+                rb.AddForce(new Vector3(velocity.x * 2, velocity.y * 2, 0) * speed);
+                if (ani != null) { ani.SetTrigger("damage"); }
+                if (pStates != null) { pStates.Hp -= pStates.Hp / 2; pStates.IsDamage = true; }
+            }
             if (!rb.useGravity) { rb.useGravity = true; }
             if (rb.isKinematic) { rb.isKinematic = false; }
         }
