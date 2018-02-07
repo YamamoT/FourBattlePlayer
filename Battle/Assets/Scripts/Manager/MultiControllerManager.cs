@@ -47,9 +47,16 @@ public class MultiControllerManager : MonoBehaviour
     [SerializeField]
     private Image decideImage;
 
+    //サウンド
+    public AudioSource Sound;
+    public AudioClip SE;
+    public AudioClip SE2;
+    public AudioClip SE3;
 
-	// Use this for initialization
-	void Start ()
+
+
+    // Use this for initialization
+    void Start ()
     {
         // コントローラー設定
         ControllerSetUp(controllerNum);
@@ -92,9 +99,15 @@ public class MultiControllerManager : MonoBehaviour
             {
                 // キャラクターセレクト移動
                 if (axis.x >= 0.7f)
+                {
                     CharacterSelect(false);
+                }
                 else if (axis.x <= -0.7f)
+                {
                     CharacterSelect(true);
+                }
+
+
 
                 // キャラクター決定
                 if (keyState.X)
@@ -104,6 +117,10 @@ public class MultiControllerManager : MonoBehaviour
                     manager.GetComponent<CreateManager>().EntryCharacter(controllerNum, playerIsPlayCharacter);
                     manager.GetComponent<CreateManager>().CharacterIsDecide();
                     Debug.Log(controllerNum + "Pが " + playerIsPlayCharacter + "を選びました");
+
+                    //サウンド再生
+                    Sound.PlayOneShot(SE2);
+
                 }
                     
             }
@@ -117,9 +134,10 @@ public class MultiControllerManager : MonoBehaviour
                     playerIsReady = false;
                     manager.GetComponent<CreateManager>().CharacterCancel();
                     Debug.Log("キャンセルされました");
+                    Sound.PlayOneShot(SE3);
                 }
 
-                if(keyState.Start)
+                if (keyState.Start)
                 {
                     Debug.Log("ゲームを開始します");
                     manager.GetComponent<CreateManager>().GameStart();
@@ -134,6 +152,8 @@ public class MultiControllerManager : MonoBehaviour
                 playerIsJoin = true;
                 manager.GetComponent<CreateManager>().PlayerJoined();
                 Debug.Log("参加しました : " + controllerNum);
+                //サウンド再生
+                Sound.PlayOneShot(SE2);
             }
         }
     }
@@ -187,8 +207,10 @@ public class MultiControllerManager : MonoBehaviour
             if (playerIsPlayCharacter == 5)
                 playerIsPlayCharacter = 1;
         }
+        //サウンド
+        Sound.PlayOneShot(SE);
 
-        for(int i = 0; i < maxCharaValue; i++)
+        for (int i = 0; i < maxCharaValue; i++)
         {
             if (playerIsPlayCharacter - 1 == i)
                 charaImage[i].color = new Color(1, 1, 1, 1);

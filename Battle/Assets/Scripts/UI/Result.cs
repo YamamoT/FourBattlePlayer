@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Result : MonoBehaviour {
 
     public Text text;
+    public float time;
     private float count;
     private bool EndFlag = false;
 
@@ -33,7 +34,7 @@ public class Result : MonoBehaviour {
         else
         {
             count+= Time.deltaTime;
-            if (count > 3)
+            if (count > time)
             {
                 gManager.instance.SetCurrentState(SceneState.Title);
             }

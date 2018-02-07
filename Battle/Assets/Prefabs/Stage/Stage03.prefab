@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 23548992388370628}
   - component: {fileID: 114399167343959212}
   - component: {fileID: 54344848253208690}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: Explosive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1240,7 +1240,7 @@ GameObject:
   - component: {fileID: 23468429489357130}
   - component: {fileID: 114161338400982530}
   - component: {fileID: 54028249343154004}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: Explosive (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1278,7 +1278,7 @@ GameObject:
   - component: {fileID: 23998880397823094}
   - component: {fileID: 114017427367582856}
   - component: {fileID: 54346751253459856}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: Explosive (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
