@@ -36,6 +36,7 @@ public class gManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
         // 最初のシーンをタイトルに設定
         currentState = SceneState.Title;
+
     }
 
     /// <summary>
@@ -98,6 +99,7 @@ public class gManager : MonoBehaviour
         playerValue = value;
 
         character = new GameObject[playerValue];
+        Debug.Log(character.Length);
     }
 
     public void SetPlayCharacter(int number, GameObject chara)

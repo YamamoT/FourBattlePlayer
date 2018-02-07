@@ -12,6 +12,10 @@ public class CreateManager : MonoBehaviour
     [SerializeField]
     private int playerValue = 0;
 
+    // キャラクター決定人数
+    [SerializeField]
+    private int playerIsDecideNum = 0;
+
     // 生成可能キャラクター
     [SerializeField]
     private GameObject unityChan;
@@ -35,40 +39,81 @@ public class CreateManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        Debug.Log(playerValue);
+        //Debug.Log(playerValue);
 	}
 
 
-    /// <summary>
-    /// UnityChanをエントリー
-    /// </summary>
-    public void EntryUnityChan()
+    ///// <summary>
+    ///// UnityChanをエントリー
+    ///// </summary>
+    //public void EntryUnityChan()
+    //{
+    //    entryCharacter[playerValue - 1] = unityChan;
+    //}
+
+    ///// <summary>
+    ///// スパイをエントリー
+    ///// </summary>
+    //public void EntrySpy()
+    //{
+    //    entryCharacter[playerValue -1] = spy;
+    //}
+
+    ///// <summary>
+    /////  モンスターをエントリー
+    ///// </summary>
+    //public void EntryMonster()
+    //{
+    //    entryCharacter[playerValue -1] = monster;
+    //}
+
+    ///// <summary>
+    ///// ロボットをエントリー
+    ///// </summary>
+    //public void EntryRobot()
+    //{
+    //    entryCharacter[playerValue -1] = robot;
+    //}
+
+    // プレイヤーの参加
+    public void PlayerJoined()
     {
-        entryCharacter[playerValue - 1] = unityChan;
+        playerValue++;
+    }
+
+    // キャラクターの決定
+    public void CharacterIsDecide()
+    {
+        playerIsDecideNum++;
+    }
+
+    public void CharacterCancel()
+    {
+        playerIsDecideNum--;
     }
 
     /// <summary>
-    /// スパイをエントリー
+    /// キャラクターのエントリー
     /// </summary>
-    public void EntrySpy()
+    /// <param name="num">何番目にエントリーさせるか</param>
+    /// <param name="CharaNum">キャラの番号</param>
+    public void EntryCharacter(int num, int CharaNum)
     {
-        entryCharacter[playerValue -1] = spy;
-    }
-
-    /// <summary>
-    ///  モンスターをエントリー
-    /// </summary>
-    public void EntryMonster()
-    {
-        entryCharacter[playerValue -1] = monster;
-    }
-
-    /// <summary>
-    /// ロボットをエントリー
-    /// </summary>
-    public void EntryRobot()
-    {
-        entryCharacter[playerValue -1] = robot;
+        switch(CharaNum)
+        {
+            case 1:
+                entryCharacter[num - 1] = unityChan;
+                break;
+            case 2:
+                entryCharacter[num - 1] = spy;
+                break;
+            case 3:
+                entryCharacter[num - 1] = monster;
+                break;
+            case 4:
+                entryCharacter[num - 1] = robot;
+                break;
+        }
     }
 
     /// <summary>
@@ -82,9 +127,9 @@ public class CreateManager : MonoBehaviour
 
     public void GameStart()
     {
-        if (playerValue > 2)
+        if (playerValue >= 2 && playerIsDecideNum >= 2)
         {
-            Debug.Log("入れる数 : " + (playerValue - 1));
+            Debug.Log("入れる数 : " + (playerValue));
             gManager.instance.SetPlayerValue(playerValue - 1);
 
             for (int i = 0; i < playerValue - 1; i++)
