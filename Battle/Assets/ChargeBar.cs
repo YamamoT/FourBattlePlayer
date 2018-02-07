@@ -23,6 +23,8 @@ public class ChargeBar : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        if (_weapon = null) return;
+
         _weapon = _player.GetComponent<PlayerWeapon>().Weapon;
 
         if (_weapon.name.Contains("Ray") && (_weapon.GetComponent<Weapon>().GetAttackValue() != 0))

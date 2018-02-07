@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class PlayerNum : MonoBehaviour {
@@ -7,9 +8,13 @@ public class PlayerNum : MonoBehaviour {
     private int playerId;
     public GameObject[] Number;
     public GameObject player;
+    public Slider _rayBar;
 
-	// Use this for initialization
-	void Start () {
+    [SerializeField]
+    private float _correctSize;
+
+    // Use this for initialization
+    void Start () {
         playerId = player.GetComponent<PlayerStates>().PlayerID;
     }
 	
@@ -18,6 +23,15 @@ public class PlayerNum : MonoBehaviour {
 	void Update () {
         Number[playerId - 1].SetActive(true);
         transform.rotation = Camera.main.transform.rotation;
-        transform.position = new Vector3(transform.position.x, transform.position.y, -6f);
+  
+        if(_rayBar.IsActive())
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y - _correctSize, -6f);
+        }
+        else
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, -6f);
+        }
+
     }
 }
