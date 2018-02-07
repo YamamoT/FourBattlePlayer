@@ -3252,7 +3252,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1578242133819598}
-  m_LocalRotation: {x: 0.61543465, y: 0.3481959, z: -0.61543417, w: 0.34819618}
+  m_LocalRotation: {x: 0.6154347, y: 0.34819594, z: -0.6154342, w: 0.3481962}
   m_LocalPosition: {x: 0.24865364, y: 0.66157883, z: 0.00000030517577}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -6683,7 +6683,6 @@ MonoBehaviour:
   attackValue: 100
   attackInterval: 3
   power: 10
-  attackSpeed: 0
   diffusion: 0
   isAttack: 0
   isDebugMode: 0
@@ -6784,8 +6783,6 @@ MonoBehaviour:
   - {fileID: 1565026297944794}
   _fist: {fileID: 1444398906134936}
   _isWeapon: 0
-  _isSword: 0
-  _attack: 0
   Sound: {fileID: 82536194896880048}
   SE: {fileID: 8300000, guid: 1d3c9cf4e6b407d45bb96d7ca125268d, type: 3}
   SE2: {fileID: 8300000, guid: 40e04d39a1c68624e9f1cc698c010d92, type: 3}
@@ -6804,7 +6801,6 @@ MonoBehaviour:
   attackValue: 40
   attackInterval: 1
   power: 3
-  attackSpeed: 1
   diffusion: 0.05
   isAttack: 0
   isDebugMode: 0
@@ -6853,7 +6849,6 @@ MonoBehaviour:
   attackValue: 7
   attackInterval: 1
   power: 1
-  attackSpeed: 1
   diffusion: 0.03
   isAttack: 0
   isDebugMode: 0
@@ -6885,7 +6880,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerID: 2
   _hp: 260
-  _spead: 7
+  _speed: 7
   _jumpPower: 5
   _nomalAttack: 15
   _weaponAttack: 0
@@ -6898,6 +6893,7 @@ MonoBehaviour:
   _isDash: 0
   _isJump: 0
   _isCrouch: 0
+  _isGround: 0
 --- !u!114 &114632127254731602
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6965,7 +6961,6 @@ MonoBehaviour:
   attackValue: 100
   attackInterval: 3
   power: 25
-  attackSpeed: 0
   diffusion: 0
   isAttack: 0
   isDebugMode: 1
@@ -7011,7 +7006,6 @@ MonoBehaviour:
   attackValue: 7
   attackInterval: 4
   power: 3
-  attackSpeed: 0.7
   diffusion: 0.1
   isAttack: 0
   isDebugMode: 0
@@ -7057,7 +7051,6 @@ MonoBehaviour:
   attackValue: 11
   attackInterval: 1
   power: 7
-  attackSpeed: 1
   diffusion: 0.03
   isAttack: 0
   isDebugMode: 0

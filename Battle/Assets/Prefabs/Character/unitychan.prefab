@@ -9181,7 +9181,6 @@ MonoBehaviour:
   attackValue: 100
   attackInterval: 3
   power: 15
-  attackSpeed: 0
   diffusion: 0
   isAttack: 0
   isDebugMode: 1
@@ -9261,7 +9260,6 @@ MonoBehaviour:
   attackValue: 40
   attackInterval: 1
   power: 3
-  attackSpeed: 0.8
   diffusion: 0.03
   isAttack: 0
   isDebugMode: 1
@@ -9312,7 +9310,6 @@ MonoBehaviour:
   attackValue: 7
   attackInterval: 1
   power: 1
-  attackSpeed: 1
   diffusion: 0.02
   isAttack: 0
   isDebugMode: 1
@@ -9342,9 +9339,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0533ec6eb68581d49a2f0fb450ba11a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerID: 4
+  PlayerID: 1
   _hp: 200
-  _spead: 8
+  _speed: 8
   _jumpPower: 5
   _nomalAttack: 0
   _weaponAttack: 0
@@ -9357,6 +9354,7 @@ MonoBehaviour:
   _isDash: 0
   _isJump: 0
   _isCrouch: 0
+  _isGround: 0
 --- !u!114 &114325783835858784
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9412,7 +9410,6 @@ MonoBehaviour:
   attackValue: 100
   attackInterval: 3
   power: 3
-  attackSpeed: 0
   diffusion: 0
   isAttack: 0
   isDebugMode: 0
@@ -9482,7 +9479,6 @@ MonoBehaviour:
   attackValue: 7
   attackInterval: 5
   power: 3
-  attackSpeed: 0.7
   diffusion: 0.1
   isAttack: 0
   isDebugMode: 0
@@ -9516,7 +9512,6 @@ MonoBehaviour:
   attackValue: 11
   attackInterval: 2
   power: 7
-  attackSpeed: 1
   diffusion: 0.02
   isAttack: 0
   isDebugMode: 0
@@ -9554,8 +9549,6 @@ MonoBehaviour:
   - {fileID: 1125895165421594}
   _fist: {fileID: 1547254651587188}
   _isWeapon: 0
-  _isSword: 0
-  _attack: 0
   Sound: {fileID: 82137071147875702}
   SE: {fileID: 8300000, guid: 1d3c9cf4e6b407d45bb96d7ca125268d, type: 3}
   SE2: {fileID: 8300000, guid: 40e04d39a1c68624e9f1cc698c010d92, type: 3}
