@@ -9346,7 +9346,7 @@ MonoBehaviour:
   _nomalAttack: 0
   _weaponAttack: 0
   _bulletDense: 0
-  _invincibleTime: 4
+  _invincibleTime: 3
   _flinch: 13
   _isDead: 0
   _isAttack: 0
