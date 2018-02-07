@@ -23,15 +23,10 @@ public class PlayerNum : MonoBehaviour {
 	void Update () {
         Number[playerId - 1].SetActive(true);
         transform.rotation = Camera.main.transform.rotation;
-  
-        if(_rayBar.IsActive())
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y - _correctSize, -6f);
-        }
-        else
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y, -6f);
-        }
+
+        transform.position = new Vector3(transform.position.x, transform.position.y, -6f);
+
+        
 
     }
 }

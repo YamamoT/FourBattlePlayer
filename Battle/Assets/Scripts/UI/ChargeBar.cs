@@ -26,6 +26,7 @@ public class ChargeBar : MonoBehaviour {
         if (_weapon = null) return;
 
         _weapon = _player.GetComponent<PlayerWeapon>().Weapon;
+        
 
         if (_weapon.name.Contains("Ray") && (_weapon.GetComponent<Weapon>().GetAttackValue() != 0))
         {
@@ -40,5 +41,6 @@ public class ChargeBar : MonoBehaviour {
         _rayBar.value = (_weapon.GetComponent<Weapon>().GetChargeSize() / 1f);
 
         transform.rotation = Camera.main.transform.rotation;
+        transform.position = new Vector3(transform.position.x, transform.position.y, -6);
     }
 }
