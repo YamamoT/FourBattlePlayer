@@ -21,7 +21,7 @@ public class TestLift : MonoBehaviour {
         //float fracJourney = elapsedTime / journeyLength;
 
         //transform.position = Vector3.Lerp(startPos.position, endPos.position, fracJourney);
-        transform.position = new Vector3(transform.position.x,Mathf.Lerp(startPos.position.y, endPos.position.y, Mathf.PingPong(elapsedTime, 1.0f)),transform.position.z);
-        //transform.position = new Vector3( Mathf.Lerp(startPos.position.y, endPos.position.y, Mathf.PingPong(elapsedTime, 1.0f)), transform.position.y, transform.position.z);
+        //transform.position = new Vector3(transform.position.x,Mathf.Lerp(startPos.position.y, endPos.position.y, Mathf.PingPong(elapsedTime, 1.0f)),transform.position.z);
+        transform.position = new Vector3(Mathf.Lerp(startPos.position.x, endPos.position.x, Mathf.PingPong(elapsedTime, 1.0f)), transform.position.y, transform.position.z);
     }
 }
