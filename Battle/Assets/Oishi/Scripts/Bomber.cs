@@ -12,7 +12,7 @@ public class Bomber : MonoBehaviour {
     // Use this for initialization
     void Start () {
         startTime = Time.time;
-        count = Random.Range(10, 15);
+        count = Random.Range(8.0f, 10.0f);
     }
 	
 	// Update is called once per frame
@@ -24,7 +24,7 @@ public class Bomber : MonoBehaviour {
         if (count <= 0)
         {
             Instantiate(bomb, transform.position, Quaternion.identity);
-            count = Random.Range(10, 15);
+            count = Random.Range(8.0f, 10.0f);
         }
     }
 }
