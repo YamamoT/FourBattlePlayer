@@ -88,11 +88,12 @@ public class Timer : MonoBehaviour
         // ミリ秒
         if (milliSeconds > 0)
             milliSeconds -= 50.0f * Time.deltaTime;
-        else if(minutesTime == 0 && secondsTime == 0 && milliSeconds == 0)
+        else if(minutesTime <= 0 && secondsTime <= 0 && milliSeconds <= 0)
         {
             milliSeconds = 0;
             isTimerFinished = true;
             isTimerProgress = false;
+            Debug.Log(isTimerFinished);
         }
                 
             
@@ -110,6 +111,10 @@ public class Timer : MonoBehaviour
             secondsTime = 59;
             minutesTime--;
         }
+
+        Debug.Log("ミリ秒 : " + milliSeconds);
+        Debug.Log("秒 : " + secondsTime);
+        Debug.Log("分: " + minutesTime);
     }
 
     /// <summary>
