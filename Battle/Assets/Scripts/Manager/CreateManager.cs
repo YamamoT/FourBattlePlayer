@@ -48,10 +48,13 @@ public class CreateManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (playerIsDecideNum >= 2)
+        if (playerValue >= 2 && playerIsDecideNum >= 2 && playerValue == playerIsDecideNum)
             ReadyImage.color = Show;
         else
             ReadyImage.color = Hide;
+
+        Debug.Log("PlayerValue : " + playerValue);
+        Debug.Log("決定数 : " + playerIsDecideNum);
 	}
 
     // プレイヤーの参加
@@ -106,12 +109,12 @@ public class CreateManager : MonoBehaviour
 
     public void GameStart()
     {
-        if (playerValue >= 2 && playerIsDecideNum >= 2)
+        if (playerValue >= 2 && playerIsDecideNum >= 2 && playerValue == playerIsDecideNum)
         {
             Debug.Log("入れる数 : " + (playerValue));
-            gManager.instance.SetPlayerValue(playerValue - 1);
+            gManager.instance.SetPlayerValue(playerValue);
 
-            for (int i = 0; i < playerValue - 1; i++)
+            for (int i = 0; i < playerValue; i++)
             {
                 Debug.Log(i);
                 gManager.instance.SetPlayCharacter(i, entryCharacter[i]);
