@@ -46,6 +46,18 @@ public class MultiControllerManager : MonoBehaviour
     // 決定画像
     [SerializeField]
     private Image decideImage;
+    // 背景画像
+    [SerializeField]
+    private Image backImage;
+    // 不参加画像
+    [SerializeField]
+    private Image noEntryImage;
+
+    private Color Show = new Color(1, 1, 1, 1);
+    private Color Hide = new Color(0, 0, 0, 0);
+
+    [SerializeField]
+    private Color playerColor;
 
     //サウンド
     public AudioSource Sound;
@@ -58,18 +70,21 @@ public class MultiControllerManager : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
+        // 背景画像を灰色に
+        backImage.color = new Color(0.6f, 0.6f, 0.6f, 1.0f);
+
         // コントローラー設定
         ControllerSetUp(controllerNum);
         // 移動時間初期化
         c_moveTime = moveTime;
 
-        for (int i = 0; i < maxCharaValue; i++)
-        {
-            if (playerIsPlayCharacter - 1 == i)
-                charaImage[i].color = new Color(1, 1, 1, 1);
-            else
-                charaImage[i].color = new Color(0, 0, 0, 0);
-        }
+        //for (int i = 0; i < maxCharaValue; i++)
+        //{
+        //    if (playerIsPlayCharacter - 1 == i)
+        //        charaImage[i].color = Show;
+        //    else
+        //        charaImage[i].color = Hide;
+        //}
     }
 	
 	// Update is called once per frame
@@ -94,6 +109,18 @@ public class MultiControllerManager : MonoBehaviour
         // 参加している時
         if (playerIsJoin)
         {
+
+            noEntryImage.color = Hide;
+            backImage.color = playerColor;
+
+            for (int i = 0; i < maxCharaValue; i++)
+            {
+                if (playerIsPlayCharacter - 1 == i)
+                    charaImage[i].color = Show;
+                else
+                    charaImage[i].color = Hide;
+            }
+
             // キャラクター決定がまだの時
             if (!playerIsReady)
             {
@@ -112,7 +139,7 @@ public class MultiControllerManager : MonoBehaviour
                 // キャラクター決定
                 if (keyState.X)
                 {
-                    decideImage.color = new Color(1,1,1, 1);
+                    decideImage.color = Show;
                     playerIsReady = true;
                     manager.GetComponent<CreateManager>().EntryCharacter(controllerNum, playerIsPlayCharacter);
                     manager.GetComponent<CreateManager>().CharacterIsDecide();
@@ -130,7 +157,7 @@ public class MultiControllerManager : MonoBehaviour
                 // キャンセル
                 if (keyState.A)
                 {
-                    decideImage.color = new Color(0, 0, 0, 0);
+                    decideImage.color = Hide;
                     playerIsReady = false;
                     manager.GetComponent<CreateManager>().CharacterCancel();
                     Debug.Log("キャンセルされました");
@@ -146,6 +173,8 @@ public class MultiControllerManager : MonoBehaviour
         }
         else
         {
+            noEntryImage.color = Show;
+
             // 決定ボタン
             if (keyState.Start)
             {
@@ -179,6 +208,30 @@ public class MultiControllerManager : MonoBehaviour
                 controller = GamePad.Index.Four;
                 break;
             default:
+                break;
+        }
+    }
+
+    // 背景色設定
+    private void SetBackColor(int conNum)
+    {
+        switch(conNum)
+        {
+            // 赤
+            case 1:
+                backImage.color = new Color(1.0f, 0.2f, 0.2f, 1.0f);
+                break;
+            // 青
+            case 2:
+                backImage.color = new Color(0.2f, 0.2f, 1.0f, 1.0f);
+                break;
+            // 黄
+            case 3:
+                backImage.color = new Color(1.0f, 1.0f, 0.2f, 1.0f);
+                break;
+            // 緑
+            case 4:
+                backImage.color = new Color(0.2f, 1.0f, 0.2f, 1.0f);
                 break;
         }
     }

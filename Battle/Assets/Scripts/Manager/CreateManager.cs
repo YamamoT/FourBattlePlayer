@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CreateManager : MonoBehaviour
 {
@@ -30,50 +31,28 @@ public class CreateManager : MonoBehaviour
     [SerializeField]
     private GameObject[] entryCharacter;
 
-	// Use this for initialization
-	void Start ()
+    [SerializeField]
+    private Image ReadyImage;
+
+    private Color Show = new Color(1, 1, 1, 1);
+    private Color Hide = new Color(0, 0, 0, 0);
+
+    // Use this for initialization
+    void Start ()
     {
         entryCharacter = new GameObject[maxPlayerValue];
+
+        ReadyImage.color = Hide;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        //Debug.Log(playerValue);
+        if (playerIsDecideNum >= 2)
+            ReadyImage.color = Show;
+        else
+            ReadyImage.color = Hide;
 	}
-
-
-    ///// <summary>
-    ///// UnityChanをエントリー
-    ///// </summary>
-    //public void EntryUnityChan()
-    //{
-    //    entryCharacter[playerValue - 1] = unityChan;
-    //}
-
-    ///// <summary>
-    ///// スパイをエントリー
-    ///// </summary>
-    //public void EntrySpy()
-    //{
-    //    entryCharacter[playerValue -1] = spy;
-    //}
-
-    ///// <summary>
-    /////  モンスターをエントリー
-    ///// </summary>
-    //public void EntryMonster()
-    //{
-    //    entryCharacter[playerValue -1] = monster;
-    //}
-
-    ///// <summary>
-    ///// ロボットをエントリー
-    ///// </summary>
-    //public void EntryRobot()
-    //{
-    //    entryCharacter[playerValue -1] = robot;
-    //}
 
     // プレイヤーの参加
     public void PlayerJoined()
