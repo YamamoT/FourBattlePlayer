@@ -242,6 +242,21 @@ Prefab:
       propertyPath: playerColor.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114880824144446876, guid: 1d4665e6bb668f8499ff81369d0418bb,
+        type: 2}
+      propertyPath: playerColor.r
+      value: 0.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 114880824144446876, guid: 1d4665e6bb668f8499ff81369d0418bb,
+        type: 2}
+      propertyPath: playerColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114880824144446876, guid: 1d4665e6bb668f8499ff81369d0418bb,
+        type: 2}
+      propertyPath: playerColor.b
+      value: 0.23965529
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1d4665e6bb668f8499ff81369d0418bb, type: 2}
   m_IsPrefabParent: 0
@@ -601,7 +616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxPlayerValue: 4
-  playerValue: 1
+  playerValue: 0
   playerIsDecideNum: 0
   unityChan: {fileID: 1579773750671976, guid: 5cfcfa44e97324f46942be59d820b9b1, type: 2}
   spy: {fileID: 1877322287632238, guid: ff54195aff5861b4fb4b39ebf18e5375, type: 2}
@@ -802,6 +817,10 @@ Prefab:
         type: 2}
       propertyPath: m_AnchoredPosition.x
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1868818045452934, guid: 54239e929d49358469556a2ac264586a, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 54239e929d49358469556a2ac264586a, type: 2}

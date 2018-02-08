@@ -96,10 +96,13 @@ public class gManager : MonoBehaviour
 
     public void SetPlayerValue(int value)
     {
-        playerValue = value;
+        Debug.Log(value);
 
+        playerValue = value;
         character = new GameObject[playerValue];
+
         Debug.Log(character.Length);
+
     }
 
     public void SetPlayCharacter(int number, GameObject chara)
