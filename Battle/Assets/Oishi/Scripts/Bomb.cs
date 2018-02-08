@@ -6,7 +6,7 @@ public class Bomb : MonoBehaviour {
     public GameObject blast;
     public ParticleSystem exp;
     float speed = 30.0f;
-    int count = 3;
+    int count = 1;
     // Use this for initialization
     void Start () {
 		
@@ -18,7 +18,7 @@ public class Bomb : MonoBehaviour {
         {
             Instantiate(blast, transform.position, Quaternion.identity);
             ParticleSystem _exp = Instantiate(exp, transform.position, Quaternion.identity);
-            _exp.transform.localScale = new Vector3(3, 3, 3);
+            _exp.transform.localScale = new Vector3(5, 5, 5);
             _exp.Play();
             Destroy(gameObject);
         }

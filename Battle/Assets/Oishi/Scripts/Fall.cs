@@ -19,6 +19,7 @@ public class Fall : MonoBehaviour {
     {
         if(other.tag == "Player")
         {
+            other.GetComponent<Rigidbody>().velocity = Vector3.zero;
             PlayerStates pStates = other.GetComponent<PlayerStates>();
             other.transform.position = comeback;
             pStates.Hp -= 20;
