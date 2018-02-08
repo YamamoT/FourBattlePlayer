@@ -26,19 +26,17 @@ public class Blast : MonoBehaviour {
         PlayerStates pStates = other.GetComponent<PlayerStates>();
         if (rb != null)
         {
-            if (other.tag == "Player" && pStates.IsDamage == false)
+            if (other.tag == "Player")
             {
                 rb.velocity = Vector3.zero;
                 Vector3 velocity = (other.transform.position - this.transform.position).normalized * speed;
                 rb.AddForceAtPosition(new Vector3(velocity.x, velocity.y, 0), other.transform.position + new Vector3(0, 1, 0));
-                rb.AddForce(new Vector3(velocity.x * 2, velocity.y * 2, 0) * speed);
+                rb.AddForce(new Vector3(velocity.x * 2, velocity.y, 0) * speed);
                 if (ani != null) { ani.SetTrigger("damage"); }
-                if (pStates != null) { pStates.Hp -= pStates.Hp / 2; pStates.IsDamage = true; }
-            }else
-            {
-                if (!rb.useGravity) { rb.useGravity = true; }
-                if (rb.isKinematic) { rb.isKinematic = false; }
+                if (pStates != null && pStates.IsDamage == false) { pStates.Hp -= 25; pStates.IsDamage = true; }
             }
+            if (!rb.useGravity) { rb.useGravity = true; }
+            if (rb.isKinematic) { rb.isKinematic = false; }
             
         }
     }
