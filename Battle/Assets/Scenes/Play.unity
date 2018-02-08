@@ -721,6 +721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stage:
+  - {fileID: 1622916453137146, guid: aa3db151cc2a9904aad0f4eea1737d6c, type: 2}
   - {fileID: 1405659159199996, guid: 4e8cc93f9cee3c540897cd42a8222d1b, type: 2}
   - {fileID: 1990948781721088, guid: d0a9a764f3b635543be655ce0a9a3313, type: 2}
 --- !u!4 &928880639
